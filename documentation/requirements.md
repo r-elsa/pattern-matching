@@ -46,3 +46,6 @@ The goal of the project is to get to know new and challenging data structures th
 ### Algorithms I will use:
 
 DFS, 
+
+### Study programe:
+ Tietojenkäsittelytieteen kandidaatti (TKT) 
