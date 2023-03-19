@@ -6,7 +6,7 @@
 The goal of the project is to get to know new and challenging tree like data structures by using string manipulation as an example. The objects of comparison are four different tree-like datastructures, which are tested on four different problems. The aim is to investigate and find which datastructure is the best in which problem situation.
 
 ## Programming language:
-- C++
+- C++, for user interface C++ GUI application 
 - I can peer review: C++, python
 
 ## Scope of the project:
