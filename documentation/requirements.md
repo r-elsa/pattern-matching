@@ -3,7 +3,9 @@
 
 ## Aim of project:
 
-The goal of the project is to get to know new and challenging tree like data structures by using string manipulation as an example. The objects of comparison are four different tree-like datastructures, which are tested on four different problems. The aim is to investigate and find which datastructure is the best in which problem situation.
+The topic of the project is indexing with suffixes. Suffix trees provide (after preprocessing text namely building suffix tree) an efficent way to search any pattern from text in O(m) time where m is the length of the pattern. 
+
+Naive methods (Suffix tries, Suffix tree implementation without Ukkonen's algorithm) will be explored on the way to Suffix tree implementation with Ukkonen's algorithm. 
 
 ## Programming language:
 - C++, for user interface C++ GUI application 
@@ -11,51 +13,30 @@ The goal of the project is to get to know new and challenging tree like data str
 
 ## Scope of the project:
 
-### The four data structures to be compared:
-**1) Segment tree** 
-  - Type of binary tree, helpful in range queries along with updates. 
-  - Overall time complexity: O(n log n)
+1. HTTP request to REST Server of New York Times for text (data). (https://developer.nytimes.com/docs/articlesearch-product/1/overview)
+
+2. Preprocessing: extract all the words from text to simple datastructure (vector).
+
+3. Creation of datastructures 
+    1. Suffix trie (naive method 1, Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth. 
+    2. Suffix tree (naive method 2, Time complexity: 0(n2), Space complexity: 0(n), reduced space compared to Suffix trie.
+    3. Suffix tree based on Ukkonen's algorithm.  The motivation behind exploring the algorithm is that text might change frequently (news change every day) and the preprocessing of text may become costly, which Ukkonen's algorithm provides a solution for.
+
+4. Testing of algorithm:
+    - Find a certain search word (string) from text based on user input. (O(m) time where m is length of the word)
+    - Count number of times that word occures in text
+    - Autocomplete based on user input.
+    - Comparison of time and efficiency in implementation of suffix tree (with & without ukkonen's algorithm).
   
-**2) Trie** 
-  - Executes insert and search operations faster than a binary search tree.
-  - Overall time complexity: 0(n)
-  
-**3) Treap/ Cartsian tree**
-  - Combines binary tree and binary heap. Also called cartesian tree.
-  - Overall time complexity: O(log n)
-  
-**4) Fenwick-tree / Binary indexed tree**
-  - Efficiently updates elements and calculates prefix sums.
-  - Overall time complexity: O(log n).
  
 ### Motivations behing choosing datastructures
-  - These datastructures are all not covered in the Data structures and algorithms course, as required. 
-  - Somewhat easier tree-like datastructures (Trie and Segment tree) were chosen to balance the more complex ones (Fenwick tree and Treap).
-  - While suffix tree is one of the most well known datastructures for string manipulation, it's implementation (and Ukkonen's algorithm) seemed too complex. 
-
-### 4 different problems that data structures help to solve. (INITIAL IDEAS)
-1) UPDATE: Update a specific letter in the word at a specific index or over an interval. (Segment tree winner)
-2) SEARCH: Searching the most popular letter. (Trie might be winner)
-3) DELETE: Delete a letter from word. 
-4) MERGE: Merge two words (strings). (Treap winner)
-
-
-###  Which data structure is best for each problem? The comparison includes:
-- Time complexity
-- Execution time in milliseconds
-- Space complexity
-
-### Algorithms I will use:
-To search I will use Binary search.
-To traverse  I will use the in-order traversal. 
+  - Suffix tries and trees enable search in O(m) time where m is the length of the pattern. This is better than other pattern matching algorithms which are 0(n) where n is the length of the text. 
 
 ### Inputs the algorithms receive
-  - Firstly, the input that the algorithm receives is a string.
-  - Secondly 
-    - Problem 1: an index or interval of indexes
-    - Problem 2: a letter
-    - Problem 3: a letter
-    - Problem 4: a string 
+  - User inputs
+    - Word search : string
+    - Amount of occurences of word: string
+    - Autocompete: string
 
 ## Sources
   - Introduction to Algorithms(CLRS)
@@ -67,4 +48,8 @@ To traverse  I will use the in-order traversal.
 ## Language for documentation, code and comments 
   - English
   - For peer review I can also write in Finnish. 
-  
+
+
+
+
+
