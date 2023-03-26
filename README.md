@@ -22,9 +22,10 @@ sudo apt-get install libcurl4-openssl-dev
 ```
 
 2. Go inside project folder (where *main.cpp* is) and add authentication key:
+(or get your own key by signing up at https://developer.nytimes.com/docs/articlesearch-product/1/overview)
 
 ```bash
-export AUTH_KEY=5Qhi8r0Id0umhwQripAGo2YFmGBQ3kcj
+ export AUTH_KEY=5Qhi8r0Id0umhwQripAGo2YFmGBQ3kcj
 
 ```
 
@@ -35,7 +36,7 @@ printenv AUTH_KEY
 
 ```
 
-4. Compile:
+4. Compile (example for linux):
 
 ```bash
 g++ main.cpp -o main -lcurl -Iinclude
