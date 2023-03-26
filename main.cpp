@@ -2,14 +2,33 @@
 #include <curl/curl.h>
 #include <string>
 #include <cstdlib>
+#include "nlohmann/json.hpp"
+#include <iostream>
+#include <fstream>
 
 
 using namespace std;
 
+static size_t CallBackFunction(void *contents, size_t size, size_t nmemb, void *userp)
+{
+    ((std::string*)userp)-> append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+
+int loopOverJson(void){
+    cout << "HELLOO" <<endl;
+    return 1;
+
+                }
+
+
 int main(void)
 {
+ 
   CURL *curl;
   CURLcode res;
+  std::string stringOfWords;
 
   curl_global_init(CURL_GLOBAL_DEFAULT);
   curl = curl_easy_init();
@@ -19,16 +38,20 @@ int main(void)
     string authkey = getenv("AUTH_KEY");
 
     // concatination of url and auth key 
-    string url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key="+authkey;
+    string url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key="+authkey;
   
     // set url
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-
-
+ 
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, CallBackFunction);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stringOfWords);
+ 
     // request prints to stdout
     res = curl_easy_perform(curl);
 
-    // error checking 
+   
+
+    // error checking
     if (res != CURLE_OK) {
       std::cerr << "Error during curl request: " 
                 << curl_easy_strerror(res) << std::endl;
@@ -40,6 +63,9 @@ int main(void)
   }
 
   curl_global_cleanup();
+  std::ofstream file("words.json");
+  file << stringOfWords;
+  loopOverJson();
 
   return 0;
 }
