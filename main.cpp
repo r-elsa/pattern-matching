@@ -8,17 +8,18 @@
 
 using namespace std;
 
-static size_t CallBackFunction(void *contents, size_t size, size_t nmemb, void *userp)
+
+static size_t 
+GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
 {
-    ((std::string*)userp)-> append((char*)contents, size * nmemb);
+    ((std::string*)words)-> append((char*)data, size * nmemb);
     return size * nmemb;
 }
 
 
 int loopOverJson(void){
-    cout << "HELLOO" <<endl;
+    cout << "Json data parsing to be continued!" <<endl;
     return 1;
-
                 }
 
 
@@ -42,13 +43,12 @@ int main(void)
     // set url
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
  
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, CallBackFunction);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, GetSizeOfDatafromAPI);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stringOfWords);
  
     // request prints to stdout
     res = curl_easy_perform(curl);
 
-   
 
     // error checking
     if (res != CURLE_OK) {
