@@ -18,20 +18,20 @@ The goal of the project is to develop data structures and algorithms for efficie
 1. Install **curl** if you don't have it installed yet:
 
 ```bash
-$ sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install libcurl4-openssl-dev
 ```
 
 2. Go inside project folder (where *main.cpp* is) and add authentication key:
 
 ```bash
-$ export AUTH_KEY=5Qhi8r0Id0umhwQripAGo2YFmGBQ3kcj
+export AUTH_KEY=5Qhi8r0Id0umhwQripAGo2YFmGBQ3kcj
 
 ```
 
 3. Check that it worked (should print the auth key):
 
 ```bash
-$ printenv AUTH_KEY
+printenv AUTH_KEY
 
 ```
 
@@ -39,12 +39,12 @@ $ printenv AUTH_KEY
 3. Compile:
 
 ```bash
-$ g++ main.cpp -o main -lcurl -Iinclude
+g++ main.cpp -o main -lcurl -Iinclude
 ```
 
 2. Run file:
 
 ```bash
- $ ./main
+ ./main
 ```
 
