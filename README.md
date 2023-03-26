@@ -35,14 +35,13 @@ printenv AUTH_KEY
 
 ```
 
-
-3. Compile:
+4. Compile:
 
 ```bash
 g++ main.cpp -o main -lcurl -Iinclude
 ```
 
-2. Run file:
+5. Run file:
 
 ```bash
  ./main
