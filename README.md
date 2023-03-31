@@ -21,7 +21,19 @@ The goal of the project is to develop data structures and algorithms for efficie
 sudo apt-get install libcurl4-openssl-dev
 ```
 
-2. Go inside project folder (where *main.cpp* is) and add authentication key:
+2. Install **JsonCpp** if you don't have it installed yet:
+
+```bash
+sudo apt-get install libjsoncpp-dev
+
+```
+```bash
+
+sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
+```
+
+
+3. Go inside project folder (where *main.cpp* is) and add authentication key:
 (or get your own key by signing up at https://developer.nytimes.com/docs/articlesearch-product/1/overview)
 
 ```bash
@@ -29,20 +41,20 @@ sudo apt-get install libcurl4-openssl-dev
 
 ```
 
-3. Check that it worked (should print the auth key):
+4. Check that it worked (should print the auth key):
 
 ```bash
 printenv AUTH_KEY
 
 ```
 
-4. Compile (example for linux):
+5. Compile (example for linux):
 
 ```bash
-g++ main.cpp -o main -lcurl -Iinclude
+g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp
 ```
 
-5. Run file:
+6. Run file:
 
 ```bash
  ./main
