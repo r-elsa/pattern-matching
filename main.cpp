@@ -17,17 +17,48 @@ GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
 }
 
 
-int loopOverJson(void){
-  
 
+
+ vector<string> loopOverJson(void){
+    std::vector<std::string> vector_of_words{};
+    
     std::ifstream file_input("words.json");
     Json::Reader reader;
-    Json::Value root;
-    reader.parse(file_input, root);
-    cout << root;
+    Json::Value obj;
+    reader.parse(file_input, obj);
+    const Json::Value& jsonofarticles =  obj["response"]["docs"]; // 
+    for (int i = 0; i < jsonofarticles.size(); i++){
+        string abstract = jsonofarticles[i]["abstract"].asString();
+        string lead_paragraph =  jsonofarticles[i]["lead_paragraph"].asString();
+        string abstract_leadparagraph = abstract + lead_paragraph;
 
+
+        std::string word;
+        for (auto letter : abstract_leadparagraph){
+
+            if (letter == ' ' or letter == '.' or letter ==','){
+                if ((!word.empty())){
+                    vector_of_words.push_back(word);
+                     word.clear();
+
+                }
+         
+
+           }       
+           else if (isalpha(letter) ){
+            char letter_lowercase = tolower(letter);
+            word = word + letter_lowercase;
+           } 
+
+           
+
+        }
+    
+
+        }
+  
  
-    return 1;
+    return vector_of_words;
 
                 }
 
@@ -73,7 +104,11 @@ int main(void)
   curl_global_cleanup();
   std::ofstream file("words.json");
   file << stringOfWords;
-  loopOverJson();
+std::vector<std::string> vector_of_words = loopOverJson();
+
+
+  for (int i = 0; i < vector_of_words.size(); i++)
+      std::cout << vector_of_words[i] << endl;
 
   return 0;
 }
