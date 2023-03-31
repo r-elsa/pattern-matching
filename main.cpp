@@ -2,9 +2,9 @@
 #include <curl/curl.h>
 #include <string>
 #include <cstdlib>
-#include "nlohmann/json.hpp"
 #include <iostream>
 #include <fstream>
+#include <json/json.h>
 
 using namespace std;
 
@@ -18,8 +18,17 @@ GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
 
 
 int loopOverJson(void){
-    cout << "Json data parsing to be continued!" <<endl;
+  
+
+    std::ifstream file_input("words.json");
+    Json::Reader reader;
+    Json::Value root;
+    reader.parse(file_input, root);
+    cout << root;
+
+ 
     return 1;
+
                 }
 
 
