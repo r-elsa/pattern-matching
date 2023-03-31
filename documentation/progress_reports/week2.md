@@ -8,8 +8,9 @@
 
 **Something that is unclear:** Currently everything is going quite smoothly.
 
-**Next up, I will** parse the json data and start working on the suffix trie. 
+**Next up, I will** 1. add unit tests for the current code 2. add code coverage 3.parse the json data start working on the suffix trie. 
 
 **Questions:*
-API key in README.md OK?
-commenting style ?
+- API key in README.md is it OK?
+- recommendations for unit testing library?
+- commenting style in C++?
