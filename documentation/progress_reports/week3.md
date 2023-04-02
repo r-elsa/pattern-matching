@@ -1,6 +1,6 @@
 ## Progress report week 3
 
-**This week I have** implemented json-parsing and string splitting.
+**This week I have** implemented json-parsing, string splitting and added a static analysis tool- Cppcheck.
 
 **The project has progressed** well, despite not having a lot of time to allocate for the project.  
 
@@ -10,5 +10,5 @@
 
 **Next up, I will** 1. add unit tests for the current code 2. add code coverage 3. research and implement suffix tree. 
 
-**Questions:*
--
+**Questions: -
+
