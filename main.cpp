@@ -15,7 +15,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
       }
       // HELPERS
 
-       int apicall(string &apiadress, string&authkey){
+    int apicall(string &apiadress, string&authkey){
             CURL *curl;
             CURLcode res;
             std::string stringOfWords;
