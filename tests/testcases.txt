@@ -1,0 +1,3 @@
+Testcase 
+1 : no auth key 
+2 : false authkey 
