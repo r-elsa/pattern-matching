@@ -2,7 +2,7 @@
  
  ## 1. Static analysis
 
-1. Install **Cppcheck** if you don't have it installed yet:
+1. Install **Cppcheck** if you don't have it installed yet. Also available at https://cppcheck.sourceforge.io/ .
 
 ```bash
  sudo apt-get install cppcheck
