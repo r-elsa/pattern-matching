@@ -11,6 +11,8 @@ The goal of the project is to develop data structures and algorithms for efficie
 
 [Time report](https://github.com/r-elsa/pattern-matching/blob/master/documentation/progress_reports/time_report.md)
 
+[Test report](https://github.com/r-elsa/pattern-matching/blob/master/documentation/test_report.md)
+
 
 
 ## Installation
