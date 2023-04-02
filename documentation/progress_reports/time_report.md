@@ -10,4 +10,4 @@ Date       | Hours| Tasks |
 2023-03-24 | 2h   | Updated requirements specification |
 2023-03-26 | 4h   | Implementation of core area - HTTP GET request & storage of data in json file |
 2023-03-31 | 3h   | Implementation of json parsing and string splitting of strings into a vector of strings. Researched into cpplint (styling).| 
-2023-04-02 | 1.5h | Adding static code analysis tool  - Cppcheck to project.| 
+2023-04-02 | 4h   | Adding static code analysis tool  - Cppcheck added to project.  Trying to integrate Catch2 -testframework https://github.com/catchorg/Catch2| 
