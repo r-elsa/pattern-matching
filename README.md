@@ -32,8 +32,14 @@ sudo apt-get install libjsoncpp-dev
 sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
 ```
 
+3. Install **Cppcheck** if you don't have it installed yet:
 
-3. Go inside project folder (where *main.cpp* is) and add authentication key:
+```bash
+ sudo apt-get install cppcheck
+
+```
+
+4. Go inside project folder (where *main.cpp* is) and add authentication key:
 (or get your own key by signing up at https://developer.nytimes.com/docs/articlesearch-product/1/overview)
 
 ```bash
@@ -41,20 +47,20 @@ sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
 
 ```
 
-4. Check that it worked (should print the auth key):
+5. Check that it worked (should print the auth key):
 
 ```bash
 printenv AUTH_KEY
 
 ```
 
-5. Compile (example for linux):
+6. Compile (example for linux):
 
 ```bash
 g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp
 ```
 
-6. Run file:
+7. Run file:
 
 ```bash
  ./main
