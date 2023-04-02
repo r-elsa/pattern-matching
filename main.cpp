@@ -8,14 +8,14 @@
 
 using namespace std;
 
-class APICallAndParser{ // Main class for doing API call to New York times and dfor parsing data and creating vector of strings 
+class APICall{ // Main class for doing API call to New York times and dfor parsing data and creating vector of strings 
    public:
-         APICallAndParser(){ //Constructor
-         cout << "Instance created of APICallAndParser." << endl;
+         APICall(){ //Constructor
+         cout << "Instance created of APICall." << endl;
       }
       // HELPERS
 
-       int apicall(void){
+       int apicall(string &apiadress, string&authkey){
             CURL *curl;
             CURLcode res;
             std::string stringOfWords;
@@ -23,8 +23,7 @@ class APICallAndParser{ // Main class for doing API call to New York times and d
             curl_global_init(CURL_GLOBAL_DEFAULT);
             curl = curl_easy_init();
             if (curl) {
-                string authkey = getenv("AUTH_KEY");  // get authentication key for API
-                string url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key="+authkey;    // concatination of url and auth key 
+                string url = apiadress + authkey;    // concatination of url and auth key 
                 curl_easy_setopt(curl, CURLOPT_URL, url.c_str());    // set url
                 curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, GetSizeOfDatafromAPI);
                 curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stringOfWords);
@@ -86,8 +85,11 @@ class APICallAndParser{ // Main class for doing API call to New York times and d
     };
         
 int main() {
-        APICallAndParser newinstance;  // Create an object of APICallAndParser - class
-        newinstance.apicall();  // Calling API and storing data in json
+        APICall newinstance;  // Create an object of APICallAndParser - class
+        std::string apiadress = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
+        string authkey = getenv("AUTH_KEY");  // get authentication key for API
+
+        newinstance.apicall(apiadress, authkey);  // Calling API and storing data in json
         std::vector<std::string> vector_of_words = newinstance.dataparsing(); // parses data from json file and creates vector of strings
         
         for (int i = 0; i < vector_of_words.size(); i++) // print all words
