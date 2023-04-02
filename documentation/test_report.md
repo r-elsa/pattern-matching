@@ -11,5 +11,5 @@
 2. Run tests in project folder (.../patternmatching$)
 
 ```bash
- cppcheck tests/file1.cpp
+ cppcheck --enable=all --suppress=missingIncludeSystem main.cpp
 ```
