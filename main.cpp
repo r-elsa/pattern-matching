@@ -8,6 +8,24 @@
 
 using namespace std;
 
+
+
+class SuffixTrie{
+    public:
+    std::vector<std::string> words;  
+    string myString;
+
+    void printwords() {
+            for (int i = 0; i < words.size(); i++) // print all words
+                std::cout << words[i] << endl;
+          
+        }
+     
+
+
+};
+
+
 class APICall{ // Main class for doing API call to New York times and dfor parsing data and creating vector of strings 
    public:
          APICall(){ //Constructor
@@ -15,7 +33,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
       }
       // HELPERS
 
-    int apicall(string &apiadress, string&authkey){
+    int apicall(string &apiadress, string &authkey){
             CURL *curl;
             CURLcode res;
             std::string stringOfWords;
@@ -79,8 +97,13 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
                     word = word + letter_lowercase;
                 } }}
 
-                return vector_of_words;
-                }
+                return vector_of_words;}
+
+
+    
+                
+        
+     
         
     private:
         float hello;
@@ -88,16 +111,18 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
     };
         
 int main() {
-        APICall newinstance;  // Create an object of APICallAndParser - class
+        APICall api_instance;  // Create an object of APICallAndParser - class
         std::string apiadress = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
         string authkey = getenv("AUTH_KEY");  // get authentication key for API
 
-        newinstance.apicall(apiadress, authkey);  // Calling API and storing data in json
-        std::vector<std::string> vector_of_words = newinstance.dataparsing(); // parses data from json file and creates vector of strings
+        api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
+        std::vector<std::string> vector_of_words = api_instance.dataparsing(); // parses data from json file and creates vector of strings
         
-        for (int i = 0; i < vector_of_words.size(); i++) // print all words
-            std::cout << vector_of_words[i] << endl;
-        
+
+
+        SuffixTrie suffixinstance; // create an object of class Suffixtrie
+        suffixinstance.words = vector_of_words;
+        suffixinstance.printwords();
         return 0;}
 
 
