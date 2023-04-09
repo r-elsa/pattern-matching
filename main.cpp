@@ -5,6 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <json/json.h>
+#include <map>
+
 
 using namespace std;
 
@@ -13,13 +15,50 @@ using namespace std;
 class SuffixTrie{
     public:
     std::vector<std::string> words;  
-    string myString;
+    string testString = "aabdba$";
+
 
     void printwords() {
             for (int i = 0; i < words.size(); i++) // print all words
                 std::cout << words[i] << endl;
           
         }
+    
+    void createSuffixtrie(){
+        std::vector<string> suffixes;
+        std::vector<char> lettersofsuffixes;
+        for (int i = 0; i < testString.size(); i++){
+            //std::cout << testString.substr(i) << endl;
+              suffixes.push_back(testString.substr(i));
+
+
+        }
+          
+        for (int i = 0; i < suffixes.size(); i++) {
+            for (int j = 0; j < suffixes[i].size(); j++){
+                    //std::cout << suffixes[i][j] << endl;
+                    lettersofsuffixes.push_back(suffixes[i][j]);
+                }
+        
+        }
+
+        for (int i = 0; i < lettersofsuffixes.size(); i++)
+            std::cout << lettersofsuffixes[i] << endl;
+          
+               
+           
+   
+
+
+        /* map_helper.insert({"Fruit", "Mango"});
+        map_helper.insert({"Tree", "Oak"});
+        map_helper.insert({"Vegetable", "Eggplant"});
+
+        for (auto itr = map_helper.begin(); itr != map_helper.end(); ++itr) {
+            cout << itr->first << ": " << itr->second << endl;
+        } */
+
+    }
      
 
 
@@ -122,7 +161,8 @@ int main() {
 
         SuffixTrie suffixinstance; // create an object of class Suffixtrie
         suffixinstance.words = vector_of_words;
-        suffixinstance.printwords();
+        //  suffixinstance.printwords();  
+        suffixinstance.createSuffixtrie();
         return 0;}
 
 
