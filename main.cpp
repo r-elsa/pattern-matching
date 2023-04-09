@@ -11,8 +11,41 @@
 using namespace std;
 
 
+// node struct functions
+struct SuffixTrieNode* GetNewNode(int data):
+void addChild(SuffixTrieNode* node, data);
+void print(SuffixTrieNode* root);
 
-class SuffixTrie{
+
+// node struct 
+struct SuffixTrieNode{
+    int data;
+    vector  <SuffixTrieNode*> children;
+
+
+};
+
+ SuffixTrieNode* GetNewNode(int data){  // function to create a new node 
+    SuffixTrieNode* newNode = new SuffixTrieNode();
+    newNode -> data = data; // dereferencing pointer, assigning it to newNode
+    return newNode;
+
+ }
+
+
+ void addChild(SuffixTrieNode* node, data)  {  // function to add child to a specific node
+    SuffixTrieNode newNode = GetNewNode(data); // create a new node
+    node -> children.push_back(newNode); // assign the new node to the children of the parent
+
+ }
+
+
+
+
+
+
+
+class Suffix{
     public:
     std::vector<std::string> words;  
     string testString = "aabdba$";
@@ -21,7 +54,6 @@ class SuffixTrie{
     void printwords() {
             for (int i = 0; i < words.size(); i++) // print all words
                 std::cout << words[i] << endl;
-          
         }
     
     void createSuffixtrie(){
@@ -30,8 +62,6 @@ class SuffixTrie{
         for (int i = 0; i < testString.size(); i++){
             //std::cout << testString.substr(i) << endl;
               suffixes.push_back(testString.substr(i));
-
-
         }
           
         for (int i = 0; i < suffixes.size(); i++) {
@@ -44,23 +74,8 @@ class SuffixTrie{
 
         for (int i = 0; i < lettersofsuffixes.size(); i++)
             std::cout << lettersofsuffixes[i] << endl;
-          
-               
-           
-   
-
-
-        /* map_helper.insert({"Fruit", "Mango"});
-        map_helper.insert({"Tree", "Oak"});
-        map_helper.insert({"Vegetable", "Eggplant"});
-
-        for (auto itr = map_helper.begin(); itr != map_helper.end(); ++itr) {
-            cout << itr->first << ": " << itr->second << endl;
-        } */
-
+        
     }
-     
-
 
 };
 
@@ -138,14 +153,6 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
 
                 return vector_of_words;}
 
-
-    
-                
-        
-     
-        
-    private:
-        float hello;
     
     };
         
@@ -159,7 +166,7 @@ int main() {
         
 
 
-        SuffixTrie suffixinstance; // create an object of class Suffixtrie
+        Suffix suffixinstance; // create an object of class Suffixtrie
         suffixinstance.words = vector_of_words;
         //  suffixinstance.printwords();  
         suffixinstance.createSuffixtrie();
