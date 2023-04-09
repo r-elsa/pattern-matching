@@ -63,11 +63,14 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
                 string abstract_leadparagraph = abstract + lead_paragraph;
 
                 std::string word;
+                std:: string endsign_included;
                 for (auto letter : abstract_leadparagraph){
 
                     if (letter == ' ' or letter == '.' or letter ==','){
                         if ((!word.empty())){
-                            vector_of_words.push_back(word);
+                            endsign_included = word + '$';
+                            
+                            vector_of_words.push_back(endsign_included);
                             word.clear();
                         }
                 }       
