@@ -5,77 +5,47 @@
 #include <iostream>
 #include <fstream>
 #include <json/json.h>
-#include <map>
+#include <unordered_map>
 
 
 using namespace std;
 
 
-// node struct functions
-struct SuffixTrieNode* GetNewNode(int data):
-void addChild(SuffixTrieNode* node, data);
-void print(SuffixTrieNode* root);
-
-
-// node struct 
-struct SuffixTrieNode{
-    int data;
-    vector  <SuffixTrieNode*> children;
-
-
-};
-
- SuffixTrieNode* GetNewNode(int data){  // function to create a new node 
-    SuffixTrieNode* newNode = new SuffixTrieNode();
-    newNode -> data = data; // dereferencing pointer, assigning it to newNode
-    return newNode;
-
- }
-
-
- void addChild(SuffixTrieNode* node, data)  {  // function to add child to a specific node
-    SuffixTrieNode newNode = GetNewNode(data); // create a new node
-    node -> children.push_back(newNode); // assign the new node to the children of the parent
-
- }
-
-
-
-
-
-
-
-class Suffix{
+class SuffixTree{
     public:
-    std::vector<std::string> words;  
-    string testString = "aabdba$";
+    string final_string;
 
 
-    void printwords() {
-            for (int i = 0; i < words.size(); i++) // print all words
-                std::cout << words[i] << endl;
-        }
+    void print_final_string() {
+            for (int i = 0; i < final_string.size(); i++) // print all words
+                 std::cout << final_string[i] << endl;
+                    
+        };
     
     void createSuffixtrie(){
-        std::vector<string> suffixes;
-        std::vector<char> lettersofsuffixes;
-        for (int i = 0; i < testString.size(); i++){
-            //std::cout << testString.substr(i) << endl;
-              suffixes.push_back(testString.substr(i));
-        }
-          
-        for (int i = 0; i < suffixes.size(); i++) {
-            for (int j = 0; j < suffixes[i].size(); j++){
-                    //std::cout << suffixes[i][j] << endl;
-                    lettersofsuffixes.push_back(suffixes[i][j]);
-                }
+        final_string[final_string.size() - 1] = '$';   // adding terminator
+  
+      
+        for (int i = 0; i < final_string.size(); i++){
+              cur = root;
+              for (int j = 0; j < final_string.substr(i).size(); j++){
+                cout << final_string.substr(i)[j] << endl;
+               /*  {'h': {'e': {'l': {'l': {'o': {'$': {}}}}}}, 'e': {'l': {'l': {'o': {'$': {}}}}}, 'l': {'l': {'o': {'$': {}}}, 'o': {'$': {}}}, 'o': {'$': {}}} */
+               
         
-        }
 
-        for (int i = 0; i < lettersofsuffixes.size(); i++)
-            std::cout << lettersofsuffixes[i] << endl;
-        
-    }
+              }
+
+           
+
+            
+              
+        };
+          
+     
+
+    }      
+    
 
 };
 
@@ -122,8 +92,9 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
             }
     
      
-      vector<string> dataparsing(void){ // parses json data from words.json file, creates strings and splits strings
-            std::vector<std::string> vector_of_words{};
+      string dataparsing(void){ // parses json data from words.json file, creates strings and splits strings
+         
+            std:string singleString;
             std::ifstream file_input("words.json");
             Json::Reader reader;
             Json::Value obj;
@@ -140,9 +111,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
 
                     if (letter == ' ' or letter == '.' or letter ==','){
                         if ((!word.empty())){
-                            endsign_included = word + '$';
-                            
-                            vector_of_words.push_back(endsign_included);
+                            singleString += word + ' ';
                             word.clear();
                         }
                 }       
@@ -151,26 +120,33 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
                     word = word + letter_lowercase;
                 } }}
 
-                return vector_of_words;}
+                
+                return singleString;}
 
     
     };
+
+
+    
         
 int main() {
-        APICall api_instance;  // Create an object of APICallAndParser - class
+        /* APICall api_instance;  // Create an object of APICallAndParser - class
         std::string apiadress = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
         string authkey = getenv("AUTH_KEY");  // get authentication key for API
 
         api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
-        std::vector<std::string> vector_of_words = api_instance.dataparsing(); // parses data from json file and creates vector of strings
+        string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of strings
+        cout << finalString << endl; */
+
+        SuffixTree suffixinstance; // create an object of class Suffixtrie
+        suffixinstance.final_string = "what a beautiful day ";
+        /* suffixinstance.print_final_string(); */  
+        suffixinstance.createSuffixtrie(); 
+ 
         
 
-
-        Suffix suffixinstance; // create an object of class Suffixtrie
-        suffixinstance.words = vector_of_words;
-        //  suffixinstance.printwords();  
-        suffixinstance.createSuffixtrie();
         return 0;}
+
 
 
 
