@@ -6,7 +6,7 @@
 #include <fstream>
 #include <json/json.h>
 #include <unordered_map>
-
+#include <algorithm> 
 
 using namespace std;
 
@@ -14,9 +14,28 @@ class SuffixTree{
     public:
     std::vector<pair<int,char>> tree[1000]; 
 
+
     void create(){
         tree[(0,'o')].push_back(std::make_pair(1,'b')); // create root node.
 
+    }
+
+    void firstLevelChildrenOfRoot(){ 
+        for(int i = 0; i < tree[(0,'o')].size(); i++){
+            cout << tree[(0,'o')][i].first << ", " << tree[(0,'o')][i].second << endl;
+                    }
+                
+    }
+
+    void checkIfRootNodeExists(char letter){
+        auto it = std::find_if( tree[(0,'o')].begin(), tree[(0,'o')].end(),[&letter](const std::pair<int, char>& element){ 
+            return element.second == letter;} );
+        
+        if (it != tree[(0,'o')].end()) {  // check if iterator points to end of vector --> no letter exists
+            cout << it->second << endl;
+    
+
+    }
     }
 
     void dfs(pair <int,char> node, pair<int,char> prev){
@@ -30,8 +49,7 @@ class SuffixTree{
 }
 
     void followpath(){
-        dfs(std::make_pair(0,'o'),std::make_pair(0,'p'));
-
+        dfs(std::make_pair(0,'o'),std::make_pair(0,'p')); // first is root node, second is imaginary previous node 
 
     }
     void hasSubString(){
@@ -39,6 +57,7 @@ class SuffixTree{
     }
 
     void getId(string c){
+        
 
        /*  auto index = std::distance(dict.begin(), std::find_if(dict.begin(), dict.end(), [&](const auto& pair) { return pair.first == soughtstring; }));
      */}
@@ -197,7 +216,10 @@ int main() {
 
         mysuffixtree.tree[(2,'c')].push_back(std::make_pair(3,'d'));
         mysuffixtree.tree[(1,'b')].push_back(std::make_pair(4,'y'));
-        mysuffixtree.followpath();
+        /* mysuffixtree.followpath(); */
+      /*   mysuffixtree.firstLevelChildrenOfRoot(); */
+        mysuffixtree.checkIfRootNodeExists('b');
+       
         
 
         return 0;}
