@@ -10,11 +10,47 @@
 
 using namespace std;
 
-
 class SuffixTree{
     public:
-    string final_string;
+    std::vector<pair<int,char>> tree[1000]; 
 
+    void create(){
+        tree[(0,'o')].push_back(std::make_pair(1,'b')); // create root node.
+
+    }
+
+    void dfs(pair <int,char> node, pair<int,char> prev){
+      
+        cout << node.first;
+        cout << node.second << endl;
+        for (pair<int,char> next : tree[(node.first,node.second)]) {
+            if (next == prev) continue;
+            dfs(next, node);
+        }
+}
+
+    void followpath(){
+        dfs(std::make_pair(0,'o'),std::make_pair(0,'p'));
+
+
+    }
+    void hasSubString(){
+
+    }
+
+    void getId(string c){
+
+       /*  auto index = std::distance(dict.begin(), std::find_if(dict.begin(), dict.end(), [&](const auto& pair) { return pair.first == soughtstring; }));
+     */}
+}  
+
+;
+
+
+class Helper{
+    public:
+    string final_string;
+    
 
     void print_final_string() {
             for (int i = 0; i < final_string.size(); i++) // print all words
@@ -22,14 +58,23 @@ class SuffixTree{
                     
         };
     
-    void createSuffixtrie(){
+    void createSuffixTree(){
         final_string[final_string.size() - 1] = '$';   // adding terminator
-  
+       
       
         for (int i = 0; i < final_string.size(); i++){
-              cur = root;
+            
               for (int j = 0; j < final_string.substr(i).size(); j++){
-                cout << final_string.substr(i)[j] << endl;
+                /* cout << final_string.substr(i)[j] << endl; */
+                if (final_string.substr(i)[j] == '$'){
+                    cout << final_string.substr(i)[j] << endl;
+                    // next instance is a new word -- check if root exists
+                }
+                else{
+
+                    // continue to add as children of the previous 
+                }
+               
                /*  {'h': {'e': {'l': {'l': {'o': {'$': {}}}}}}, 'e': {'l': {'l': {'o': {'$': {}}}}}, 'l': {'l': {'o': {'$': {}}}, 'o': {'$': {}}}, 'o': {'$': {}}} */
                
         
@@ -44,7 +89,9 @@ class SuffixTree{
           
      
 
-    }      
+    }
+
+      
     
 
 };
@@ -93,7 +140,6 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
     
      
       string dataparsing(void){ // parses json data from words.json file, creates strings and splits strings
-         
             std:string singleString;
             std::ifstream file_input("words.json");
             Json::Reader reader;
@@ -138,11 +184,20 @@ int main() {
         string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of strings
         cout << finalString << endl; */
 
-        SuffixTree suffixinstance; // create an object of class Suffixtrie
-        suffixinstance.final_string = "what a beautiful day ";
-        /* suffixinstance.print_final_string(); */  
-        suffixinstance.createSuffixtrie(); 
- 
+        Helper myinstance; // create an object of class Suffixtrie
+        myinstance.final_string = "hello ";
+        /* myinstance.print_final_string(); */  
+        /* myinstance.createSuffixTree(); */
+
+        SuffixTree mysuffixtree;
+        mysuffixtree.create();
+        
+       
+        mysuffixtree.tree[(0,'o')].push_back(std::make_pair(2,'c'));
+
+        mysuffixtree.tree[(2,'c')].push_back(std::make_pair(3,'d'));
+        mysuffixtree.tree[(1,'b')].push_back(std::make_pair(4,'y'));
+        mysuffixtree.followpath();
         
 
         return 0;}
