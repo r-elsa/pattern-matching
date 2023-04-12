@@ -7,6 +7,7 @@
 #include <json/json.h>
 #include <unordered_map>
 #include <algorithm> 
+#include <utility>
 
 using namespace std;
 
@@ -14,39 +15,38 @@ class SuffixTree{
     public:
     std::vector<pair<int,char>> tree[1000]; 
 
-
-    void create(){
-        tree[(0,'o')].push_back(std::make_pair(1,'b')); // create root node.
-
-    }
-
-    void firstLevelChildrenOfRoot(){ 
+    void printFirstLevelChildrenOfRoot(){ 
         for(int i = 0; i < tree[(0,'o')].size(); i++){
-            cout << tree[(0,'o')][i].first << ", " << tree[(0,'o')][i].second << endl;
-                    }
-                
+            cout << tree[(0,'o')][i].first << ", " << tree[(0,'o')][i].second << endl; }                
     }
 
-    void checkIfRootNodeExists(char letter){
-        auto it = std::find_if( tree[(0,'o')].begin(), tree[(0,'o')].end(),[&letter](const std::pair<int, char>& element){ 
+    bool checkIfNodeExists(std::pair<int, char> node, char letter){
+        auto it = std::find_if( tree[(node.first, node.second)].begin(), tree[(node.first,node.second)].end(),[&letter](const std::pair<int, char>& element){ 
             return element.second == letter;} );
         
-        if (it != tree[(0,'o')].end()) {  // check if iterator points to end of vector --> no letter exists
-            cout << it->second << endl;
-    
+        if (it != tree[(node.first, node.second)].end()) {  // check if iterator points to end of vector --> no letter exists
+            return 1;  }
+        else {
+            return 0;}
 
     }
+
+    int getNodeId(std::pair<int, char> node, char letter){
+        auto it = std::find_if( tree[(node.first, node.second)].begin(), tree[(node.first,node.second)].end(),[&letter](const std::pair<int, char>& element){ 
+            return element.second==letter;} );
+        
+        if (it != tree[(node.first, node.second)].end()) {  // check if iterator points to end of vector --> no letter exists
+            return 1;  }
+        
     }
 
     void dfs(pair <int,char> node, pair<int,char> prev){
-      
         cout << node.first;
         cout << node.second << endl;
         for (pair<int,char> next : tree[(node.first,node.second)]) {
             if (next == prev) continue;
             dfs(next, node);
-        }
-}
+        }}
 
     void followpath(){
         dfs(std::make_pair(0,'o'),std::make_pair(0,'p')); // first is root node, second is imaginary previous node 
@@ -56,21 +56,14 @@ class SuffixTree{
 
     }
 
-    void getId(string c){
-        
-
-       /*  auto index = std::distance(dict.begin(), std::find_if(dict.begin(), dict.end(), [&](const auto& pair) { return pair.first == soughtstring; }));
-     */}
-}  
-
-;
+    
+};
 
 
 class Helper{
     public:
     string final_string;
     
-
     void print_final_string() {
             for (int i = 0; i < final_string.size(); i++) // print all words
                  std::cout << final_string[i] << endl;
@@ -80,7 +73,6 @@ class Helper{
     void createSuffixTree(){
         final_string[final_string.size() - 1] = '$';   // adding terminator
        
-      
         for (int i = 0; i < final_string.size(); i++){
             
               for (int j = 0; j < final_string.substr(i).size(); j++){
@@ -98,21 +90,12 @@ class Helper{
                
         
 
-              }
-
-           
-
-            
+              }                
               
         };
-          
-     
-
-    }
-
-      
+        
+    }    
     
-
 };
 
 
@@ -121,7 +104,6 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
          APICall(){ //Constructor
          cout << "Instance created of APICall." << endl;
       }
-      // HELPERS
 
     int apicall(string &apiadress, string &authkey){
             CURL *curl;
@@ -156,8 +138,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
             ((std::string*)words)-> append((char*)data, size * nmemb);
             return size * nmemb;
             }
-    
-     
+      
       string dataparsing(void){ // parses json data from words.json file, creates strings and splits strings
             std:string singleString;
             std::ifstream file_input("words.json");
@@ -185,15 +166,10 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
                     word = word + letter_lowercase;
                 } }}
 
-                
-                return singleString;}
-
-    
+                return singleString;}  
     };
 
 
-    
-        
 int main() {
         /* APICall api_instance;  // Create an object of APICallAndParser - class
         std::string apiadress = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
@@ -209,19 +185,40 @@ int main() {
         /* myinstance.createSuffixTree(); */
 
         SuffixTree mysuffixtree;
-        mysuffixtree.create();
-        
-       
-        mysuffixtree.tree[(0,'o')].push_back(std::make_pair(2,'c'));
+     
+        int counter = 1;
+        pair <int, char> prev_node;
+        prev_node.first=0;
+        prev_node.second = 'o';
+        char letter = 'a';
 
-        mysuffixtree.tree[(2,'c')].push_back(std::make_pair(3,'d'));
-        mysuffixtree.tree[(1,'b')].push_back(std::make_pair(4,'y'));
+
+        std::string tessst = "hello ";
+        for (int i = 0; i < tessst.size(); i++){
+            cout <<tessst[i] << endl;
+
+        }
+
+        bool nodeExists = mysuffixtree.checkIfNodeExists(prev_node, letter);
+        if (nodeExists){
+
+            int next_node_id = mysuffixtree.getNodeId(prev_node,letter);
+            
+            cout << "yes" << endl;
+        }
+        else{
+            mysuffixtree.tree[(prev_node.first,prev_node.second)].push_back(std::make_pair(counter,letter));
+            prev_node.first = counter;
+            prev_node.second= letter;
+            counter++;
+        }
+
+        mysuffixtree.printFirstLevelChildrenOfRoot();
+            
+       
         /* mysuffixtree.followpath(); */
-      /*   mysuffixtree.firstLevelChildrenOfRoot(); */
-        mysuffixtree.checkIfRootNodeExists('b');
        
-        
-
+       /* cout << nodeExists << endl; */
         return 0;}
 
 
