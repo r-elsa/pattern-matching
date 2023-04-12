@@ -8,19 +8,85 @@
 #include <unordered_map>
 #include <algorithm> 
 #include <utility>
-
 using namespace std;
 
-class SuffixTree{
-    public:
-    std::vector<pair<int,char>> tree[1000]; 
 
+
+class SuffixTree{
+        std::vector<pair<int,char>> tree[10000]; 
+        string final_string;
+    
+    public:
+        void setFinalString(string final_string){
+            this-> final_string = final_string;
+        }
+        
+        void getTree()
+        { 
+        }
+
+    void print_final_string() {
+            for (int i = 0; i < final_string.size(); i++) // print all words
+                 std::cout << final_string[i] << endl;                    
+        };
+    
+    void createSuffixTree(){          
+        final_string[final_string.size() - 1] = '$';   // adding terminator
+
+        pair <int, char> prev_node;
+        prev_node.first=0;
+        prev_node.second = 'o';
+        int counter = 1;
+        char letter;
+       
+        for (int i = 0; i < final_string.size(); i++){
+              for (int j = 0; j < final_string.substr(i).size(); j++){      
+                    letter = final_string.substr(i)[j]; 
+                    /* cout << letter << endl;   */   
+                    /* bool nodeExists = checkIfNodeExists(prev_node, letter); */
+                    /* cout << nodeExists << endl; */
+
+                    /* if (nodeExists){
+                        
+                        if (letter == '$'){
+                            int node_id = getNodeId(prev_node,letter);
+                            prev_node.first = 0;
+                            prev_node.second= 'o';
+                        }
+                        else
+                        {
+                             int node_id = getNodeId(prev_node,letter);
+                             prev_node.first = node_id;
+                             prev_node.second=letter;
+                        }  
+                    }
+                    else
+                    { // node does not exist  */
+                        
+                        if (letter == '$'){
+                            tree[(prev_node.first,prev_node.second)].push_back(std::make_pair(counter,letter));
+                            prev_node.first = 0;
+                            prev_node.second='o';
+                        }
+                        else
+                        {
+                            tree[(prev_node.first,prev_node.second)].push_back(std::make_pair(counter,letter));
+                            prev_node.first = counter;
+                            prev_node.second = letter;
+                            
+                        }
+                        counter++;                    
+                     }}; }     
+                
     void printFirstLevelChildrenOfRoot(){ 
         for(int i = 0; i < tree[(0,'o')].size(); i++){
-            cout << tree[(0,'o')][i].first << ", " << tree[(0,'o')][i].second << endl; }                
+            cout << tree[(0,'o')][i].first << ", " << tree[(0,'o')][i].second << endl;}                
     }
 
     bool checkIfNodeExists(std::pair<int, char> node, char letter){
+        /* cout << node.first;
+        cout << node.second << endl;
+        cout << letter<< endl; */
         auto it = std::find_if( tree[(node.first, node.second)].begin(), tree[(node.first,node.second)].end(),[&letter](const std::pair<int, char>& element){ 
             return element.second == letter;} );
         
@@ -33,69 +99,28 @@ class SuffixTree{
 
     int getNodeId(std::pair<int, char> node, char letter){
         auto it = std::find_if( tree[(node.first, node.second)].begin(), tree[(node.first,node.second)].end(),[&letter](const std::pair<int, char>& element){ 
-            return element.second==letter;} );
-        
-        if (it != tree[(node.first, node.second)].end()) {  // check if iterator points to end of vector --> no letter exists
-            return 1;  }
+            return element.second == letter;} );
+            
+            return it-> first;
         
     }
 
     void dfs(pair <int,char> node, pair<int,char> prev){
-        cout << node.first;
-        cout << node.second << endl;
-        for (pair<int,char> next : tree[(node.first,node.second)]) {
+        /* cout << node.first;
+        cout << node.second << endl; */
+        for (pair<int,char> next : tree[(node.first, node.second)]) {
             if (next == prev) continue;
             dfs(next, node);
         }}
 
     void followpath(){
-        dfs(std::make_pair(0,'o'),std::make_pair(0,'p')); // first is root node, second is imaginary previous node 
+        dfs(std::make_pair(1,'t'), std::make_pair(0,'o')); // first is root node, second is imaginary previous node 
 
     }
     void hasSubString(){
 
     }
-
-    
-};
-
-
-class Helper{
-    public:
-    string final_string;
-    
-    void print_final_string() {
-            for (int i = 0; i < final_string.size(); i++) // print all words
-                 std::cout << final_string[i] << endl;
-                    
-        };
-    
-    void createSuffixTree(){
-        final_string[final_string.size() - 1] = '$';   // adding terminator
-       
-        for (int i = 0; i < final_string.size(); i++){
-            
-              for (int j = 0; j < final_string.substr(i).size(); j++){
-                /* cout << final_string.substr(i)[j] << endl; */
-                if (final_string.substr(i)[j] == '$'){
-                    cout << final_string.substr(i)[j] << endl;
-                    // next instance is a new word -- check if root exists
-                }
-                else{
-
-                    // continue to add as children of the previous 
-                }
-               
-               /*  {'h': {'e': {'l': {'l': {'o': {'$': {}}}}}}, 'e': {'l': {'l': {'o': {'$': {}}}}}, 'l': {'l': {'o': {'$': {}}}, 'o': {'$': {}}}, 'o': {'$': {}}} */
-               
-        
-
-              }                
-              
-        };
-        
-    }    
-    
+  
 };
 
 
@@ -132,8 +157,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
             file << stringOfWords;
             return 0;    
             }
-
-      
+ 
       static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words) {// returns size of data in order to create vector
             ((std::string*)words)-> append((char*)data, size * nmemb);
             return size * nmemb;
@@ -171,54 +195,21 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
 
 
 int main() {
-        /* APICall api_instance;  // Create an object of APICallAndParser - class
+        APICall api_instance;  // Create an object of APICallAndParser - class
         std::string apiadress = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
         string authkey = getenv("AUTH_KEY");  // get authentication key for API
 
         api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
         string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of strings
-        cout << finalString << endl; */
+        /* cout << finalString << endl; */
 
-        Helper myinstance; // create an object of class Suffixtrie
-        myinstance.final_string = "hello ";
-        /* myinstance.print_final_string(); */  
-        /* myinstance.createSuffixTree(); */
-
-        SuffixTree mysuffixtree;
-     
-        int counter = 1;
-        pair <int, char> prev_node;
-        prev_node.first=0;
-        prev_node.second = 'o';
-        char letter = 'a';
-
-
-        std::string tessst = "hello ";
-        for (int i = 0; i < tessst.size(); i++){
-            cout <<tessst[i] << endl;
-
-        }
-
-        bool nodeExists = mysuffixtree.checkIfNodeExists(prev_node, letter);
-        if (nodeExists){
-
-            int next_node_id = mysuffixtree.getNodeId(prev_node,letter);
-            
-            cout << "yes" << endl;
-        }
-        else{
-            mysuffixtree.tree[(prev_node.first,prev_node.second)].push_back(std::make_pair(counter,letter));
-            prev_node.first = counter;
-            prev_node.second= letter;
-            counter++;
-        }
-
-        mysuffixtree.printFirstLevelChildrenOfRoot();
-            
-       
-        /* mysuffixtree.followpath(); */
-       
-       /* cout << nodeExists << endl; */
+        SuffixTree myinstance; 
+        myinstance.setFinalString("test ");
+        myinstance.createSuffixTree(); 
+        /* myinstance.followpath();  */
+        myinstance.printFirstLevelChildrenOfRoot();
+      
+           
         return 0;}
 
 
