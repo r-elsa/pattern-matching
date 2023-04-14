@@ -6,7 +6,7 @@
 
 **This week I learned** implementation of suffix trie with adjacency lists. 
 
-**Something that is unclear:** See questions. 
+**Something that is unclear:** see questions. 
 
 **Next up, I will** create tests for the suffix tree implementation and the word search.
 
