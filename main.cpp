@@ -127,19 +127,15 @@ class SuffixTree{
         auto it = std::find_if(tree[(prev_id, prev_letter, prev_identifier)].begin(), tree[(prev_id, prev_letter, prev_identifier)].end(),
         [&letter](const std::tuple<int,char,int>& e) {
             return std::get<1>(e) == letter;});
-            
             std::pair<int,int> returnvalues;
 
             if (it != tree[(prev_id, prev_letter, prev_identifier)].end()) {
-                returnvalues = std::make_pair(get<0>(*it),get<2>(*it));
-              
+                returnvalues = std::make_pair(get<0>(*it),get<2>(*it));              
             }
             else{
-               returnvalues= std::make_pair(get<0>(*it),get<2>(*it));
-             
+               returnvalues= std::make_pair(get<0>(*it),get<2>(*it));             
             }
-            return returnvalues;
-           
+            return returnvalues;           
             } 
 
 
@@ -167,6 +163,22 @@ class SuffixTree{
 
       } 
       return 1; }  
+
+    vector <string> autoComplete(string word){
+        vector<string> vectorvtr = {};
+
+        bool stringExists = followpath(word);
+        if (!(stringExists)){
+            vectorvtr.push_back("word does not exist");
+            return vectorvtr;
+        }
+
+        vectorvtr = {"hello"};
+        return vectorvtr;
+
+    }
+
+
 };
 
 class APICall{ // Main class for doing API call to New York times and dfor parsing data and creating vector of strings 
@@ -245,14 +257,28 @@ int main() {
 
         api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
         string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of string
-        SuffixTree myinstance; 
+        
+        SuffixTree myinstance; // initialize suffixtree
         myinstance.setFinalString("to$tackle$climate$change$well$need$to$plug$in$millions$of$cars$trucks$home$heaters$stoves$and$factories$");
         myinstance.createSuffixTree(); 
-        /* myinstance.followpath();  */
         myinstance.printFirstLevelChildrenOfRoot(); 
-        bool wordexists = myinstance.followpath("tacklee");
+
+        //USER INPUT
+
+        string userInputWord;
+        cout << "Type a word to search in the suffixtree: ";
+        cin >> userInputWord; 
+        bool wordexists = myinstance.followpath(userInputWord); // check if word exists
         cout << wordexists << endl;
-         
+
+        string userInputAutoComplete;
+        cout << "Type characters for the suffixtree to autocomplete: ";
+        cin >> userInputAutoComplete; 
+        std::vector<string> suggestions = myinstance.autoComplete(userInputAutoComplete); 
+        for (int i = 0; i < suggestions.size(); i++){
+            cout << suggestions[i] << endl;
+        }
+
         return 0;}
 
 
