@@ -11,9 +11,9 @@
 #include <tuple>
 
 using namespace std;
-
+const long long N = 1e5;
 class SuffixTree{
-        std::vector<tuple<int, char, int>> tree[100000]; 
+        std::vector<tuple<int, char, int>> tree[N]; 
         string final_string;
     
     public:
@@ -30,7 +30,7 @@ class SuffixTree{
         };
     
     void createSuffixTree(){          
-        final_string[final_string.size() - 1] = '$';   // adding terminator    
+        final_string = final_string + '$';    // adding terminator    
         int prev_id=0;
         char prev_letter = 'o';
         int prev_identifier = 0111;
@@ -38,14 +38,15 @@ class SuffixTree{
         char letter;
        
         for (int i = 0; i < final_string.size(); i++){
-              for (int j = 0; j < final_string.substr(i).size(); j++){      
-                    letter = final_string.substr(i)[j]; 
+            /* cout << final_string[i] << endl; */
+            letter = final_string[i];
+              /* for (int j = 0; j < final_string.substr(i).size(); j++){      
+                    letter = final_string.substr(i)[j];  */
                  
                     bool nodeExists = checkIfNodeExists(prev_id, prev_letter, prev_identifier, letter); 
-                    cout << nodeExists << endl;
-                    cout << letter << endl;
+                  
 
-                    if (4<3){ //nodeExists
+                    if (nodeExists){ //nodeExists
 
                          if (letter == '$'){
                             prev_id = 0;
@@ -55,9 +56,14 @@ class SuffixTree{
                         }
                         else
                         {
-                            prev_id = counter;
+                            int existing_id;
+                            int existing_identifier;
+                            std::tie(existing_id, existing_identifier) = nodeDetails(prev_id, prev_letter, prev_identifier, letter); 
+                            
+                            prev_id = existing_id;
                             prev_letter = letter;
-                            prev_identifier = prev_identifier;
+                            prev_identifier = existing_identifier;
+                          
                         }
                                   
                     }
@@ -89,11 +95,11 @@ class SuffixTree{
                             prev_identifier = identifier;     
                         }
                         counter++;                    
-    }}}; }     
+    }}; }     
                 
      void printFirstLevelChildrenOfRoot(){ 
             
-         for (auto&& tuple: tree[(8,'t',8116)]){
+         for (auto&& tuple: tree[(0,'o',0111)]){
                     int X;
                     char Y;
                     int Z;
@@ -115,31 +121,52 @@ class SuffixTree{
             else{
                 return 0;
             }} 
+    
+    pair<int,int> nodeDetails(int prev_id, char prev_letter,int prev_identifier, char letter) {
 
-
-    /* int getNodeId(std::pair<int, char> node, char letter){
-        auto it = std::find_if( tree[(node.first, node.second)].begin(), tree[(node.first,node.second)].end(),[&letter](const std::pair<int, char>& element){ 
-            return element.second == letter;} );
+        auto it = std::find_if(tree[(prev_id, prev_letter, prev_identifier)].begin(), tree[(prev_id, prev_letter, prev_identifier)].end(),
+        [&letter](const std::tuple<int,char,int>& e) {
+            return std::get<1>(e) == letter;});
             
-            return it-> first;        
-    } */
+            std::pair<int,int> returnvalues;
 
-    /* void dfs(tuple<int,char> node, tuple<int,char> prev){
-        /* cout << node.first;
-        cout << node.second << endl;
-        for (tuple<int,char> next : tree[(node.first, node.second)]) {
-            if (next == prev) continue;
-            dfs(next, node);
-        }} */
+            if (it != tree[(prev_id, prev_letter, prev_identifier)].end()) {
+                returnvalues = std::make_pair(get<0>(*it),get<2>(*it));
+              
+            }
+            else{
+               returnvalues= std::make_pair(get<0>(*it),get<2>(*it));
+             
+            }
+            return returnvalues;
+           
+            } 
 
-    /* void followpath(){
-        dfs(std::make_tuple(1,'t'), std::make_tuple(0,'o')); 
 
-    } */
+    bool followpath(string word){
 
-    void hasSubString(){
+        // follow path given by characters in 'word'. Return True (1) at end of path and False (0) if we fall off path.
+        int prev_id=0;
+        char prev_letter = 'o';
+        int prev_identifier = 0111;
+        char letter;
+       
+        for (int i = 0; i < word.size(); i++){
+            letter = word[i];
+            bool nodeExists = checkIfNodeExists(prev_id,prev_letter,prev_identifier,letter); 
+            if (!(nodeExists)){
+                return 0;
+             
+            }
+            int existing_id;
+            int existing_identifier;
+            std::tie(existing_id, existing_identifier) = nodeDetails(prev_id, prev_letter, prev_identifier, letter); 
+            prev_id = existing_id;
+            prev_letter = letter;
+            prev_identifier = existing_identifier;
 
-    }  
+      } 
+      return 1; }  
 };
 
 class APICall{ // Main class for doing API call to New York times and dfor parsing data and creating vector of strings 
@@ -199,7 +226,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
 
                     if (letter == ' ' or letter == '.' or letter ==','){
                         if ((!word.empty())){
-                            singleString += word + ' ';
+                            singleString += word +'$';
                             word.clear();
                         }
                 }       
@@ -217,17 +244,16 @@ int main() {
         string authkey = getenv("AUTH_KEY");  // get authentication key for API
 
         api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
-        string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of strings
-        /* cout << finalString << endl; */
-
+        string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of string
         SuffixTree myinstance; 
-        myinstance.setFinalString("test ");
+        myinstance.setFinalString("to$tackle$climate$change$well$need$to$plug$in$millions$of$cars$trucks$home$heaters$stoves$and$factories$");
         myinstance.createSuffixTree(); 
         /* myinstance.followpath();  */
-        myinstance.printFirstLevelChildrenOfRoot();  
+        myinstance.printFirstLevelChildrenOfRoot(); 
+        bool wordexists = myinstance.followpath("tacklee");
+        cout << wordexists << endl;
          
         return 0;}
-
 
 
 
