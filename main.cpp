@@ -55,7 +55,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
             }
       
       string dataparsing(void){  // parses json data from words.json file, creates strings and splits strings
-            std:string singleString;
+            std::string singleString;
             std::ifstream file_input("words.json");
             Json::Reader reader;
             Json::Value obj;
@@ -67,7 +67,6 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
                 string abstract_leadparagraph = abstract + lead_paragraph;
 
                 std::string word;
-                std:: string endsign_included;
                 for (auto letter : abstract_leadparagraph){
 
                     if (letter == ' ' or letter == '.' or letter ==','){
@@ -96,21 +95,31 @@ int main() {
         api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
         string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of string
         cout << finalString << endl;
-        
-        SuffixTrie myinstance; // initialize suffixtrie
-        myinstance.setFinalString("abrakadabra"); // test word 
-        myinstance.createSuffixTrie(); 
-        myinstance.printFirstLevelChildrenOfRoot(); 
+        SuffixTrie myinstance; // initialize suffixtrie 
 
         //USER INPUT
 
-        string userInputWord;
-        cout << "Type a word to search in the suffixtrie: ";
+        string userInputWord; 
+        cout << " "<< endl;
+        cout << "Type a string (max 10 characters) ";
         cin >> userInputWord; 
-        bool wordexists = myinstance.followpath(userInputWord); // check if word exists
-        cout << wordexists << endl;
 
+        myinstance.setFinalString(userInputWord); // test word 
+        myinstance.createSuffixTrie(); 
+        /*  myinstance.printFirstLevelChildrenOfRoot();  */
 
+        string userInputsubString;
+        cout << "Type a word to search in the suffixtrie: ";
+        cin >> userInputsubString; 
+        bool wordexists = myinstance.followpath(userInputsubString); // check if word exists
+        if (wordexists){
+            cout << "substring exists"<< endl;
+        }
+        else{
+             cout << "substring does not exist"<< endl;
+
+        }
+       
         return 0;}
 
 

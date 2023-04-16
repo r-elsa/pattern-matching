@@ -24,7 +24,6 @@ class SuffixTrie{  // Naive solution
         }
         
 
-
     void print_final_string() {
             for (int i = 0; i < final_string.size(); i++) 
                  std::cout << final_string[i] << endl;                    
@@ -39,10 +38,9 @@ class SuffixTrie{  // Naive solution
         char letter;
        
         for (int i = 0; i < final_string.size(); i++){
-        
               for (int j = 0; j < final_string.substr(i).size(); j++){      
                     letter = final_string.substr(i)[j]; 
-                    cout << letter << endl;
+                    /* cout << letter << endl; */
                  
                     bool nodeExists = checkIfNodeExists(prev_id, prev_letter, prev_identifier, letter); 
                   
