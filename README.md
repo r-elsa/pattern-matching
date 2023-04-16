@@ -7,7 +7,7 @@ The goal of the project is to develop data structures and algorithms for efficie
 
 [Requirement specification](https://github.com/r-elsa/treecomparison/blob/master/documentation/requirements.md)
 
-[Progress report week 3](https://github.com/r-elsa/treecomparison/blob/master/documentation/progress_reports/week3.md)
+[Progress report week 4](https://github.com/r-elsa/treecomparison/blob/master/documentation/progress_reports/week4.md)
 
 [Time report](https://github.com/r-elsa/pattern-matching/blob/master/documentation/progress_reports/time_report.md)
 
