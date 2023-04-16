@@ -13,11 +13,11 @@ Date       | Hours| Tasks |
 2023-04-02 | 4h   | Adding static code analysis tool  - Cppcheck added to project.  Trying to integrate Catch2 -testframework https://github.com/catchorg/Catch2| 
 2023-04-09 | 4h   | Preparing data for suffix trie datastructure and researching into implementation of suffix trie datastructure | 
 2023-04-10 | 3h   | Trying out different implementations of suffix trie  | 
-2023-04-11 | 4h   | Researching duplicates in n-ary tree. Implemented adjacency list with key value pair.| 
-2023-04-12 | 4h   | Improving program logic and implementing suffix tree implementation logic.| 
+2023-04-11 | 4h   | Researching duplicates in n-ary trees. Implemented adjacency list with key value pair.| 
+2023-04-12 | 4h   | Improving program logic and implementing suffix trie implementation logic.| 
 2023-04-13 | 2h   | Fixed bug | 
-2023-04-14 | 3h   | Implementing method to search for a word. Researching into different tree traversal algorithms (pre-order traversal for N-ary tree)| 
-
+2023-04-14 | 3h   | Implementing method to search for a word in the trie. Researching into Segmentation Fault.| 
+2023-04-16 | 4h   | Closing implementation of suffix trie and starting to research Ukkonen's algorithm for suffix tree. Adding Google Test testing framework.| 
 
 
 
