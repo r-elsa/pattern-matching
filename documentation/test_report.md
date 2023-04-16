@@ -22,16 +22,44 @@
 
 ### 2. Unit testing 
 
-Unit testing is currently in the process of being implemented. While the library *Catch2* seems lightweight and great for the purposes of this project it is currently being upgraded and documentation is not up to date.
+Unit testing using Google Test (https://github.com/google/googletest).
 
 
-1. Install **Catch2** if you don't have it installed yet. Also available at https://github.com/catchorg/Catch2 .
+1. Install **Google Test** if you don't have it installed yet.
 
 ```bash
-sudo apt-get update
+sudo apt-get install libgtest-dev
+```
+2. Install **CMake** if you don't have it installed yet.
+
+```bash
+sudo apt-get install cmake
+```
+
+3.Go to folder where Google Test was installed.
+
+```bash
+cd /usr/src/gtest
+```
+```bash
+sudo cp *.a /usr/lib
+```
+
+4. Go back to project folder and compile
+
+```bash
+cmake CMakeLists.txt
 ```
 
 ```bash
-sudo apt-get install catch
+make
 ```
+
+5. Run tests
+
+```bash
+./executeTests
+```
+
+
 
