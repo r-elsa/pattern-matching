@@ -38,10 +38,10 @@ class SuffixTree{
         char letter;
        
         for (int i = 0; i < final_string.size(); i++){
-            /* cout << final_string[i] << endl; */
-            letter = final_string[i];
-              /* for (int j = 0; j < final_string.substr(i).size(); j++){      
-                    letter = final_string.substr(i)[j];  */
+        
+              for (int j = 0; j < final_string.substr(i).size(); j++){      
+                    letter = final_string.substr(i)[j]; 
+                    cout << letter << endl;
                  
                     bool nodeExists = checkIfNodeExists(prev_id, prev_letter, prev_identifier, letter); 
                   
@@ -95,7 +95,7 @@ class SuffixTree{
                             prev_identifier = identifier;     
                         }
                         counter++;                    
-    }}; }     
+    }}; }}     
                 
      void printFirstLevelChildrenOfRoot(){ 
             
@@ -238,7 +238,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
 
                     if (letter == ' ' or letter == '.' or letter ==','){
                         if ((!word.empty())){
-                            singleString += word +'$';
+                            singleString += word +' ';
                             word.clear();
                         }
                 }       
@@ -257,9 +257,10 @@ int main() {
 
         api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
         string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of string
+        cout << finalString << endl;
         
         SuffixTree myinstance; // initialize suffixtree
-        myinstance.setFinalString("to$tackle$climate$change$well$need$to$plug$in$millions$of$cars$trucks$home$heaters$stoves$and$factories$");
+        myinstance.setFinalString("the move is a");
         myinstance.createSuffixTree(); 
         myinstance.printFirstLevelChildrenOfRoot(); 
 
