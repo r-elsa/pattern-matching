@@ -10,7 +10,7 @@
 
 **Next up, I will** create tests for the suffix trie implementation. Start implementing the suffix tree. 
 
-**Questions: 
+**Questions:** 
 
 Regarding implementation of suffix trie - Any suggestions on how to solve the problem that I currently have with space: As an example, the string of data that I retrieved from NY times API on 14/4 included 487 words (3,337 characters). The total amount of suffixes of such a data are 3337 (the amount of characters in the string) and following the formula m(m+1)/2 where m is the amount of characters in the string, the total amount of characters are 5,569,453. The vector datastructure cannot bear the amount of data in adjacency lists and leads to Segmentation fault. Would hashmaps/maps possibly solve the problem?
 
