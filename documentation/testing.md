@@ -61,5 +61,17 @@ make
 ./executeTests
 ```
 
+## What has been tested and how
+
+
+## What types of input were used (especially important for comparative analysis)
+
+
+## How can the tests be repeated
+
+
+## Results of empirical testing presented in graphical form
+
+
 
 
