@@ -4,4 +4,6 @@ CMakeLists.txt
 Makefile
 cmake_install.cmake
 executeTests
+sqrt.cpp
+suffixtree.cpp
     

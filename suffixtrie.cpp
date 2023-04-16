@@ -26,7 +26,7 @@ class SuffixTrie{  // Naive solution
 
 
     void print_final_string() {
-            for (int i = 0; i < final_string.size(); i++) // print all words
+            for (int i = 0; i < final_string.size(); i++) 
                  std::cout << final_string[i] << endl;                    
         };
     
@@ -68,8 +68,8 @@ class SuffixTrie{  // Naive solution
                         }
                                   
                     }
-                    else
-                    { // node does not exist  */
+                    else // node does not exist  */
+                    { 
              
                         std::string identifier_counter = to_string(counter);                   
                         std::string identifier_letter = to_string(int(letter));               

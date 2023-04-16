@@ -49,12 +49,12 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
             return 0;    
             }
  
-      static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words) {// returns size of data in order to create vector
+      static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words) {  // returns size of data in order to create vector
             ((std::string*)words)-> append((char*) data, size * nmemb);
             return size * nmemb;
             }
       
-      string dataparsing(void){ // parses json data from words.json file, creates strings and splits strings
+      string dataparsing(void){  // parses json data from words.json file, creates strings and splits strings
             std:string singleString;
             std::ifstream file_input("words.json");
             Json::Reader reader;

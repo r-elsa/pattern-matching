@@ -11,7 +11,6 @@
 **Next up, I will** create tests for the suffix tree implementation and the word search.
 
 **Questions: 
-
-Any suggestions on how to solve the problem that I currently have with space: The data that I retrieved from NY times API on 14/4 included 487 words (3,337 characters) and the vector datastructure cannot bear the amount of data (adjacency lists). One solution I can currently think of is sorting the words in alphabetical order and create multiple suffiex tries, e.g. a-j, i-r, s-z. Another solution is to not use adjacency lists and instead only index of parent node. 
+Any suggestions on how to solve the problem that I currently have with space: The data that I retrieved from NY times API on 14/4 included 487 words (3,337 characters) and the vector datastructure cannot bear the amount of data (adjacency lists).
 
 
