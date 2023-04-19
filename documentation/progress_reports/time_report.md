@@ -18,7 +18,7 @@ Date       | Hours| Tasks |
 2023-04-13 | 2h   | Fixed bug | 
 2023-04-14 | 3h   | Implementing method to search for a word in the trie. Researching into Segmentation Fault.| 
 2023-04-16 | 4h   | Closing implementation of suffix trie and starting to research Ukkonen's algorithm for suffix tree. Adding Google Test testing framework.| 
-
+2023-04-19 | 4h   | Implementing suffixtrie using unordered map (hashmap). |
 
 
 
