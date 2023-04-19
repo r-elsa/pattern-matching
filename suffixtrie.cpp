@@ -10,11 +10,14 @@
 #include <utility>
 #include <tuple>
 #include <functional>
-
 using namespace std;
 
+ // This is a first attempt to build a suffix trie using adjacency lists (vectors). 
+ // However, due to limited space (10^5 of a vector) the implementation remains unused as it is not sufficient for the amount of data aimed to use.
+ // Please see suffixtree_hashmap.cpp for optimal solution using suffix trie. 
 
-class SuffixTrie{  // Naive solution 
+class SuffixTrie{ 
+
         std::vector<tuple<int, char, int>> trie[100000]; 
         string final_string;
     

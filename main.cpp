@@ -5,15 +5,11 @@
 #include <iostream>
 #include <fstream>
 #include <json/json.h>
-#include <unordered_map>
 #include <algorithm> 
-#include <utility>
-#include <tuple>
 #include <functional>
-#include "suffixtrie.cpp"
+#include "suffixtrie_hashmap.cpp"
 
 using namespace std;
-
 
 class APICall{ // Main class for doing API call to New York times and dfor parsing data and creating vector of strings 
    public:
@@ -55,7 +51,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
             }
       
       string dataparsing(void){  // parses json data from words.json file, creates strings and splits strings
-            std::string singleString;
+            string singleString;
             std::ifstream file_input("words.json");
             Json::Reader reader;
             Json::Value obj;
@@ -71,7 +67,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
 
                     if (letter == ' ' or letter == '.' or letter ==','){
                         if ((!word.empty())){
-                            singleString += word +'_';
+                            singleString += word +' ';
                             word.clear();
                         }
                 }       
@@ -80,7 +76,9 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
                     word = word + letter_lowercase;
                 } }}
 
-                return singleString;}  
+                singleString[singleString.size() - 1] = '$'; // adding terminator
+
+                return singleString ;}  
 };
 
 
@@ -95,32 +93,30 @@ int main() {
         api_instance.apicall(apiadress, authkey);  // Calling API and storing data in json
         string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of string
         cout << finalString << endl;
-        SuffixTrie myinstance; // initialize suffixtrie 
-
-        //USER INPUT
-
-        string userInputWord; 
-        cout << " "<< endl;
-        cout << "Type a string (max 10 characters) ";
-        cin >> userInputWord; 
-
-        myinstance.setFinalString(userInputWord); // test word 
-        myinstance.createSuffixTrie(); 
-        /*  myinstance.printFirstLevelChildrenOfRoot();  */
-
-        string userInputsubString;
-        cout << "Type a word to search in the suffixtrie: ";
-        cin >> userInputsubString; 
-        bool wordexists = myinstance.followpath(userInputsubString); // check if word exists
-        if (wordexists){
-            cout << "substring exists"<< endl;
-        }
-        else{
-             cout << "substring does not exist"<< endl;
-
-        }
        
+        TrieNode myObj;
+       
+        TrieNode* curr= new TrieNode(); // current node
+        
+            for (int i = 0; i < finalString.size(); i++){
+                myObj.insert(curr, finalString.substr(i));
+                
+            }
+        
+        string searchString;
+        cout << " " << endl;
+        cout << "Type a word or sentence to search in the suffixtrie:";
+        cin >> searchString; 
+        string returnvalue = myObj.search(curr, searchString);
+        cout << returnvalue << endl;
+        
         return 0;}
+
+
+
+
+
+
 
 
 
