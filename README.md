@@ -56,7 +56,7 @@ printenv AUTH_KEY
 5. Compile (example for linux):
 
 ```bash
-g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp
+g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17
 ```
 
 
