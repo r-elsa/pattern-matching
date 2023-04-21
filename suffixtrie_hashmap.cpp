@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <tuple>
 using namespace std;
 
 class TrieNode{
@@ -21,17 +22,27 @@ class TrieNode{
         }                         
      }
     
-    string search(TrieNode* root, string s){
+    
+    
+     tuple<bool, TrieNode*> search(TrieNode* root, string s){  
         TrieNode* curr = root;
       
         for (int i = 0; i< s.size(); i++){
             /* cout << s[i] << endl; */
             if(curr -> hashmap.find(s[i]) == curr -> hashmap.end()){
-                return "No";
+                return {0, root};
             }
             curr = curr->hashmap[s[i]];
         }
-        return "Yes";
+        return {1, curr};    
+    }
+
+    vector <string> preorder(TrieNode* root){
+        vector <string> words = {"word 1", "word 2", "word 3"};
+
+        return words;
+
+
     }
 };
 

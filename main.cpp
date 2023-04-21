@@ -7,6 +7,7 @@
 #include <json/json.h>
 #include <algorithm> 
 #include <functional>
+#include <tuple>
 #include "suffixtrie_hashmap.cpp"
 
 using namespace std;
@@ -103,13 +104,43 @@ int main() {
                 
             }
         
+        // search is string exists in trie
+        
         string searchString;
         cout << " " << endl;
         cout << "Type a word or sentence to search in the suffixtrie:";
         cin >> searchString; 
-        string returnvalue = myObj.search(curr, searchString);
-        cout << returnvalue << endl;
+      
+        auto [isSubstring_search, location_search] = myObj.search(curr, searchString);
+        if (isSubstring_search){
+            cout << "Yes! " << location_search << endl;
+        }
+        else{
+            cout << "No "<< location_search << endl;
+        }
+            
+      
+
+      // auto complete
+
+        string autoCompleteString;
+        cout << " " << endl;
+        cout << "Type a word or sentence for the suffixtrie to autocomplete: (in progress, not working yet)";
+        cin >> autoCompleteString; 
+        auto [isSubstring_autocomplete, location_autocomplete] = myObj.search(curr, autoCompleteString);
+        if (isSubstring_autocomplete){
+            vector <string> suggestions =myObj.preorder(location_autocomplete);
+            for (int i = 0; i < suggestions.size(); i++){
+                cout << suggestions[i] << endl;
+                
+            }  
         
+
+
+        }
+
+        
+      
         return 0;}
 
 
