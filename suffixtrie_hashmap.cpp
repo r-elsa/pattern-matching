@@ -58,7 +58,7 @@ public:
                 stringBuilder += alphabet[i];
                 TrieNode *curr;
                 curr = root->hashmap[alphabet[i]];
-                dfs_helper(curr, words, stringBuilder, level + 1, original);    // calling recursively
+                dfs_helper(curr, words, stringBuilder, level + 1, original);   
             }
         }
     }

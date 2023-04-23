@@ -7,4 +7,6 @@ executeTests
 sqrt.cpp
 suffixtree.cpp
 .vscode/
-    
+main 
+words.json 
+suffixtrie.cpp

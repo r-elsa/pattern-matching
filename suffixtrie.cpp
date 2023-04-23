@@ -48,13 +48,10 @@ public:
             for (int j = 0; j < final_string.substr(i).size(); j++)
             {
                 letter = final_string.substr(i)[j];
-                /* cout << letter << endl; */
-
                 bool nodeExists = checkIfNodeExists(prev_id, prev_letter, prev_identifier, letter);
 
                 if (nodeExists)
                 { // nodeExists
-
                     if (letter == '$')
                     {
                         prev_id = 0;
@@ -74,7 +71,6 @@ public:
                 }
                 else // node does not exist  */
                 {
-
                     std::string identifier_counter = to_string(counter);
                     std::string identifier_letter = to_string(int(letter));
                     std::string together = identifier_counter + identifier_letter;
@@ -104,7 +100,6 @@ public:
 
     void printFirstLevelChildrenOfRoot()
     {
-
         for (auto &&tuple : trie[(0, 'o', 0111)])
         {
             int X;
@@ -134,7 +129,6 @@ public:
 
     pair<int, int> nodeDetails(int prev_id, char prev_letter, int prev_identifier, char letter)
     {
-
         auto it = std::find_if(trie[(prev_id, prev_letter, prev_identifier)].begin(), trie[(prev_id, prev_letter, prev_identifier)].end(),
                                [&letter](const std::tuple<int, char, int> &e)
                                { return std::get<1>(e) == letter; });
@@ -151,10 +145,10 @@ public:
         return returnvalues;
     }
 
+ // follow path given by characters in 'word'. Return True (1) at end of path and False (0) if we fall off path.
     bool followpath(string word)
     {
-
-        // follow path given by characters in 'word'. Return True (1) at end of path and False (0) if we fall off path.
+       
         int prev_id = 0;
         char prev_letter = 'o';
         int prev_identifier = 0111;
