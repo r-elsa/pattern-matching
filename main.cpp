@@ -9,14 +9,13 @@
 #include <functional>
 #include <tuple>
 #include "suffixtrie_hashmap.cpp"
-
 using namespace std;
 
-class APICall
-{ // Main class for doing API call to New York times and dfor parsing data and creating vector of strings
+class APICall                                 // Main class for doing API call to New York times and dfor parsing data and creating vector of strings
+{ 
 public:
-    APICall()
-    { // Constructor
+    APICall()                                // Constructor
+    { 
         cout << "Instance created of APICall." << endl;
     }
 
@@ -30,14 +29,14 @@ public:
         curl = curl_easy_init();
         if (curl)
         {
-            string url = apiadress + authkey;   // concatination of url and auth key
-            curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); // set url
+            string url = apiadress + authkey;                             // concatination of url and auth key
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());             // set url
             curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, GetSizeOfDatafromAPI);
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stringOfWords);
-            res = curl_easy_perform(curl); // request prints to stdout
+            res = curl_easy_perform(curl);                              // request prints to stdout
 
             if (res != CURLE_OK)
-            { // error checking
+            {                                                             // error checking
                 std::cerr << "Error during curl request: "
                           << curl_easy_strerror(res) << std::endl;
             }
@@ -47,37 +46,35 @@ public:
         {
             std::cerr << "Error initializing curl." << std::endl;
         }
-
         curl_global_cleanup();
         std::ofstream file("words.json");
         file << stringOfWords;
         return 0;
     }
 
-    static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
-    { // returns size of data in order to create vector
+    static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)       // returns size of data in order to create vector
+    { 
         ((std::string *)words)->append((char *)data, size * nmemb);
         return size * nmemb;
     }
 
-    string dataparsing(void)
-    { // parses json data from words.json file, creates strings and splits strings
+    string dataparsing(void)                                                    // parses json data from words.json file, creates strings and splits strings
+    { 
         string singleString;
         std::ifstream file_input("words.json");
         Json::Reader reader;
         Json::Value obj;
         reader.parse(file_input, obj);
-        const Json::Value &jsonofarticles = obj["response"]["docs"]; //
+        const Json::Value &jsonofarticles = obj["response"]["docs"]; 
         for (int i = 0; i < jsonofarticles.size(); i++)
         {
             string abstract = jsonofarticles[i]["abstract"].asString();
             string lead_paragraph = jsonofarticles[i]["lead_paragraph"].asString();
-            string abstract_leadparagraph = abstract; // lead_paragraph;
+            string abstract_leadparagraph = abstract + lead_paragraph;
 
             std::string word;
             for (auto letter : abstract_leadparagraph)
             {
-
                 if (letter == ' ' or letter == '.' or letter == ',')
                 {
                     if ((!word.empty()))
@@ -93,74 +90,72 @@ public:
                 }
             }
         }
-
-        singleString[singleString.size() - 1] = '$'; // adding terminator
-
+        singleString[singleString.size() - 1] = '$';                        // adding terminator
         return singleString;
     }
 };
 
 int main()
 {
-    APICall api_instance; // Create an object of APICallAndParser - class
+    APICall api_instance;                                                // Create an object of APICallAndParser - class
     std::string apiadress = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
-    string authkey = getenv("AUTH_KEY"); // get authentication key for API
+    string authkey = getenv("AUTH_KEY");                                // get authentication key for API
 
-    api_instance.apicall(apiadress, authkey);        // Calling API and storing data in json
-    string finalString = api_instance.dataparsing(); // parses data from json file and creates vector of string
+    api_instance.apicall(apiadress, authkey);                           // Calling API and storing data in json
+    string finalString = api_instance.dataparsing();                    // parses data from json file and creates vector of string
     cout << finalString << endl;
 
     TrieNode myObj;
-
-    TrieNode *curr = new TrieNode(); // current node
+    TrieNode *curr = new TrieNode();                                    // current node
 
     for (int i = 0; i < finalString.size(); i++)
     {
         myObj.insert(curr, finalString.substr(i));
     }
 
-    // search is string exists in trie
-
-    string searchString;
+                                                                       // search is string exists in trie
+    std::string searchString;
     cout << " " << endl;
-    cout << "Type a word or sentence to search in the suffixtrie:";
-    cin >> searchString;
-
-    auto [isSubstring_search, location_search] = myObj.search(curr, searchString);
-    if (isSubstring_search)
-    {
-        cout << "Yes! " << location_search << endl;
+    cout << "Type a word or sentence to search in the suffixtrie (empty space stops):";
+    
+    while(true){
+        getline(std::cin, searchString);
+        if (searchString.empty()) {
+            break;
+        }
+        auto [isSubstring_search, location_search] = myObj.search(curr, searchString);
+        if (isSubstring_search)
+        {
+            cout << "Yes! " << endl;
+        }
+        else
+        {
+            cout << "No!" << endl;
+        }   
     }
-    else
-    {
-        cout << "No " << location_search << endl;
-    }
-
-
-    string finalString_a = "mejl meomeo moikka meika maatalous ";
+    
     TrieNode myObj_autocomplete;
-    TrieNode *curr_autocomplete = new TrieNode(); // current node
+    TrieNode *curr_autocomplete = new TrieNode(); 
     std::string word;
 
-    for (int i = 0; i < finalString_a.size(); i++)
+    for (int i = 0; i < finalString.size(); i++)
     {
-        if (finalString_a[i] == ' ')
+        if (finalString[i] == ' ')
         {
             word += '$';
-            cout << word << endl;
-
             myObj_autocomplete.insert(curr_autocomplete, word);
             word = "";
         }
         else
         {
-            word = word + finalString_a[i];
+            word = word + finalString[i];
         }
     }
 
     string autoCompleteString;
     cout << " " << endl;
-    cout << "Type a word or sentence for the suffixtrie to autocomplete: (in progress, not working yet)";
+    cout << "Type character(s) for the suffixtrie to autocomplete (e.g. 'a'): (in progress, prefix needs to be adjusted to depth of tree)";
+    
     cin >> autoCompleteString;
     auto [isSubstring_autocomplete, location_autocomplete] = myObj_autocomplete.search(curr_autocomplete, autoCompleteString);
     if (isSubstring_autocomplete)

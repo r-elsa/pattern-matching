@@ -9,6 +9,7 @@ public:
     std::string s;
     std::string alphabet = "$abcdefghijklmnopqrstuvwxyz";
 
+    // function to create the suffix trie
     void insert(TrieNode *&root, string suffix)
     {
         TrieNode *curr = root;
@@ -24,29 +25,28 @@ public:
         }
     }
 
+    // function to search for a word or sentence
     tuple<bool, TrieNode *> search(TrieNode *root, string s)
     {
         TrieNode *curr = root;
-
         for (int i = 0; i < s.size(); i++)
         {
             if (curr->hashmap.find(s[i]) == curr->hashmap.end())
             {
                 return {0, root};
             }
-            curr = curr->hashmap[s[i]]; // update pointer
+            curr = curr->hashmap[s[i]];                                        
         }
         return {1, curr};
     }
 
+    // recursive depth first search
     void dfs_helper(TrieNode *root, vector<string> words, string stringBuilder, int level, string original)
-    { 
-       
+    {
         for (int i = 0; i < alphabet.size(); i++)
         {
             if (root->hashmap.find(alphabet[i]) == root->hashmap.end())
-            {
-            }
+            { }
             else
             {
                 if (alphabet[i] == '$')
@@ -54,24 +54,22 @@ public:
                     string final = original + stringBuilder;
                     cout << final << endl;
                     stringBuilder = "";
-                    
                 }
                 stringBuilder += alphabet[i];
-
                 TrieNode *curr;
                 curr = root->hashmap[alphabet[i]];
-                dfs_helper(curr, words, stringBuilder, level + 1, original);
-            }     
+                dfs_helper(curr, words, stringBuilder, level + 1, original);    // calling recursively
+            }
         }
     }
 
+    // initializer of depth first search 
     vector<string> preorder(TrieNode *root, string originalString)
     {
-        vector<string> words; 
-        int level = 0;       
+        vector<string> words;
+        int level = 0;
         std::string stringBuilder;
         dfs_helper(root, words, stringBuilder, level, originalString);
-
         return words;
     }
 };
