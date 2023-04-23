@@ -43,12 +43,14 @@ class TrieNode{
 
 
 
-    void dfs(TrieNode* root){  // recursion private
+    void dfs_helper(TrieNode* root, vector <string> words, string stringBuilder, int level, string original){  // recursion private
+    
     TrieNode* curr = root;
     for (int i = 0; i< alphabet.size(); i++){
         /* cout << s[i] << endl; */
         if(!(curr -> hashmap.find(alphabet[i]) == curr -> hashmap.end())){
-            if(alphabet[i] == '$'){ 
+            if(alphabet[i] == '$'){
+                
                 string w = original + stringBuilder;
                 words.push_back(w);
                 cout << "$: " << w << endl;
@@ -58,11 +60,15 @@ class TrieNode{
             cout << "FOUND" << alphabet[i] << endl;
             stringBuilder += alphabet[i];
             curr = curr -> hashmap[alphabet[i]];
-            dfs(curr);
+            dfs_helper(curr, words, stringBuilder, level, original);
          
-            }           
-        }    
-    }   
+           
+            }
+           
+        }
+    
+    }
+   
     }
 
 
