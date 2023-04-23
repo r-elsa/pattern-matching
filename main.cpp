@@ -61,7 +61,7 @@ class APICall{ // Main class for doing API call to New York times and dfor parsi
             for (int i = 0; i < jsonofarticles.size(); i++){
                 string abstract = jsonofarticles[i]["abstract"].asString();
                 string lead_paragraph =  jsonofarticles[i]["lead_paragraph"].asString();
-                string abstract_leadparagraph = abstract + lead_paragraph;
+                string abstract_leadparagraph = abstract;   // lead_paragraph;
 
                 std::string word;
                 for (auto letter : abstract_leadparagraph){
@@ -118,8 +118,30 @@ int main() {
         else{
             cout << "No "<< location_search << endl;
         }
+
+       
             
-      
+        // autocomplete
+        TrieNode myObj_autocomplete; 
+        TrieNode* curr_autocomplete= new TrieNode(); // current node
+        std:: string word;
+        
+            for (int i = 0; i < finalString.size(); i++){
+                if (finalString[i] == ' '){
+                    word +='$';
+                    cout << word << endl;
+                    
+                    myObj_autocomplete.insert(curr_autocomplete, word); 
+                    word = "";
+
+                }
+                else{
+                     word = word + finalString[i];  
+
+                }      
+            }
+        
+        // search is string exists in trie
 
       // auto complete
 
@@ -127,20 +149,18 @@ int main() {
         cout << " " << endl;
         cout << "Type a word or sentence for the suffixtrie to autocomplete: (in progress, not working yet)";
         cin >> autoCompleteString; 
-        auto [isSubstring_autocomplete, location_autocomplete] = myObj.search(curr, autoCompleteString);
+        auto [isSubstring_autocomplete, location_autocomplete] = myObj_autocomplete.search(curr_autocomplete, autoCompleteString);
         if (isSubstring_autocomplete){
-            vector <string> suggestions =myObj.preorder(location_autocomplete);
+            vector <string> suggestions = myObj_autocomplete.preorder(location_autocomplete, autoCompleteString);
             for (int i = 0; i < suggestions.size(); i++){
                 cout << suggestions[i] << endl;
                 
             }  
-        
-
-
+        }
+        else {
+            cout << "query prefix not present"<< endl;
         }
 
-        
-      
         return 0;}
 
 
