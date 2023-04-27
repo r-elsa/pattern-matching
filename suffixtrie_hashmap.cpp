@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 #include <tuple>
+#include <cstdlib>
+
 using namespace std;
 
 class TrieNode
@@ -8,6 +10,9 @@ public:
     unordered_map<char, TrieNode *> hashmap;
     std::string s;
     std::string alphabet = "$abcdefghijklmnopqrstuvwxyz";
+    string prevstring = "";
+    string stringBuilder = "";
+    vector <string> words;
 
     // function to create the suffix trie
     void insert(TrieNode *&root, string suffix)
@@ -41,7 +46,7 @@ public:
     }
 
     // recursive depth first search
-    void dfs_helper(TrieNode *root, vector<string> words, string stringBuilder, int level, string original)
+    void dfs_helper(TrieNode *root, vector<string> words,int level, string original)
     {
         for (int i = 0; i < alphabet.size(); i++)
         {
@@ -50,17 +55,38 @@ public:
             else
             {
                 if (alphabet[i] == '$')
-                {
-                    string final = original + stringBuilder;
-                    cout << final << endl;
+                {   
+                    string buildFinal;
+                    int checkIfSubstring = level - stringBuilder.length();
+                    if (checkIfSubstring > 0){
+                        prevstring = prevstring.substr(0, checkIfSubstring)+ stringBuilder;
+                        buildFinal = original + prevstring;
+
+                    }
+                    else{
+                        prevstring = stringBuilder;
+                        buildFinal=original+prevstring;
+                    }
+
                     stringBuilder = "";
+                    cout << buildFinal << endl;
+                    words.push_back(buildFinal);
+                    
+                    
                 }
-                stringBuilder += alphabet[i];
+                else{
+                    stringBuilder += alphabet[i];
+
+
+                }
+                             
                 TrieNode *curr;
                 curr = root->hashmap[alphabet[i]];
-                dfs_helper(curr, words, stringBuilder, level + 1, original);   
+                dfs_helper(curr, words, level + 1, original);   
             }
+             
         }
+       
     }
 
     // initializer of depth first search 
@@ -68,8 +94,9 @@ public:
     {
         vector<string> words;
         int level = 0;
-        std::string stringBuilder;
-        dfs_helper(root, words, stringBuilder, level, originalString);
+        int prev_level = 0;
+        std::string prev;
+        dfs_helper(root, words, level, originalString);
         return words;
     }
 };

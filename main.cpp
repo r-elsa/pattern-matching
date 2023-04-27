@@ -71,7 +71,7 @@ public:
         {
             string abstract = jsonofarticles[i]["abstract"].asString();
             string lead_paragraph = jsonofarticles[i]["lead_paragraph"].asString();
-            string abstract_leadparagraph = abstract + lead_paragraph;
+            string abstract_leadparagraph = lead_paragraph;
 
             std::string word;
             for (auto letter : abstract_leadparagraph)
@@ -147,6 +147,7 @@ int main()
         {
             word += '$';
             myObj_autocomplete.insert(curr_autocomplete, word);
+            cout << word<< endl;
             word = "";
         }
         else
@@ -166,6 +167,7 @@ int main()
         vector<string> suggestions = myObj_autocomplete.preorder(location_autocomplete, autoCompleteString);
         for (int i = 0; i < suggestions.size(); i++)
         {
+            cout << "HELO" << endl;
             cout << suggestions[i] << endl;
         }
     }
