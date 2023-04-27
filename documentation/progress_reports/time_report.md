@@ -20,8 +20,8 @@ Date       | Hours| Tasks |
 2023-04-16 | 4h   | Closing implementation of suffix trie and starting to research Ukkonen's algorithm for suffix tree. Adding Google Test testing framework.| 
 2023-04-19 | 4h   | Implementing suffixtrie using unordered map (hashmap). |
 2023-04-21 | 4h   | Implementing search feature for trie  |
-2023-04-23 | 4h   | Starting to implement autocomplete feature dor trie |
-
+2023-04-23 | 4h   | Starting to implement autocomplete feature for trie |
+2023-04-27 | 3h   | Finishing DFS autocomplete feature |
 
 
 
