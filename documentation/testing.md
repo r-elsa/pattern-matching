@@ -36,7 +36,7 @@ sudo apt-get install libgtest-dev
 sudo apt-get install cmake
 ```
 
-3.Go to folder where Google Test was installed.
+3. Go to folder where Google Test was installed.
 
 ```bash
 cd /usr/src/gtest
