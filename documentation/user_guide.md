@@ -88,7 +88,7 @@ query prefix not present
 ##### Suffixes for WORD SEARCH (not for AUTOCOMPLETE)
 
 - Each path from *root* (first character) of to *leaf* ($) represents a suffix.
-- The trie is implemented by storing each string.
+- The trie is implemented by storing each suffix.
  
            francis wants to ... in the bronx zoo$
             rancis wants to ... in the bronx zoo$
