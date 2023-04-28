@@ -8,7 +8,7 @@
 - Code style has been checked using the command below. 
  
 
-1. Install **Cppcheck** if you don't have it installed yet. Also available at https://cppcheck.sourceforge.io/ .
+1. Install [**Cppcheck**](https://cppcheck.sourceforge.io/) if you don't have it installed yet. 
 
 ```bash
  sudo apt-get install cppcheck
@@ -22,21 +22,21 @@
 
 ### 2. Unit testing 
 
-Unit testing using Google Test (https://github.com/google/googletest).
+Unit testing using Google Test.
 
 
-1. Install **Google Test** if you don't have it installed yet.
+1. Install [**Google Test**](https://github.com/google/googletest) if you don't have it installed yet.
 
 ```bash
 sudo apt-get install libgtest-dev
 ```
-2. Install **CMake** if you don't have it installed yet.
+2. Install [**CMake**](https://cmake.org/install/) if you don't have it installed yet.
 
 ```bash
 sudo apt-get install cmake
 ```
 
-3.Go to folder where Google Test was installed.
+3. Go to folder where Google Test was installed.
 
 ```bash
 cd /usr/src/gtest
