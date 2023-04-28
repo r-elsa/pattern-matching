@@ -4,3 +4,4 @@ suffixtree.cpp
 main 
 words.json 
 CMakeCache.txt
+CMakeFiles/*
