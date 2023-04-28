@@ -3,5 +3,5 @@
 
 CMakeFiles/executeTests.dir/tests/trie_test.cpp.o
  /mnt/c/users/elsar/dev/tiralabra/patternmatching/sqrt.cpp
- /mnt/c/users/elsar/dev/tiralabra/patternmatching/suffixtrie.cpp
+ /mnt/c/users/elsar/dev/tiralabra/patternmatching/suffixtrie_hashmap.cpp
  /mnt/c/users/elsar/dev/tiralabra/patternmatching/tests/trie_test.cpp

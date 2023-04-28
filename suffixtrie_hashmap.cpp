@@ -15,7 +15,7 @@ public:
     vector<string> words;
 
     // function to create the suffix trie
-    void insert(TrieNode *&root, string suffix)
+    bool insert(TrieNode *&root, string suffix)
     {
         TrieNode *curr = root;
         char letter;
@@ -28,6 +28,7 @@ public:
             }
             curr = curr->hashmap[letter];
         }
+        return 1;
     }
 
     // function to search for a word or sentence
@@ -46,8 +47,10 @@ public:
     }
 
     // recursive depth first search
-    void dfs_helper(TrieNode *root, vector<string> words, int level, string original)
+    vector<string> dfs_helper(TrieNode *root, int level, string original)
     {
+        vector<string> suggestions;
+        TrieNode *curr;
         for (int i = 0; i < alphabet.size(); i++)
         {
             if (root->hashmap.find(alphabet[i]) == root->hashmap.end())
@@ -69,10 +72,9 @@ public:
                         prevstring = stringBuilder;
                         buildFinal = original + prevstring;
                     }
-
-                    stringBuilder = "";
                     cout << buildFinal << endl;
-                    words.push_back(buildFinal);
+                    stringBuilder = "";
+                    suggestions.push_back(buildFinal);
                 }
                 else
                 {
@@ -81,19 +83,25 @@ public:
 
                 TrieNode *curr;
                 curr = root->hashmap[alphabet[i]];
-                dfs_helper(curr, words, level + 1, original);
+                suggestions = dfs_helper(curr, level + 1, original);
             }
         }
+        return suggestions;
     }
 
     // initializer of depth first search
     vector<string> preorder(TrieNode *root, string originalString)
     {
-        vector<string> words;
         int level = 0;
         int prev_level = 0;
         std::string prev;
-        dfs_helper(root, words, level, originalString);
-        return words;
+        vector<string> suggestions = dfs_helper(root, level, originalString);
+
+        for (vector<string>::iterator t = suggestions.begin(); t != suggestions.end(); ++t)
+        {
+            cout << *t << endl;
+        }
+
+        return suggestions;
     }
 };
