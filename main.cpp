@@ -71,7 +71,7 @@ public:
         {
             string abstract = jsonofarticles[i]["abstract"].asString();
             string lead_paragraph = jsonofarticles[i]["lead_paragraph"].asString();
-            string abstract_leadparagraph = lead_paragraph;
+            string abstract_leadparagraph = abstract + lead_paragraph;
 
             std::string word;
             for (auto letter : abstract_leadparagraph)
@@ -127,14 +127,17 @@ int main()
         {
             break;
         }
+        transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);
         auto [isSubstring_search, location_search] = myObj.search(curr, searchString);
         if (isSubstring_search)
         {
             cout << "Yes! " << endl;
+            cout << " " << endl;
         }
         else
         {
             cout << "No!" << endl;
+            cout << " " << endl;
         }
     }
 
@@ -149,7 +152,6 @@ int main()
         {
             word += '$';
             myObj_autocomplete.insert(curr_autocomplete, word);
-            cout << word << endl;
             word = "";
         }
         else
@@ -160,22 +162,34 @@ int main()
 
     string autoCompleteString;
     cout << " " << endl;
-    cout << "Type character(s) for the suffixtrie to autocomplete (in progress, prefix needs to be adjusted to depth of tree): ";
+    cout << "Type character(s) for the suffixtrie to autocomplete: ";
 
-    cin >> autoCompleteString;
-    auto [isSubstring_autocomplete, location_autocomplete] = myObj_autocomplete.search(curr_autocomplete, autoCompleteString);
-    if (isSubstring_autocomplete)
+    while (true)
     {
-        vector<string> suggestions = myObj_autocomplete.preorder(location_autocomplete, autoCompleteString);
-        for (int i = 0; i < suggestions.size(); i++)
+        getline(std::cin, autoCompleteString);
+
+        if (autoCompleteString.empty())
         {
-            cout << "HELO" << endl;
-            cout << suggestions[i] << endl;
+            break;
         }
-    }
-    else
-    {
-        cout << "query prefix not present" << endl;
+
+        transform(autoCompleteString.begin(), autoCompleteString.end(), autoCompleteString.begin(), ::tolower);
+        auto [isSubstring_autocomplete, location_autocomplete] = myObj_autocomplete.search(curr_autocomplete, autoCompleteString);
+
+        if (isSubstring_autocomplete)
+        {
+            cout << " " << endl;
+            vector<string> suggestions = myObj_autocomplete.preorder(location_autocomplete, autoCompleteString);
+            for (int i = 0; i < suggestions.size(); i++)
+            {
+                cout << suggestions[i] << endl;
+            }
+        }
+        else
+        {
+            cout << "query prefix not present" << endl;
+            cout << " " << endl;
+        }
     }
     return 0;
 }
