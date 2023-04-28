@@ -12,11 +12,11 @@
 using namespace std;
 
 // Main class for doing API call to New York times and dfor parsing data and creating vector of strings
-class APICall     
-{ 
+class APICall
+{
 public:
-    APICall()                             
-    { 
+    APICall()
+    {
         cout << "Instance created of APICall." << endl;
     }
 
@@ -30,14 +30,14 @@ public:
         curl = curl_easy_init();
         if (curl)
         {
-            string url = apiadress + authkey;                            
-            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());             
+            string url = apiadress + authkey;
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
             curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, GetSizeOfDatafromAPI);
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stringOfWords);
-            res = curl_easy_perform(curl);                              
+            res = curl_easy_perform(curl);
 
             if (res != CURLE_OK)
-            {                                                            
+            {
                 std::cerr << "Error during curl request: "
                           << curl_easy_strerror(res) << std::endl;
             }
@@ -53,20 +53,20 @@ public:
         return 0;
     }
     // returns size of data in order to create vector
-    static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)       
-    { 
+    static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
+    {
         ((std::string *)words)->append((char *)data, size * nmemb);
         return size * nmemb;
     }
     // parses json data from words.json file, creates strings and splits strings
-    string dataparsing(void)                                                   
-    { 
+    string dataparsing(void)
+    {
         string singleString;
         std::ifstream file_input("words.json");
         Json::Reader reader;
         Json::Value obj;
         reader.parse(file_input, obj);
-        const Json::Value &jsonofarticles = obj["response"]["docs"]; 
+        const Json::Value &jsonofarticles = obj["response"]["docs"];
         for (int i = 0; i < jsonofarticles.size(); i++)
         {
             string abstract = jsonofarticles[i]["abstract"].asString();
@@ -91,38 +91,40 @@ public:
                 }
             }
         }
-        singleString[singleString.size() - 1] = '$';                      
+        singleString[singleString.size() - 1] = '$';
         return singleString;
     }
 };
 
 int main()
 {
-    APICall api_instance;                                               
+    APICall api_instance;
     std::string apiadress = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
-    string authkey = getenv("AUTH_KEY");                              
+    string authkey = getenv("AUTH_KEY");
 
-    api_instance.apicall(apiadress, authkey);                          
-    string finalString = api_instance.dataparsing();                  
+    api_instance.apicall(apiadress, authkey);
+    string finalString = api_instance.dataparsing();
     cout << finalString << endl;
 
     TrieNode myObj;
-    TrieNode *curr = new TrieNode();  
-    
-    // inserting data into suffix trie myObj                               
+    TrieNode *curr = new TrieNode();
+
+    // inserting data into suffix trie myObj
     for (int i = 0; i < finalString.size(); i++)
     {
         myObj.insert(curr, finalString.substr(i));
     }
 
-    // search if string exists in trie                                                             
+    // search if string exists in trie
     std::string searchString;
     cout << " " << endl;
     cout << "Type a word or sentence to search in the suffixtrie (empty space stops):";
-    
-    while(true){
+
+    while (true)
+    {
         getline(std::cin, searchString);
-        if (searchString.empty()) {
+        if (searchString.empty())
+        {
             break;
         }
         auto [isSubstring_search, location_search] = myObj.search(curr, searchString);
@@ -133,12 +135,12 @@ int main()
         else
         {
             cout << "No!" << endl;
-        }   
+        }
     }
-    
+
     // autocomplete feature
     TrieNode myObj_autocomplete;
-    TrieNode *curr_autocomplete = new TrieNode(); 
+    TrieNode *curr_autocomplete = new TrieNode();
     std::string word;
 
     for (int i = 0; i < finalString.size(); i++)
@@ -147,7 +149,7 @@ int main()
         {
             word += '$';
             myObj_autocomplete.insert(curr_autocomplete, word);
-            cout << word<< endl;
+            cout << word << endl;
             word = "";
         }
         else
@@ -159,7 +161,7 @@ int main()
     string autoCompleteString;
     cout << " " << endl;
     cout << "Type character(s) for the suffixtrie to autocomplete (in progress, prefix needs to be adjusted to depth of tree): ";
-    
+
     cin >> autoCompleteString;
     auto [isSubstring_autocomplete, location_autocomplete] = myObj_autocomplete.search(curr_autocomplete, autoCompleteString);
     if (isSubstring_autocomplete)

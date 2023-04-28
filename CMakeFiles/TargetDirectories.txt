@@ -1,0 +1,3 @@
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/CMakeFiles/rebuild_cache.dir
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/CMakeFiles/edit_cache.dir
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/CMakeFiles/executeTests.dir
