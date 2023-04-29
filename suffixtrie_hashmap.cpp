@@ -47,9 +47,9 @@ public:
     }
 
     // recursive depth first search
-    vector<string> dfs_helper(TrieNode *root, int level, string original)
+    void dfs(TrieNode *root, std::vector <string> & suggestions, int level, string original)
     {
-        vector<string> suggestions;
+        
         TrieNode *curr;
         for (int i = 0; i < alphabet.size(); i++)
         {
@@ -72,7 +72,6 @@ public:
                         prevstring = stringBuilder;
                         buildFinal = original + prevstring;
                     }
-                    cout << buildFinal << endl;
                     stringBuilder = "";
                     suggestions.push_back(buildFinal);
                 }
@@ -83,10 +82,10 @@ public:
 
                 TrieNode *curr;
                 curr = root->hashmap[alphabet[i]];
-                suggestions = dfs_helper(curr, level + 1, original);
+                dfs(curr, suggestions, level + 1, original);
             }
         }
-        return suggestions;
+        
     }
 
     // initializer of depth first search
@@ -95,13 +94,8 @@ public:
         int level = 0;
         int prev_level = 0;
         std::string prev;
-        vector<string> suggestions = dfs_helper(root, level, originalString);
-
-        for (vector<string>::iterator t = suggestions.begin(); t != suggestions.end(); ++t)
-        {
-            cout << *t << endl;
-        }
-
+        std::vector<string> suggestions;
+        dfs(root, suggestions, level, originalString);
         return suggestions;
     }
 };

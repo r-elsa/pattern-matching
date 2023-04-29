@@ -131,12 +131,10 @@ int main()
         {
             break;
         }
-
         vector<string> suggestions = autoCompleteHelper(myObj_autocomplete, finalString, curr_autocomplete, userInput);
-
-        for (int i = 0; i < suggestions.size(); i++)
+        for (vector<string>::iterator t = suggestions.begin(); t != suggestions.end(); ++t)
         {
-            cout << suggestions[i] << endl;
+            cout  << *t << endl;
         }
     }
     return 0;
