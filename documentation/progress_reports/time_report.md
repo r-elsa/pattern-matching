@@ -22,7 +22,7 @@ Date       | Hours| Tasks |
 2023-04-21 | 4h   | Implementing search feature for trie  |
 2023-04-23 | 4h   | Starting to implement autocomplete feature for trie |
 2023-04-27 | 3h   | Finishing DFS autocomplete feature |
-
+2023-04-30 | 3h   | Researching into header files and starting to implement |
 
 
 
