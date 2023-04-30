@@ -136,7 +136,13 @@ query prefix not present
  
 
 
+## Troubleshooting
 
+If *Killed* 
+- go to includes/apicall.cpp 
+- on row 72 change 
+ from  *string abstract_leadparagraph = abstract + lead_paragraph;* 
+ to *string abstract_leadparagraph = abstract;*
 
 
 
