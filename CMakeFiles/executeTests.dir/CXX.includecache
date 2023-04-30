@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/users/elsar/dev/tiralabra/patternmatching/sqrt.cpp
-math.h
--
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/includes/logic.cpp
+suffixtrie.h
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/includes/suffixtrie.h
 
-/mnt/c/users/elsar/dev/tiralabra/patternmatching/suffixtrie_hashmap.cpp
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/includes/suffixtrie.h
 bits/stdc++.h
 -
 tuple
@@ -18,9 +18,11 @@ tuple
 cstdlib
 -
 
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/sqrt.cpp
+math.h
+-
+
 /mnt/c/users/elsar/dev/tiralabra/patternmatching/tests/trie_test.cpp
-../suffixtrie_hashmap.cpp
-/mnt/c/users/elsar/dev/tiralabra/patternmatching/suffixtrie_hashmap.cpp
 gtest/gtest.h
 -
 ../sqrt.cpp
@@ -35,4 +37,8 @@ cstdlib
 -
 json/json.h
 -
+../includes/suffixtrie.h
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/includes/suffixtrie.h
+../includes/logic.cpp
+/mnt/c/users/elsar/dev/tiralabra/patternmatching/includes/logic.cpp
 

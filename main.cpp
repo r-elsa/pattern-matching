@@ -7,8 +7,8 @@
 #include <algorithm>
 #include <functional>
 #include <tuple>
-#include "apicall.cpp"
-#include "suffixtrie_hashmap.cpp"
+#include "includes/apicall.cpp"
+#include "includes/suffixtrie.cpp"
 
 bool APIcall()
 {
@@ -48,7 +48,11 @@ bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
 bool subStringSearchHelper(TrieNode myObj, string finalString, TrieNode *&curr, string searchString)
 {
     transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);
-    auto [isSubstring_search, location_search] = myObj.search(curr, searchString);
+
+    auto tup = myObj.search(curr, searchString);
+    bool isSubstring_search = std::get<0>(tup);
+    TrieNode *location_search = std::get<1>(tup);
+
     return isSubstring_search;
 }
 
@@ -57,7 +61,10 @@ vector<string> autoCompleteHelper(TrieNode myObj, string finalString, TrieNode *
     vector<string> suggestions;
 
     transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
-    auto [isSubstring, location] = myObj.search(curr, userInput);
+
+    auto tup = myObj.search(curr, userInput);
+    bool isSubstring = std::get<0>(tup);
+    TrieNode *location = std::get<1>(tup);
 
     if (isSubstring)
     {
@@ -69,7 +76,6 @@ vector<string> autoCompleteHelper(TrieNode myObj, string finalString, TrieNode *
     }
     return suggestions;
 }
-
 int main()
 {
     // api call
@@ -134,7 +140,7 @@ int main()
         vector<string> suggestions = autoCompleteHelper(myObj_autocomplete, finalString, curr_autocomplete, userInput);
         for (vector<string>::iterator t = suggestions.begin(); t != suggestions.end(); ++t)
         {
-            cout  << *t << endl;
+            cout << *t << endl;
         }
     }
     return 0;
