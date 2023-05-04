@@ -9,7 +9,10 @@
 #include <tuple>
 using namespace std;
 
-// Main class for doing API call to New York times and dfor parsing data and creating vector of strings
+   /* Main class for doing API call to New York times and dfor parsing data and creating vector of strings
+    * 
+    *  
+    */// 
 class APICall
 {
 public:
@@ -18,6 +21,11 @@ public:
         cout << "Instance created of APICall." << endl;
     }
 
+
+    /* This function takes ..
+    * 
+    *  
+    */
     int apicall(string &apiadress, string &authkey)
     {
         CURL *curl;
@@ -50,13 +58,23 @@ public:
         file << stringOfWords;
         return 0;
     }
-    // returns size of data in order to create vector
+
+
+    /* This function takes ..returns size of data in order to create vector
+    * 
+    *  
+    */
     static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
     {
         ((std::string *)words)->append((char *)data, size * nmemb);
         return size * nmemb;
     }
-    // parses json data from words.json file, creates strings and splits strings
+
+
+    /* This function takes ...  parses json data from words.json file, creates strings and splits strings
+    * 
+    *  
+    */
     string dataparsing(void)
     {
         string singleString;
@@ -69,8 +87,7 @@ public:
         {
             string abstract = jsonofarticles[i]["abstract"].asString();
             string lead_paragraph = jsonofarticles[i]["lead_paragraph"].asString();
-            string abstract_leadparagraph = abstract + lead_paragraph;
-
+            string abstract_leadparagraph =  abstract; // + lead_paragraph;
             std::string word;
             for (auto letter : abstract_leadparagraph)
             {

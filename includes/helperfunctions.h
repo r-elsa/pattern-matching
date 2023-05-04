@@ -1,9 +1,28 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <fstream>
+#include <algorithm>
+#include <functional>
+#include <tuple>
 #include "suffixtrie.h"
+#include "apicall.h"
 
-bool APIcall()
+
+using namespace std;
+
+#ifndef __HELPERFUNCTIONS_H__
+#define __HELPERFUNCTIONS_H__
+
+
+string APIhelper(string apiAdress, string authKey)
 {
-    return 1;
+    APICall api_instance;
+    api_instance.apicall(apiAdress, authKey);
+    string finalString = api_instance.dataparsing();
+    return finalString;
 }
+
 
 bool suffixInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
 {
@@ -14,11 +33,11 @@ bool suffixInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
     return 1;
 }
 
+
 bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
 {
     std::string word;
     finalString[finalString.size() - 1] = ' ';
-
     for (int i = 0; i < finalString.size(); i++)
     {
         if (finalString[i] == ' ')
@@ -35,6 +54,7 @@ bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
     return 1;
 }
 
+
 bool subStringSearchHelper(TrieNode myObj, string finalString, TrieNode *&curr, string searchString)
 {
     transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);
@@ -44,12 +64,11 @@ bool subStringSearchHelper(TrieNode myObj, string finalString, TrieNode *&curr, 
     return isSubstring_search;
 }
 
+
 vector<string> autoCompleteHelper(TrieNode myObj, string finalString, TrieNode *&curr, string userInput)
 {
     vector<string> suggestions;
-
     transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
-
     auto tup = myObj.search(curr, userInput);
     bool isSubstring = std::get<0>(tup);
     TrieNode *location = std::get<1>(tup);
@@ -64,3 +83,5 @@ vector<string> autoCompleteHelper(TrieNode myObj, string finalString, TrieNode *
     }
     return suggestions;
 }
+
+#endif

@@ -4,6 +4,11 @@
 
 using namespace std;
 
+
+/* This class takes
+ * 
+ *  
+ */
 class TrieNode
 {
 public:
@@ -14,7 +19,11 @@ public:
     string stringBuilder = "";
     vector<string> words;
 
-    // function to create the suffix trie
+
+    /* This function takes as argument .... creates a suffix trie
+    * 
+    *  
+    */
     bool insert(TrieNode *&root, string suffix)
     {
         TrieNode *curr = root;
@@ -31,7 +40,11 @@ public:
         return 1;
     }
 
-    // function to search for a word or sentence
+
+    /* This function takes
+    * 
+    *  
+    */
     tuple<bool, TrieNode *> search(TrieNode *root, string s)
     {
         TrieNode *curr = root;
@@ -46,10 +59,13 @@ public:
         return std::make_tuple(1, curr);
     }
 
-    // recursive depth first search
+
+    /* This function takes ... depth first search
+    * 
+    *  
+    */
     void dfs(TrieNode *root, std::vector<string> &suggestions, int level, string original)
     {
-
         TrieNode *curr;
         for (int i = 0; i < alphabet.size(); i++)
         {
@@ -84,7 +100,10 @@ public:
         }
     }
 
-    // initializer of depth first search
+    /* This function takes... initializer of depth first search
+    * 
+    *  
+    */
     vector<string> preorder(TrieNode *root, string originalString)
     {
         int level = 0;
