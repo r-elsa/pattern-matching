@@ -1,13 +1,13 @@
 
-#include <gtest/gtest.h>
-#include "../sqrt.cpp"
-#include <iostream>
-#include <curl/curl.h>
 #include <string>
-#include <cstdlib>
-#include <json/json.h>
-#include "../includes/suffixtrie.h"
-#include "../includes/logic.cpp"
+
+#include <iostream>
+#include <gtest/gtest.h>
+#include <iostream>
+#include <string>
+#include "../includes/trie.h"
+#include "../includes/helperfunctions.cpp"
+
 
 using namespace std;
 
