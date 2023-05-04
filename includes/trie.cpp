@@ -5,24 +5,26 @@
 using namespace std;
 
 
-/* This class takes
- * 
- *  
+/* This class creates the trie as an unordered map 
+ * with a character as the key and a node as value.
+ * If further keeps track of some additional paramethers needed for the dfs- function
  */
 class TrieNode
 {
 public:
     unordered_map<char, TrieNode *> hashmap;
-    std::string s;
     std::string alphabet = "$abcdefghijklmnopqrstuvwxyz";
+    std::string s;
     string prevstring = "";
     string stringBuilder = "";
     vector<string> words;
 
 
-    /* This function takes as argument .... creates a suffix trie
-    * 
-    *  
+    /* This function inserts node in the suffixtrie. 
+     * It gets called by the functions suffixInsertionHelper and wordInsertionHelper in helperfunctions.cpp
+     * It receives a suffix or a word  
+     *  and for each character in i'th suffix/word it adds an outgoing edge if necessary 
+     * (and sets the new outgoing edge as current node)
     */
     bool insert(TrieNode *&root, string suffix)
     {
@@ -41,9 +43,11 @@ public:
     }
 
 
-    /* This function takes
-    * 
-    *  
+    /* The purpose of this function is to find out whether the string s is a substring of the text.
+     * It follows the path given by characters of s
+     * and returns information about:
+     *     1) whether the string is included or we fell of the path (boolean value).
+     *     2) node at end of path.
     */
     tuple<bool, TrieNode *> search(TrieNode *root, string s)
     {
@@ -60,9 +64,10 @@ public:
     }
 
 
-    /* This function takes ... depth first search
-    * 
-    *  
+    /* This is the in-order depth first search algorithm. 
+    * It traverses the tree with the end of the user's string as root node.
+    * It stores as parameters the level of the tree and the previous string in order to later build the final word. 
+    * and add it to the vector suggestions, ehich it then returns
     */
     void dfs(TrieNode *root, std::vector<string> &suggestions, int level, string original)
     {
@@ -100,15 +105,14 @@ public:
         }
     }
 
-    /* This function takes... initializer of depth first search
-    * 
-    *  
+    /* This function works as a helper function for the depth first search (dfs)
+    * It initializes the parameters needed for the dfs, 
+    * including the vector where suggestions will be stored,
+    * before calling the recursive function.
     */
     vector<string> preorder(TrieNode *root, string originalString)
     {
         int level = 0;
-        int prev_level = 0;
-        std::string prev;
         std::vector<string> suggestions;
         dfs(root, suggestions, level, originalString);
         return suggestions;

@@ -6,12 +6,13 @@
 #include <algorithm>
 #include <functional>
 #include <tuple>
-#include "suffixtrie.h"
+#include "trie.h"
 #include "apicall.h"
 #include "helperfunctions.h"
 
 using namespace std;
 
+// This is the header file for ui.cpp
 
 void UIsearchSubString(TrieNode myObj, string finalString, TrieNode *&curr){
     std::string searchString;

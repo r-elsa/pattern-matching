@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <functional>
 #include <tuple>
-#include "suffixtrie.h"
+#include "trie.h"
 #include "apicall.h"
 #include "helperfunctions.h"
 
@@ -14,9 +14,7 @@
 using namespace std;
 
 
-/* This function takes
- * 
- *  
+/* This function acts as UI for searching a substring in the trie of suffixes. 
  */
 void UIsearchSubString(TrieNode myObj, string finalString, TrieNode *&curr){
     std::string searchString;
@@ -43,9 +41,7 @@ void UIsearchSubString(TrieNode myObj, string finalString, TrieNode *&curr){
     }
 }
 
-/* This function takes
- * 
- *  
+/* This function acts as UI for the autocomplete feature (DFS of the trie of words). 
  */
 void UIAutocomplete(TrieNode myObj_autocomplete, string finalString, TrieNode *&curr_autocomplete){
     string userInput;

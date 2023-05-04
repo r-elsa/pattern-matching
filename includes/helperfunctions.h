@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <functional>
 #include <tuple>
-#include "suffixtrie.h"
+#include "trie.h"
 #include "apicall.h"
 
 
@@ -14,6 +14,7 @@ using namespace std;
 #ifndef __HELPERFUNCTIONS_H__
 #define __HELPERFUNCTIONS_H__
 
+// This is the header file for helperfunctions.cpp
 
 string APIhelper(string apiAdress, string authKey)
 {
