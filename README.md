@@ -15,7 +15,7 @@ The goal of the project is to develop data structures and algorithms for efficie
 
 
 
-## Installation
+## Installation, compilation and excecution
 
 ### Note: the commands are for Ubuntu 20.04.5. Please see links if the commands do not work. 
 
@@ -66,5 +66,66 @@ g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17
 
 ```bash
  ./main
+```
+
+
+## Testing 
+
+### Unit testing using Google Test
+
+
+1. Install [**Google Test**](https://github.com/google/googletest) if you don't have it installed yet.
+
+```bash
+sudo apt-get install libgtest-dev
+```
+2. Install [**CMake**](https://cmake.org/install/) if you don't have it installed yet.
+
+```bash
+sudo apt-get install cmake
+```
+
+3. Go to folder where Google Test was installed.
+
+```bash
+cd /usr/src/gtest
+```
+```bash
+sudo cp *.a /usr/lib
+```
+
+4. Go back to project folder and compile
+
+```bash
+cmake CMakeLists.txt
+```
+
+```bash
+make
+```
+
+5. Run tests
+
+```bash
+./executeTests
+```
+
+ ### Static analysis (style)
+ 
+- Static style analysis is performed using *Cppcheck*. 
+- As *Cppcheck* does not find standard include headers, the check is suppressed and only custom header files are included.
+- Code style has been checked using the command below. 
+ 
+
+1. Install [**Cppcheck**](https://cppcheck.sourceforge.io/) if you don't have it installed yet. 
+
+```bash
+ sudo apt-get install cppcheck
+```
+
+2. Run style tests in project folder (.../patternmatching$). 
+
+```bash
+ cppcheck --quiet --enable=all --suppress=missingIncludeSystem --error-exitcode=1 main.cpp
 ```
 

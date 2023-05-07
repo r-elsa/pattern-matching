@@ -1,7 +1,10 @@
 
 
 ## What to expect after compiling & running
-(g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17 AND  ./main)
+
+To compile: ```$ g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17 ``` </br>
+To run: ```$ ./main ```
+
 
 1) The program will make an API call to [New York times API](https://developer.nytimes.com/) for articles
 2) *Curl* will parse the JSON for *abstract* and *lead paragraph* fields.
@@ -145,6 +148,6 @@ If *Killed*
  to *string abstract_leadparagraph = abstract;*
 
 
-
+## To run tests
 
  

@@ -23,6 +23,7 @@ Date       | Hours| Tasks |
 2023-04-23 | 4h   | Starting to implement autocomplete feature for trie |
 2023-04-27 | 3h   | Finishing DFS autocomplete feature |
 2023-04-30 | 3h   | Researching into header files and starting to implement |
+2023-05-04 | 5h   | Included header files, improved project structure, added socumentation for all files |
 
 
 
