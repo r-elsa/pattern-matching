@@ -33,8 +33,6 @@ Suffix Trie:
 - Total time complexity: 0(n^2 +m)
 
 
-Suffix Tree:
-
 
 ## Comparative performance and complexity analysis if applicable
 
