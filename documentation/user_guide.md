@@ -137,7 +137,8 @@ query prefix not present
                zoo$
  
  
-
+#### Illustration of trie from example string *statistics*
+![Illustration](./images/statistics)
 
 ## Troubleshooting
 
