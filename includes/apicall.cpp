@@ -86,7 +86,7 @@ public:
         {
             string abstract = jsonofarticles[i]["abstract"].asString();
             string lead_paragraph = jsonofarticles[i]["lead_paragraph"].asString();
-            string abstract_leadparagraph =  abstract; // + lead_paragraph;
+            string abstract_leadparagraph =  lead_paragraph; //abstract
             std::string word;
             for (auto letter : abstract_leadparagraph)
             {

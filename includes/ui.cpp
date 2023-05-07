@@ -47,6 +47,7 @@ void UIAutocomplete(TrieNode myObj_autocomplete, string finalString, TrieNode *&
     string userInput;
     cout << " " << endl;
     cout << "Type character(s) for the suffixtrie to autocomplete: ";
+    cout << " " << endl;
 
     while (true)
     {
