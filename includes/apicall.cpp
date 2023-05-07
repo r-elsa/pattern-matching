@@ -77,16 +77,22 @@ public:
     string dataparsing(void)
     {
         string singleString;
+        int counter = 0;
         std::ifstream file_input("words.json");
         Json::Reader reader;
         Json::Value obj;
         reader.parse(file_input, obj);
         const Json::Value &jsonofarticles = obj["response"]["docs"];
         for (int i = 0; i < jsonofarticles.size(); i++)
-        {
+        {   
+            if (counter >= 2){
+                return;
+            }
+            cout << counter << endl;
+            counter = counter +1;
             string abstract = jsonofarticles[i]["abstract"].asString();
             string lead_paragraph = jsonofarticles[i]["lead_paragraph"].asString();
-            string abstract_leadparagraph =  lead_paragraph; //abstract
+            string abstract_leadparagraph =  abstract;
             std::string word;
             for (auto letter : abstract_leadparagraph)
             {

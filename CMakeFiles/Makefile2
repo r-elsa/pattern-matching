@@ -63,9 +63,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/DEPENDS.dir/clean
 clean: CMakeFiles/executeTests.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/DEPENDS.dir
+
+# All Build rule for target.
+CMakeFiles/DEPENDS.dir/all:
+	$(MAKE) -f CMakeFiles/DEPENDS.dir/build.make CMakeFiles/DEPENDS.dir/depend
+	$(MAKE) -f CMakeFiles/DEPENDS.dir/build.make CMakeFiles/DEPENDS.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/users/elsar/dev/tiralabra/patternmatching/CMakeFiles --progress-num= "Built target DEPENDS"
+.PHONY : CMakeFiles/DEPENDS.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/DEPENDS.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/users/elsar/dev/tiralabra/patternmatching/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DEPENDS.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/users/elsar/dev/tiralabra/patternmatching/CMakeFiles 0
+.PHONY : CMakeFiles/DEPENDS.dir/rule
+
+# Convenience name for target.
+DEPENDS: CMakeFiles/DEPENDS.dir/rule
+
+.PHONY : DEPENDS
+
+# clean rule for target.
+CMakeFiles/DEPENDS.dir/clean:
+	$(MAKE) -f CMakeFiles/DEPENDS.dir/build.make CMakeFiles/DEPENDS.dir/clean
+.PHONY : CMakeFiles/DEPENDS.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/executeTests.dir
