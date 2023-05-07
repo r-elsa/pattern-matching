@@ -1,6 +1,6 @@
  # Testing document
 
-
+![Code coverage](image link)
 
 ## Test coverage report 
 
