@@ -149,6 +149,4 @@ If *Killed*
  to *string abstract_leadparagraph = abstract;*
 
 
-## To run tests
-
  
