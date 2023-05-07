@@ -110,6 +110,32 @@ make
 ./executeTests
 ```
 
+### Test coverage using gcov and lcov
+
+1. Install lcov if you don't already have it installed
+
+```bash
+sudo apt-get install lcov
+```
+
+2. Navigate to *coverage* folder
+
+```bash
+cd coverage
+```
+3. Run
+
+```bash
+ lcov -c -d .. -o coverage.info
+```
+
+4. Generate visual 
+
+```bash
+genhtml -o results/ coverage.info
+```
+
+
  ### Static analysis (style)
  
 - Static style analysis is performed using *Cppcheck*. 

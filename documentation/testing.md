@@ -1,8 +1,9 @@
  # Testing document
+ 
+ ## Test coverage report (latest)
 
+![Code coverage](./images/code_coverage7.5.jpg?raw=true)
 
-
-## Test coverage report 
 
 ## What has been tested and how
 
