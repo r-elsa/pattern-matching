@@ -6,3 +6,9 @@ CMakeFiles/*
 DartConfiguration.tcl
 main.gcno
 coverage/*
+main.gcda
+executeTests
+cmake/coverage.cmake
+cmake_install.cmake
+Makefile
+CMakeFiles/*
