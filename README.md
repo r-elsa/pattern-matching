@@ -112,7 +112,7 @@ make
 
 ### Test coverage using gcov and lcov
 
-1. Install lcov if you don't already have it installed
+1. Install lcov if you don't already have it installed.
 
 ```bash
 sudo apt-get install lcov
@@ -149,7 +149,7 @@ genhtml -o results/ coverage.info
  sudo apt-get install cppcheck
 ```
 
-2. Run style tests in project folder (.../patternmatching$). 
+2. Run style tests in project folder.
 
 ```bash
  cppcheck --quiet --enable=all --suppress=missingIncludeSystem --error-exitcode=1 main.cpp
