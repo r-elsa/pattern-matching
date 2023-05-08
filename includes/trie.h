@@ -21,20 +21,22 @@ public:
 
 
   
-    bool insert(TrieNode *&root, string suffix)
+    int insert(TrieNode *&root, string suffix)
     {
         TrieNode *curr = root;
         char letter;
+        int nodeCount = 0;
         for (int i = 0; i < suffix.size(); i++)
         {
             letter = suffix[i];
             if (curr->hashmap.find(letter) == curr->hashmap.end())
             {
                 curr->hashmap[letter] = new TrieNode;
+                nodeCount = nodeCount +1;
             }
             curr = curr->hashmap[letter];
         }
-        return 1;
+        return nodeCount;
     }
 
     tuple<bool, TrieNode *> search(TrieNode *root, string s)

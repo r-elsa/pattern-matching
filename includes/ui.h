@@ -58,6 +58,7 @@ void UIAutocomplete(TrieNode myObj_autocomplete, string finalString, TrieNode *&
         {
             cout << *t << endl;
         }
+        cout << " " << endl;
     }
 }
 

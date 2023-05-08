@@ -32,12 +32,16 @@ string APIhelper(string apiAdress, string authKey)
  */
 bool suffixInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
 {
+    int totalNodeCount = 0;
     for (int i = 0; i < finalString.size(); i++)
     {
-        myObj.insert(curr, finalString.substr(i));
+        int nodeCount = myObj.insert(curr, finalString.substr(i));
+        totalNodeCount+=nodeCount;
     }
+    cout << "Amount of nodes: "<< totalNodeCount << endl;
     return 1;
 }
+
 
 /*  This function serves as a helper function for implementing the trie of words. 
  *  It loops through the final string,
@@ -46,6 +50,7 @@ bool suffixInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
  */
 bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
 {
+    int totalNodeCount = 0;
     std::string word;
     finalString[finalString.size() - 1] = ' ';
     for (int i = 0; i < finalString.size(); i++)
@@ -53,7 +58,8 @@ bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
         if (finalString[i] == ' ')
         {
             word += '$';
-            myObj.insert(curr, word);
+            int nodeCount = myObj.insert(curr, word);
+            totalNodeCount += nodeCount;
             word = "";
         }
         else
@@ -61,8 +67,11 @@ bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
             word = word + finalString[i];
         }
     }
+    cout << "Amount of nodes: "<< totalNodeCount << endl;
     return 1;
 }
+
+
 
 /*  This function serves as a helper function for both the search - feature and the autocomplete - feature. 
  *  It transforms the user input to lowercase,
@@ -88,7 +97,7 @@ vector<string> autoCompleteHelper(TrieNode myObj, string finalString, TrieNode *
     auto tup = myObj.search(curr, userInput);
     bool isSubstring = std::get<0>(tup);
     TrieNode *location = std::get<1>(tup);
-    
+
     if (isSubstring)
     {
         suggestions = myObj.preorder(location, userInput);

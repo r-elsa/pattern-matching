@@ -26,20 +26,22 @@ public:
      *  and for each character in i'th suffix/word it adds an outgoing edge if necessary 
      * (and sets the new outgoing edge as current node)
     */
-    bool insert(TrieNode *&root, string suffix)
+    int insert(TrieNode *&root, string suffix)
     {
         TrieNode *curr = root;
         char letter;
+        int nodeCount = 0;
         for (int i = 0; i < suffix.size(); i++)
         {
             letter = suffix[i];
             if (curr->hashmap.find(letter) == curr->hashmap.end())
             {
                 curr->hashmap[letter] = new TrieNode;
+                nodeCount = nodeCount + 1;
             }
             curr = curr->hashmap[letter];
         }
-        return 1;
+        return nodeCount;
     }
 
 

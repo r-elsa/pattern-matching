@@ -71,6 +71,7 @@ public:
     string dataparsing(void)
     {
         string singleString;
+        int counter = 0;
         std::ifstream file_input("words.json");
         Json::Reader reader;
         Json::Value obj;
@@ -84,11 +85,15 @@ public:
             std::string word;
             for (auto letter : abstract_leadparagraph)
             {
+                if (counter >= 500){
+                    break;
+                }
                 if (letter == ' ' or letter == '.' or letter == ',')
                 {
                     if ((!word.empty()))
                     {
                         singleString += word + ' ';
+                        counter +=1;
                         word.clear();
                     }
                 }
@@ -96,6 +101,7 @@ public:
                 {
                     char letter_lowercase = tolower(letter);
                     word = word + letter_lowercase;
+                    
                 }
             }
         }
