@@ -5,3 +5,4 @@ CMakeCache.txt
 CMakeFiles/*
 DartConfiguration.tcl
 main.gcno
+coverage/*
