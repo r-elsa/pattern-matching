@@ -27,6 +27,12 @@ The project has currently three tests:
 <br />
 <br />
 
+![Time complexity insertion](./images/time_complexity_insertion.jpg)
+
+
+![Time complexity search](./images/time_complexity_search.jpg)
+
+
 ![Space complexity](./images/space_complexity.jpg)
 
 
