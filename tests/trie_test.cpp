@@ -9,59 +9,135 @@
 
 using namespace std;
 
-// space complexity testing
+// SPACE COMPLEXITY TESTING. Strings are named after amount of characters. 
 
-// bast case  - linear space
-string bestcase_five = "aaaaa";
-string bestcase_fifty = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-
+// best case  - linear space
+string linear_five = "aaaaa";
+string linear_fifty = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+string linear_fivehundred = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$";
 
 // n^2 space
 string quadratic_six = "aaabbb";
 string quadratic_sixty = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+string quadratic_sixhundred = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb$";
 
 // NY times testdata 
+
 // 50 characters 
 string nytimes_fifty = "a proposal to make new york the third state to$";
-
-
 // 100 characters 
 string nytimes_onehundred= "he assisted south like the journalist donald woods whose story was told in the movie cry freedom$";
-
-
 // 200 characters 
-string nytimes_twohundred = "";
-
+string nytimes_twohundred = "is it time to ditch a powerful symbol of the american dream the perfect green lawnnote this is the last film club for the school year the astor place cube which has been stationary since is headed to$";
 // 500 characters
-
 string nytimes_fivehundred = "wideranging conversation this time the fashion designer and the ivory musician three days after his fall runway show in february while on his way to meet omar apollo at a photographers house in clinton hill brooklyn the yearold fashion designer willy chavarria studied the yearold musicians wikipedia page what chavarria lacked in detailed knowledge about apollos career he made up for with an immediate paternal tenderness each detail apollo revealed about himself during their afternoon together from$";
-
-
 // 1000 characters
-string nytimes_thousand = "";
-
-
+string nytimes_thousand = "microsoft linkedins owner had already pulled the flagship networking site from china in leaving only a strippeddown app that catered to job seekers linkedin the networking platform used by millions of employees and companies said on monday it will pare down its operations in china capping a multiyear pullback that exemplified the challenges of running a foreign business in china on a secluded cobblestone alley lined with former craftsmens workshops marin montagut makes a home steeped in the citys creative history parisians are often caricatured as blas yet when it comes to their citys cultural treasures they can be disarmingly sentimental new yorkers may dismiss the empire state building as kitsch but parisians have an unironic love for the eiffel tower and the arc de triomphe there is likewise widespread devotion to the capitals artisanal past many wouldnt dream for example of getting their brass door hardware anywhere but the thcentury a la providence on rue du faubourg st antoine or$";
 // 1500 characters
-string nytimes_thousandfivehunderd = "";
-
-
+string nytimes_thousandfivehundred = "lowkey smalltown existence as the characters on their favorite television shows leonard bernsteins country house hasnt changed much since he hosted stephen sondheim and jerome robbins there his daughter is ok with that leonard bernsteins country house hasnt changed much since he hosted stephen sondheim and jerome robbins there his daughter is ok with that the return of budget tour groups from mainland china is sparking frustrations and a dose of snobbery in a city starved for business one by one the tour buses descended on the blue collar neighborhood in hong kong known as to kwa wan literally translated as potato bay unloading throngs of travelers from mainland china outside large restaurants where a quick lunch awaited them inside mr burns a key figure in bolstering the biden administrations support for ukraine has amassed influence beyond most previous spy chiefs to mark the th anniversary of the americanled invasion of iraq the c i a director william j burns stood in the lobby of the agencys headquarters in langley va and sought to exorcise the ghosts of the prewar intelligence failures that haunt the building to this day the south carolina representative who has publicly criticized her party but backed it on most legislation is trying to figure out how to be a mainstreamrepublican in the hardright house g o p it was just after representative nancy mace republican of south carolina had fired off a blunt text to the no house g o p leader featuring two fbombs and four demands$";
 // 2000 characters
 string nytimes_twothousand = "the troubled lender is working on a lifeline but time is running out first republic is limping into the weekend days after reporting disastrous firstquarter results the bank is still working on a lifeline with some involved saying it is touch and go whether the federal government will assist in some way dealbook hears five countries whose farmers have been hurt by the policy including poland will get carveouts and compensation under an agreement reached friday brussels ukraines grains will continue to enter the european union tarifffree for another year despite protests from neighbors such as poland which have seen their own farmers hurt by the influx of cheaper foodstuffs the oil industry enjoyed record profits in after russia invaded ukraine but the prices of oil and natural gas have fallen sharply in recent months exxon mobil and chevron the two largest american oil companies reported modest earnings growth on friday as they were forced to manage their businesses in the face of sagging prices for oil and natural gas as the countrys oldest power station closed experts warn that the country needs a clearer strategy to manage its exit from coal power when it was first announced in that australias oldest power station liddell would close the news set off a political firestorm the metropolitan transportation authority said it would no longer provide service information on twitter because the reliability of the platform can no longer be guaranteed realtime train delays bus route changes and other service information that would be vital to millions of new york city commuters will no longer be shared on twitter because the reliability of the platform can no longer be guaranteed a metropolitan transportation authority official said on thursday long school closures have put public education and randi weingarten the leader of a major teachers union on the defensive during the early months of the covid pandemic randi weingarten and the teachers union she leads faced a vexing$";
-
-
-// 2500 characters
-string nytimes_twothousandfivehundred = "at any moment about one out of every two americans feels lonely how can we help one another feel more connecteddr vivek h murthy is the surgeon general of the united states as the nations doctor it is his job to protect and improve the health and safety of the american people the new surge at the u s mexico border highlights a broader reality about immigration policy the surge of migrants gathering at the u s mexico border underscores a point that democratic party politicians often try to play down u s border policy has a big effect on how many people try to enter the country illegally the meeting was one of the highestlevel engagements between american and chinese officials since the downing of a suspected chinese spy balloon in february chinas foreign minister qin gang met with the american ambassador to china in beijing on monday ina possible hint at a thaw in relations between the two powers after months of growing tension allegations of misconduct have brought calls for tighter rules on the justices on the nations highest court debate about ethical standards for supreme court justices has intensified after a series of revelations about undisclosed gifts luxury travel and property deals the i r a will spur the takeover of our infrastructure by private entities particularly large global asset managers with likely negative consequences the inflation reduction act will reshape the physical and economic landscape of the united states over the next decade including in ways that might surprise a lot of people gardeners and small farmers are growing food with minimal water in ways large and small that could help the southwest survive an epochal drought kim elle had never grown anything more complicated than houseplants when she and her husband moved from georgia to suburban phoenix in faced with a sizable yard in a wellgroomed subdivision she turned to gardening fighting superior russian firepower ukrainian forces turn offtheshelf drones into deadly weapons by adapting them to carry explosives buzzing like an oversize mosquito a small drone lifted off from a farm field in eastern ukraine hovered for a bit then raced toward russian positions near the battleravaged city of bakhmut the annual spectacle featuring fanciful caravans and riders on horseback and is arguably the most potent visual representation of andalusian culture you cant wear that flamenco dress for the el roco pilgrimage bonita maria crdenas our airbnb host said with a laugh youll die in the heat$";
-
-// 3000 characters 
-string nytimes_threethousand = "the new surge at the us mexico border highlights a broader reality about immigration policy the surge of migrants gathering at the u s mexico border underscores a point that democratic party politicians often try to play down u s border policy has a big effect on how many people try to enter the country illegally the meeting was one of the highestlevel engagements between american and chinese officials since the downing of a suspected chinese spy balloon in february chinas foreign minister qin gang met with the american ambassador to china in beijing on monday ina possible hint at a thaw in relations between the two powers after months of growing tension allegations of misconduct have brought calls for tighter rules on the justices on the nations highest court debate about ethical standards for supreme court justices has intensified after a series of revelations about undisclosed gifts luxury travel and property deals the ira will spur the takeover of our infrastructure by private entities particularly large global asset managers with likely negative consequences the inflation reduction act will reshape the physical and economic landscape of the united states over the next decade including in ways that might surprise a lot of people gardeners and small farmers are growing food with minimal water in ways large and small that could help the southwest survive an epochal drought kim elle had never grown anything more complicated than houseplants when she and her husband moved from georgia to suburban phoenix in faced with a sizable yard in a wellgroomed subdivision she turned to gardening fighting superior russian firepower ukrainian forces turn offtheshelf drones into deadly weapons by adapting them to carry explosives buzzing like an oversize mosquito a small drone lifted off from a farm field in eastern ukraine hovered for a bit then raced toward russian positions near the battleravaged city of bakhmut the annual spectacle featuring fanciful caravans and riders on horseback and is arguably the most potent visual representation of andalusian culture you cant wear that flamenco dress for the el roco pilgrimage bonita maria crdenas our airbnb host said with a laugh youll die in the heat two creative people in two different fields in one wideranging conversation this time the fashion designer and the ivory musician three days after his fall runway show in february while on his way to meet omar apollo at a photographers house in clinton hill brooklyn the yearold fashion designer willy chavarria studied the yearold musicians wikipedia page what chavarria lacked in detailed knowledge about apollos career he made up for with an immediate paternal tenderness each detail apollo revealed about himself during their afternoon together from his recent grammy nomination for best new artist to his middle name apolonio also the title of his mixtape drew oohs and aahs from chavarria a senior vice president at calvin klein and the founder of his own namesake line$";
-
-
 
 string testdata1 = "he assisted south african dissidents like the journalist donald woods whose story was told in the movie cry freedom$";
 string testdata2 = "a proposal to make new york the third state to ban menthol cigarettes has created a furious and expensive lobbying war$";
 
+TEST(InsertTest, LinearFive)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, linear_five, testCurr));
+}
 
-TEST(InsertAndSearchTest, SuffixFound)
+TEST(InsertTest, LinearFifty)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, linear_fifty, testCurr));
+}
+
+TEST(InsertTest, LinearFiveHundred)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, linear_fivehundred, testCurr));
+}
+
+TEST(InsertTest, QuadraticSix)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, quadratic_six, testCurr));
+}
+
+TEST(InsertTest, QuadraticSixty)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, quadratic_sixty, testCurr));
+}
+
+TEST(InsertTest, QuadraticSixHundred)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, quadratic_sixhundred, testCurr));
+}
+
+TEST(InsertTest, NY_Fifty)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_fifty, testCurr));
+}
+
+TEST(InsertTest, NY_OneHundred)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_onehundred, testCurr));
+}
+
+TEST(InsertTest, NY_TwoHundred)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_twohundred, testCurr));
+}
+
+TEST(InsertTest, NY_FiveHundred)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_fivehundred, testCurr));
+}
+
+TEST(InsertTest, NY_Thousand)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_thousand, testCurr));
+}
+
+TEST(InsertTest, NY_ThousandFiveHundred)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_thousandfivehundred, testCurr));
+}
+
+TEST(InsertTest, NY_TwoThousand)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_twothousand, testCurr));
+}
+
+
+
+
+
+
+TEST(SearchTest, SuffixFound)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
@@ -71,7 +147,7 @@ TEST(InsertAndSearchTest, SuffixFound)
 
 }
 
-TEST(InsertAndSearchTest, SuffixNotFound)
+TEST(SearchTest, SuffixNotFound)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
@@ -87,6 +163,21 @@ TEST(InsertTest, WordInsert)
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, wordInsertionHelper(testObj, testdata1, testCurr));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 int main(int argc, char **argv)
