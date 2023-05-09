@@ -3,13 +3,13 @@
 #include <iostream>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <string>
+#include <chrono>
 #include "../includes/trie.h"
 #include "../includes/helperfunctions.cpp"
 
 using namespace std;
 
-// SPACE COMPLEXITY TESTING. Strings are named after amount of characters. 
+// Test data. Strings are named as [type]__[amount of characters]. 
 
 // best case  - linear space
 string linear_five = "aaaaa";
@@ -41,91 +41,95 @@ string nytimes_twothousand = "the troubled lender is working on a lifeline but t
 string testdata1 = "he assisted south african dissidents like the journalist donald woods whose story was told in the movie cry freedom$";
 string testdata2 = "a proposal to make new york the third state to ban menthol cigarettes has created a furious and expensive lobbying war$";
 
-TEST(InsertTest, LinearFive)
+// 1. Time and space complexity testing 
+
+// 1.1 Insertion 
+
+TEST(CInsertTest, LinearFive)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, linear_five, testCurr));
 }
 
-TEST(InsertTest, LinearFifty)
+TEST(CInsertTest, LinearFifty)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, linear_fifty, testCurr));
 }
 
-TEST(InsertTest, LinearFiveHundred)
+TEST(CInsertTest, LinearFiveHundred)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, linear_fivehundred, testCurr));
 }
 
-TEST(InsertTest, QuadraticSix)
+TEST(CInsertTest, QuadraticSix)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, quadratic_six, testCurr));
 }
 
-TEST(InsertTest, QuadraticSixty)
+TEST(CInsertTest, QuadraticSixty)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, quadratic_sixty, testCurr));
 }
 
-TEST(InsertTest, QuadraticSixHundred)
+TEST(CInsertTest, QuadraticSixHundred)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, quadratic_sixhundred, testCurr));
 }
 
-TEST(InsertTest, NY_Fifty)
+TEST(CInsertTest, NY_Fifty)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_fifty, testCurr));
 }
 
-TEST(InsertTest, NY_OneHundred)
+TEST(CInsertTest, NY_OneHundred)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_onehundred, testCurr));
 }
 
-TEST(InsertTest, NY_TwoHundred)
+TEST(CInsertTest, NY_TwoHundred)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_twohundred, testCurr));
 }
 
-TEST(InsertTest, NY_FiveHundred)
+TEST(CInsertTest, NY_FiveHundred)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_fivehundred, testCurr));
 }
 
-TEST(InsertTest, NY_Thousand)
+TEST(CInsertTest, NY_Thousand)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_thousand, testCurr));
 }
 
-TEST(InsertTest, NY_ThousandFiveHundred)
+TEST(CInsertTest, NY_ThousandFiveHundred)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_thousandfivehundred, testCurr));
 }
 
-TEST(InsertTest, NY_TwoThousand)
+TEST(CInsertTest, NY_TwoThousand)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
@@ -133,21 +137,58 @@ TEST(InsertTest, NY_TwoThousand)
 }
 
 
+// 1.2 Search 
 
-
-
-
-TEST(SearchTest, SuffixFound)
+// Three tests to search the same string in tries of vastly different size. 
+TEST(CSearchTest, DifferentSizesOfTriesTwoHundred)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
-    ASSERT_EQ(1, suffixInsertionHelper(testObj, testdata1, testCurr));
-    std::string searchString = "movie cry freedom";
-    ASSERT_EQ(1, subStringSearchHelper(testObj, testdata1, testCurr, searchString));
-
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_twohundred, testCurr));
+    std::string searchString = "for";
+    
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    ASSERT_EQ(1, subStringSearchHelper(testObj, nytimes_twohundred, testCurr, searchString));
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();  
+    std::cout << "200 characters - Time difference: " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
 }
 
-TEST(SearchTest, SuffixNotFound)
+
+TEST(CSearchTest, DifferentSizesOfTriesFiveHundred)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_fivehundred, testCurr));
+    std::string searchString = "for";
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    ASSERT_EQ(1, subStringSearchHelper(testObj, nytimes_fivehundred, testCurr, searchString));
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();  
+    std::cout << "500 characters - Time difference: " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+    }
+
+
+TEST(CSearchTest, DifferentSizesOfTriesThousand)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, nytimes_thousand, testCurr));
+    std::string searchString = "for";
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    ASSERT_EQ(1, subStringSearchHelper(testObj, nytimes_thousand, testCurr, searchString));
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();  
+    std::cout << "1000 characters - Time difference: " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+    }
+
+
+
+
+
+// 2. Regular tests 
+
+
+
+
+TEST(RInsertTest, SuffixNotFound1)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
@@ -157,7 +198,17 @@ TEST(SearchTest, SuffixNotFound)
 
 }
 
-TEST(InsertTest, WordInsert)
+TEST(RInsertTest, SuffixNotFound2)
+{
+    TrieNode testObj;
+    TrieNode *testCurr = new TrieNode();
+    ASSERT_EQ(1, suffixInsertionHelper(testObj, testdata2, testCurr));
+    std::string searchString = "fourth state";
+    ASSERT_EQ(0, subStringSearchHelper(testObj, testdata1, testCurr, searchString));
+
+}
+
+TEST(RInsertTest, WordInsert)
 {
     TrieNode testObj;
     TrieNode *testCurr = new TrieNode();
