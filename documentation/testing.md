@@ -23,7 +23,10 @@ The project has currently three tests:
 
 
 ## Results of empirical testing presented in graphical form
+<br />
+<br />
+<br />
 
-
+![Space complexity](./images/space_complexity.jpg)
 
 
