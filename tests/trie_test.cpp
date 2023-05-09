@@ -44,7 +44,6 @@ string testdata2 = "a proposal to make new york the third state to ban menthol c
 // 1. Time and space complexity testing 
 
 // 1.1 Insertion 
-
 TEST(CInsertTest, LinearFive)
 {
     TrieNode testObj;
@@ -179,15 +178,7 @@ TEST(CSearchTest, DifferentSizesOfTriesThousand)
     std::cout << "1000 characters - Time difference: " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
     }
 
-
-
-
-
 // 2. Regular tests 
-
-
-
-
 TEST(RInsertTest, SuffixNotFound1)
 {
     TrieNode testObj;
@@ -197,7 +188,6 @@ TEST(RInsertTest, SuffixNotFound1)
     ASSERT_EQ(0, subStringSearchHelper(testObj, testdata1, testCurr, searchString));
 
 }
-
 TEST(RInsertTest, SuffixNotFound2)
 {
     TrieNode testObj;
@@ -214,22 +204,6 @@ TEST(RInsertTest, WordInsert)
     TrieNode *testCurr = new TrieNode();
     ASSERT_EQ(1, wordInsertionHelper(testObj, testdata1, testCurr));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 int main(int argc, char **argv)
 {
