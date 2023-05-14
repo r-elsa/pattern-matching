@@ -1,13 +1,19 @@
 
 # Requirement specification
 
+<br />
+
 ## Aim of project:
 
 The topic of the project is indexing with suffixes. Suffix tries (and regular tries) provide an efficent way to search any pattern from text in O(m) time where m is the length of the pattern. 
 
+<br />
+
 ## Programming language:
 - C++, for user interface cmd. 
 - I can peer review: C++, python
+
+<br />
 
 ## Scope of the project:
 
@@ -24,22 +30,31 @@ The topic of the project is indexing with suffixes. Suffix tries (and regular tr
     - Autocomplete based on user input.
     - Comparison of time and efficiency in implementation of trie and suffix trie. 
   
- 
+<br />
+
 ### Motivations behing choosing datastructures
   - Suffix tries enable search in O(m) time where m is the length of the pattern. This is better than other pattern matching algorithms which are 0(n) where n is the length of the text. 
+
+<br />
 
 ### Inputs the algorithms receive
   - User inputs
     - Word search : character/string
     - Autocompete: character/string
 
+<br />
+
 ## Sources
   - Introduction to Algorithms(CLRS)
   - internet
+  
+<br />
 
 ## Study programe:
  Tietojenkäsittelytieteen kandidaatti (TKT) 
  
+<br />
+
 ## Language for documentation, code and comments 
   - English
   - For peer review I can also write in Finnish. 
