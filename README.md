@@ -29,12 +29,14 @@ The goal of the project is to develop data structures and algorithms for efficie
 **Note: the commands are for Ubuntu 20.04.5. Please see links if the commands do not work.**
 
 <br />
+
 1. Install [**curl**](https://curl.se/download.html) if you don't have it installed yet:
 
 ```bash
 sudo apt-get install libcurl4-openssl-dev
 ```
 
+<br />
 
 2. Install [**JsonCpp**](https://github.com/open-source-parsers/jsoncpp) if you don't have it installed yet:
 
@@ -47,6 +49,7 @@ sudo apt-get install libjsoncpp-dev
 sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
 ```
 
+<br />
 
 3. Go inside project folder (where *main.cpp* is) and add authentication key. Or you can get your own key [here](https://developer.nytimes.com/docs/articlesearch-product/1/overview).
 
@@ -55,6 +58,7 @@ sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
 
 ```
 
+<br />
 
 4. Check that it worked (should print the auth key):
 
@@ -63,6 +67,7 @@ printenv AUTH_KEY
 
 ```
 
+<br />
 
 5. Compile:
 
@@ -70,6 +75,7 @@ printenv AUTH_KEY
 g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17
 ```
 
+<br />
 
 6. Run file:
 
@@ -77,7 +83,6 @@ g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17
  ./main
 ```
 
-<br />
 <br />
 
 ## Testing 
@@ -91,11 +96,17 @@ g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17
 ```bash
 sudo apt-get install libgtest-dev
 ```
+
+<br />
+
 2. Install [**CMake**](https://cmake.org/install/) if you don't have it installed yet.
 
 ```bash
 sudo apt-get install cmake
 ```
+
+<br />
+
 
 3. Go to folder where Google Test was installed.
 
@@ -105,6 +116,8 @@ cd /usr/src/gtest
 ```bash
 sudo cp *.a /usr/lib
 ```
+
+<br />
 
 4. Go back to project folder and compile
 
@@ -116,13 +129,14 @@ cmake CMakeLists.txt
 make
 ```
 
+<br />
+
 5. Run tests
 
 ```bash
 ./executeTests
 ```
 
-<br />
 <br />
 
 ### Test coverage using gcov and lcov
@@ -133,16 +147,23 @@ make
 sudo apt-get install lcov
 ```
 
+<br />
+
 2. Navigate to *coverage* folder
 
 ```bash
 cd coverage
 ```
+
+<br />
+
 3. Run
 
 ```bash
  lcov -c -d .. -o coverage.info
 ```
+
+<br />
 
 4. Generate visual 
 
@@ -151,7 +172,7 @@ genhtml -o results/ coverage.info
 ```
 
 <br />
-<br />
+
 
  ### Static analysis (style)
  
@@ -159,12 +180,15 @@ genhtml -o results/ coverage.info
 - As *Cppcheck* does not find standard include headers, the check is suppressed and only custom header files are included.
 - Code style has been checked using the command below. 
  
+<br />
 
 1. Install [**Cppcheck**](https://cppcheck.sourceforge.io/) if you don't have it installed yet. 
 
 ```bash
  sudo apt-get install cppcheck
 ```
+
+<br />
 
 2. Run style tests in project folder.
 
