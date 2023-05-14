@@ -1,17 +1,19 @@
 
 # Pattern matching 
 
-The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are [suffix tries](https://en.wikipedia.org/wiki/Trie)(, [suffix trees](https://en.wikipedia.org/wiki/Suffix_tree) and in addition, the [Ukkonen's algorithm](https://en.wikipedia.org/wiki/Ukkonen%27s_algorithm) for efficient suffix tree implementation.) The text will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: word search, autocomplete and count number of occurences of search word. All are based on user input. In addition the implementation time of suffix tree will be improved by the Ukkonen's algorithm and further analyzed.
+The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are trie and  [suffix trie](https://en.wikipedia.org/wiki/Trie). The test data will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: word search and autocomplete, both based on user input.
 
 
 
 [Requirement specification](https://github.com/r-elsa/treecomparison/blob/master/documentation/requirements.md)
 
-[Progress report week 6](https://github.com/r-elsa/treecomparison/blob/master/documentation/progress_reports/week6.md)
+[User guide] (https://github.com/r-elsa/pattern-matching/blob/master/documentation/user_guide.md)
 
-[Time report](https://github.com/r-elsa/pattern-matching/blob/master/documentation/progress_reports/time_report.md)
+[Implementation] (https://github.com/r-elsa/pattern-matching/blob/master/documentation/implementation.md)
 
 [Testing](https://github.com/r-elsa/pattern-matching/blob/master/documentation/testing.md)
+
+[Time report](https://github.com/r-elsa/pattern-matching/blob/master/documentation/progress_reports/time_report.md)
 
 
 
