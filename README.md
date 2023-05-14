@@ -1,15 +1,15 @@
 
 # Pattern matching 
 
-The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are trie and  [suffix trie](https://en.wikipedia.org/wiki/Trie). The test data will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: word search and autocomplete, both based on user input.
+The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are [trie](https://en.wikipedia.org/wiki/Trie) and  [suffix trie](https://en.wikipedia.org/wiki/Trie). The test data will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: word search and autocomplete, both based on user input.
 
-
+**Documentation:**
 
 [Requirement specification](https://github.com/r-elsa/treecomparison/blob/master/documentation/requirements.md)
 
-[User guide] (https://github.com/r-elsa/pattern-matching/blob/master/documentation/user_guide.md)
+[User guide](https://github.com/r-elsa/pattern-matching/blob/master/documentation/user_guide.md)
 
-[Implementation] (https://github.com/r-elsa/pattern-matching/blob/master/documentation/implementation.md)
+[Implementation](https://github.com/r-elsa/pattern-matching/blob/master/documentation/implementation.md)
 
 [Testing](https://github.com/r-elsa/pattern-matching/blob/master/documentation/testing.md)
 
