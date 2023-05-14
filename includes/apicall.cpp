@@ -4,16 +4,15 @@
 #include <iostream>
 #include <fstream>
 #include <json/json.h>
-#include <algorithm>
-#include <functional>
-#include <tuple>
+
 using namespace std;
 
-   /* Class for calling the API,
-    * parsing the JSON object,
-    * doing some string mainpulating
-    * and returning the final string.
-    */// 
+/* Class for calling the API,
+ * parsing the JSON object,
+ * doing some string mainpulating
+ * and returning the final string.
+ */
+//
 class APICall
 {
 public:
@@ -59,20 +58,18 @@ public:
         return 0;
     }
 
-
     /* This function returns size of data in order to create a vector of right size
-    */
+     */
     static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
     {
         ((std::string *)words)->append((char *)data, size * nmemb);
         return size * nmemb;
     }
 
-
-    /* This function takes parses the json data from words.json file, 
+    /* This function takes parses the json data from words.json file,
      * loops the json for the fields "abstract" and "lead paragraph" for each article,
      * deletes special characters and transforms everything to lower case
-     * and returns the final string  
+     * and returns the final string
      */
     string dataparsing(void)
     {
@@ -83,10 +80,10 @@ public:
         reader.parse(file_input, obj);
         const Json::Value &jsonofarticles = obj["response"]["docs"];
         for (int i = 0; i < jsonofarticles.size(); i++)
-        {          
+        {
             string abstract = jsonofarticles[i]["abstract"].asString();
             string lead_paragraph = jsonofarticles[i]["lead_paragraph"].asString();
-            string abstract_leadparagraph =  abstract;
+            string abstract_leadparagraph = abstract;
             std::string word;
             for (auto letter : abstract_leadparagraph)
             {

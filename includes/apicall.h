@@ -4,16 +4,13 @@
 #include <iostream>
 #include <fstream>
 #include <json/json.h>
-#include <algorithm>
-#include <functional>
-#include <tuple>
+
 using namespace std;
 
-//This is the header file for apicall.cpp
+// This is the header file for apicall.cpp
 
 #ifndef APICALL_H
 #define APICALL_H
-
 
 class APICall
 {
@@ -23,8 +20,6 @@ public:
         cout << "Instance created of APICall." << endl;
     }
 
-
- 
     int apicall(string &apiadress, string &authkey)
     {
         CURL *curl;
@@ -58,15 +53,11 @@ public:
         return 0;
     }
 
-
-
     static size_t GetSizeOfDatafromAPI(void *data, size_t size, size_t nmemb, void *words)
     {
         ((std::string *)words)->append((char *)data, size * nmemb);
         return size * nmemb;
     }
-
-
 
     string dataparsing(void)
     {
@@ -85,7 +76,8 @@ public:
             std::string word;
             for (auto letter : abstract_leadparagraph)
             {
-                if (counter >= 500){
+                if (counter >= 500)
+                {
                     break;
                 }
                 if (letter == ' ' or letter == '.' or letter == ',')
@@ -93,7 +85,7 @@ public:
                     if ((!word.empty()))
                     {
                         singleString += word + ' ';
-                        counter +=1;
+                        counter += 1;
                         word.clear();
                     }
                 }
@@ -101,7 +93,6 @@ public:
                 {
                     char letter_lowercase = tolower(letter);
                     word = word + letter_lowercase;
-                    
                 }
             }
         }

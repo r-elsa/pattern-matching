@@ -1,17 +1,9 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <iostream>
-#include <fstream>
-#include <json/json.h>
-#include <algorithm>
-#include <functional>
-#include <tuple>
 #include "includes/apicall.h"
 #include "includes/trie.h"
 #include "includes/helperfunctions.h"
 #include "includes/ui.h"
-
 
  /* This is the main function, which calls the function that does an api call to NY Times API. 
   * Then it creates two different suffix tries of the data it received (one with suffixes, one with words).
@@ -26,11 +18,11 @@ int main()
 
     TrieNode myObj;
     TrieNode *curr = new TrieNode();
-    bool suffixInsertionToTrie = suffixInsertionHelper(myObj, finalString, curr); 
+    suffixInsertionHelper(myObj, finalString, curr); 
 
     TrieNode myObj_autocomplete;
     TrieNode *curr_autocomplete = new TrieNode();
-    bool wordInsertionToTrie = wordInsertionHelper(myObj_autocomplete, finalString, curr_autocomplete); 
+    wordInsertionHelper(myObj_autocomplete, finalString, curr_autocomplete); 
 
     UIsearchSubString(myObj, finalString, curr);  
     UIAutocomplete(myObj_autocomplete, finalString, curr_autocomplete);     

@@ -1,18 +1,11 @@
-
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <fstream>
-#include <algorithm>
-#include <functional>
-#include <tuple>
 #include "trie.h"
 #include "apicall.h"
 #include "helperfunctions.h"
 
-
 using namespace std;
-
 
 /* This function acts as UI for searching a substring in the trie of suffixes. 
  */

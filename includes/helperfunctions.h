@@ -1,13 +1,7 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <fstream>
-#include <algorithm>
-#include <functional>
-#include <tuple>
 #include "trie.h"
 #include "apicall.h"
-
 
 using namespace std;
 
@@ -24,7 +18,6 @@ string APIhelper(string apiAdress, string authKey)
     return finalString;
 }
 
-
 bool suffixInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
 {
     int totalNodeCount = 0;
@@ -33,10 +26,8 @@ bool suffixInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
         int nodeCount = myObj.insert(curr, finalString.substr(i));
         totalNodeCount+=nodeCount;
     }
-    cout << "Amount of nodes: "<< totalNodeCount << endl;
     return 1;
 }
-
 
 bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
 {
@@ -57,7 +48,6 @@ bool wordInsertionHelper(TrieNode myObj, string finalString, TrieNode *&curr)
             word = word + finalString[i];
         }
     }
-    cout << "Amount of nodes: "<< totalNodeCount << endl;
     return 1;
 }
 
@@ -67,10 +57,8 @@ bool subStringSearchHelper(TrieNode myObj, string finalString, TrieNode *&curr, 
     transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);
     auto tup = myObj.search(curr, searchString);
     bool isSubstring_search = std::get<0>(tup);
-    TrieNode *location_search = std::get<1>(tup);
     return isSubstring_search;
 }
-
 
 vector<string> autoCompleteHelper(TrieNode myObj, string finalString, TrieNode *&curr, string userInput)
 {

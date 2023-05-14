@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 /* This class creates the trie as an unordered map 
  * with a character as the key and a node as value.
  * If further keeps track of some additional paramethers needed for the dfs- function
@@ -44,7 +43,6 @@ public:
         return nodeCount;
     }
 
-
     /* The purpose of this function is to find out whether the string s is a substring of the text.
      * It follows the path given by characters of s
      * and returns information about:
@@ -65,7 +63,6 @@ public:
         return std::make_tuple(1, curr);
     }
 
-
     /* This is the in-order depth first search algorithm. 
     * It traverses the tree with the end of the user's string as root node.
     * It stores as parameters the level of the tree and the previous string in order to later build the final word. 
@@ -73,7 +70,6 @@ public:
     */
     void dfs(TrieNode *root, std::vector<string> &suggestions, int level, string original)
     {
-        TrieNode *curr;
         for (int i = 0; i < alphabet.size(); i++)
         {
             if (!(root->hashmap.find(alphabet[i]) == root->hashmap.end()))

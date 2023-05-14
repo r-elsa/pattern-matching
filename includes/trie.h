@@ -8,7 +8,6 @@ using namespace std;
 #ifndef TRIENODE_H
 #define TRIENODE_H
 
-
 class TrieNode
 {
 public:
@@ -19,8 +18,6 @@ public:
     string stringBuilder = "";
     vector<string> words;
 
-
-  
     int insert(TrieNode *&root, string suffix)
     {
         TrieNode *curr = root;
@@ -53,9 +50,8 @@ public:
         return std::make_tuple(1, curr);
     }
 
-    void dfs(TrieNode *root, std::vector<string> &suggestions, int level, string original)
+    void dfs(TrieNode *root, std::vector<string> &suggestions, int level, const std::string& original)
     {
-        TrieNode *curr;
         for (int i = 0; i < alphabet.size(); i++)
         {
             if (!(root->hashmap.find(alphabet[i]) == root->hashmap.end()))
@@ -81,7 +77,6 @@ public:
                 {
                     stringBuilder += alphabet[i];
                 }
-
                 TrieNode *curr;
                 curr = root->hashmap[alphabet[i]];
                 dfs(curr, suggestions, level + 1, original);
@@ -89,11 +84,9 @@ public:
         }
     }
 
-    vector<string> preorder(TrieNode *root, string originalString)
+    vector<string> preorder(TrieNode *root, const std::string& originalString)
     {
         int level = 0;
-        int prev_level = 0;
-        std::string prev;
         std::vector<string> suggestions;
         dfs(root, suggestions, level, originalString);
         return suggestions;

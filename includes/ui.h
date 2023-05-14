@@ -2,10 +2,6 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <fstream>
-#include <algorithm>
-#include <functional>
-#include <tuple>
 #include "trie.h"
 #include "apicall.h"
 #include "helperfunctions.h"
@@ -14,7 +10,7 @@ using namespace std;
 
 // This is the header file for ui.cpp
 
-void UIsearchSubString(TrieNode myObj, string finalString, TrieNode *&curr){
+void UIsearchSubString(TrieNode myObj, const std::string& finalString, TrieNode *&curr){
     std::string searchString;
     cout << " " << endl;
     cout << "Type a word or sentence to search in the suffixtrie (empty space stops):";
@@ -39,9 +35,7 @@ void UIsearchSubString(TrieNode myObj, string finalString, TrieNode *&curr){
     }
 }
 
-
-
-void UIAutocomplete(TrieNode myObj_autocomplete, string finalString, TrieNode *&curr_autocomplete){
+void UIAutocomplete(TrieNode myObj_autocomplete, const std::string& finalString, TrieNode *&curr_autocomplete){
     string userInput;
     cout << " " << endl;
     cout << "Type character(s) for the suffixtrie to autocomplete: ";
