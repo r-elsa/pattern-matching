@@ -1,7 +1,10 @@
 
 # Pattern matching 
 
-The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are [trie](https://en.wikipedia.org/wiki/Trie) and  [suffix trie](https://en.wikipedia.org/wiki/Trie). The test data will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: word search and autocomplete, both based on user input.
+The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are [trie](https://en.wikipedia.org/wiki/Trie) and  [suffix trie](https://en.wikipedia.org/wiki/Trie). The test data will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: *word search* and *autocomplete*, both based on user input.
+
+<br />
+
 
 **Documentation:**
 
@@ -16,12 +19,16 @@ The goal of the project is to develop data structures and algorithms for efficie
 [Time report](https://github.com/r-elsa/pattern-matching/blob/master/documentation/progress_reports/time_report.md)
 
 
+<br />
+
+
 
 ## Installation, compilation and excecution
+<br />
 
-### Note: the commands are for Ubuntu 20.04.5. Please see links if the commands do not work. 
+**Note: the commands are for Ubuntu 20.04.5. Please see links if the commands do not work.**
 
-
+<br />
 1. Install [**curl**](https://curl.se/download.html) if you don't have it installed yet:
 
 ```bash
@@ -70,8 +77,11 @@ g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17
  ./main
 ```
 
+<br />
+<br />
 
 ## Testing 
+<br />
 
 ### Unit testing using Google Test
 
@@ -112,6 +122,9 @@ make
 ./executeTests
 ```
 
+<br />
+<br />
+
 ### Test coverage using gcov and lcov
 
 1. Install lcov if you don't already have it installed.
@@ -137,6 +150,8 @@ cd coverage
 genhtml -o results/ coverage.info
 ```
 
+<br />
+<br />
 
  ### Static analysis (style)
  
@@ -156,4 +171,6 @@ genhtml -o results/ coverage.info
 ```bash
  cppcheck --quiet --enable=all --suppress=missingIncludeSystem --error-exitcode=1 main.cpp
 ```
+<br />
+<br />
 
