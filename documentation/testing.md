@@ -4,7 +4,7 @@
  
  ## Test coverage 
 
-![Code coverage](./images/code_coverage7.5.jpg?raw=true)
+![Code coverage](./images/code_coverage.jpg)
 
 <br />
 <br />

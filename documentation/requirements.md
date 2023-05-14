@@ -23,7 +23,7 @@ The topic of the project is indexing with suffixes. Suffix tries (and regular tr
 
 3. Creation of datastructures 
     1. Trie (Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth)
-    2. Suffix trie (Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth. 
+    2. Suffix trie (Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth.)
 
 4. Testing of algorithm:
     - Find a certain search word (string) from text based on user input. (O(m) time where m is length of the word)
