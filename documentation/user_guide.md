@@ -140,13 +140,6 @@ query prefix not present
 #### Illustration of trie from example string *statistics*
 ![Illustration](./images/statistics.jpg)
 
-## Troubleshooting
-
-If *Killed* 
-- go to includes/apicall.cpp 
-- on row 72 change 
- from  *string abstract_leadparagraph = abstract + lead_paragraph;* 
- to *string abstract_leadparagraph = abstract;*
 
 
  
