@@ -1,6 +1,6 @@
  # Testing document
  
-
+The project has all in all 26 tests in 4 test suites.
  
  ## Test coverage 
 
