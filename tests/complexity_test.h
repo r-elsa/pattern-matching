@@ -5,9 +5,10 @@
 #include <iostream>
 #include <chrono>
 #include "../includes/trie.h"
-#include "../includes/helperfunctions.cpp"
+#include "../includes/helperfunctions.h"
 
 using namespace std;
+
 
 // Test data. Strings are named as [type]__[amount of characters]. 
 
@@ -38,8 +39,6 @@ string nytimes_thousandfivehundred = "lowkey smalltown existence as the characte
 // 2000 characters
 string nytimes_twothousand = "the troubled lender is working on a lifeline but time is running out first republic is limping into the weekend days after reporting disastrous firstquarter results the bank is still working on a lifeline with some involved saying it is touch and go whether the federal government will assist in some way dealbook hears five countries whose farmers have been hurt by the policy including poland will get carveouts and compensation under an agreement reached friday brussels ukraines grains will continue to enter the european union tarifffree for another year despite protests from neighbors such as poland which have seen their own farmers hurt by the influx of cheaper foodstuffs the oil industry enjoyed record profits in after russia invaded ukraine but the prices of oil and natural gas have fallen sharply in recent months exxon mobil and chevron the two largest american oil companies reported modest earnings growth on friday as they were forced to manage their businesses in the face of sagging prices for oil and natural gas as the countrys oldest power station closed experts warn that the country needs a clearer strategy to manage its exit from coal power when it was first announced in that australias oldest power station liddell would close the news set off a political firestorm the metropolitan transportation authority said it would no longer provide service information on twitter because the reliability of the platform can no longer be guaranteed realtime train delays bus route changes and other service information that would be vital to millions of new york city commuters will no longer be shared on twitter because the reliability of the platform can no longer be guaranteed a metropolitan transportation authority official said on thursday long school closures have put public education and randi weingarten the leader of a major teachers union on the defensive during the early months of the covid pandemic randi weingarten and the teachers union she leads faced a vexing$";
 
-string testdata1 = "he assisted south african dissidents like the journalist donald woods whose story was told in the movie cry freedom$";
-string testdata2 = "a proposal to make new york the third state to ban menthol cigarettes has created a furious and expensive lobbying war$";
 
 // 1. Time and space complexity testing 
 
@@ -177,38 +176,5 @@ TEST(CSearchTest, DifferentSizesOfTriesThousand)
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();  
     std::cout << "1000 characters - Time difference: " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
     }
-
-// 2. Regular tests 
-TEST(RInsertTest, SuffixNotFound1)
-{
-    TrieNode testObj;
-    TrieNode *testCurr = new TrieNode();
-    ASSERT_EQ(1, suffixInsertionHelper(testObj, testdata2, testCurr));
-    std::string searchString = "fourth state";
-    ASSERT_EQ(0, subStringSearchHelper(testObj, testdata1, testCurr, searchString));
-
-}
-TEST(RInsertTest, SuffixNotFound2)
-{
-    TrieNode testObj;
-    TrieNode *testCurr = new TrieNode();
-    ASSERT_EQ(1, suffixInsertionHelper(testObj, testdata2, testCurr));
-    std::string searchString = "fourth state";
-    ASSERT_EQ(0, subStringSearchHelper(testObj, testdata1, testCurr, searchString));
-
-}
-
-TEST(RInsertTest, WordInsert)
-{
-    TrieNode testObj;
-    TrieNode *testCurr = new TrieNode();
-    ASSERT_EQ(1, wordInsertionHelper(testObj, testdata1, testCurr));
-}
-
-int main(int argc, char **argv)
-{
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
 
 

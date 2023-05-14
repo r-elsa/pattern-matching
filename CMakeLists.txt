@@ -5,7 +5,7 @@ PROJECT(Patternmatching)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(executeTests tests/trie_test.cpp)
+add_executable(executeTests tests/main_test.cpp)
 
 # Link executeTests with what we want to test and the GTest, pthread, curl and jsoncpp libraries
 target_link_libraries(executeTests ${GTEST_LIBRARIES} pthread curl jsoncpp)
