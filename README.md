@@ -1,7 +1,7 @@
 
 # Pattern matching 
 
-The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are [trie](https://en.wikipedia.org/wiki/Trie) and  [suffix trie](https://en.wikipedia.org/wiki/Trie). The test data will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: *word search* and *autocomplete*, both based on user input.
+The goal of the project is to develop data structures and algorithms for efficient pattern matching. The datastructures that will be explored are [trie](https://en.wikipedia.org/wiki/Trie), [suffix trie](https://en.wikipedia.org/wiki/Trie) and [suffix tree](https://en.wikipedia.org/wiki/Generalized_suffix_tree) by using the [Ukkonen's algorithm](https://en.wikipedia.org/wiki/Ukkonen%27s_algorithm). The test data will be sourced from [New York Times REST API](https://developer.nytimes.com/apis). Functionality that the application will have are: *word search* and *autocomplete*, both based on user input.
 
 <br />
 
