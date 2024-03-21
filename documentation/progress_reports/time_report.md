@@ -31,6 +31,7 @@ Date       | Hours| Tasks |
 2023-05-08 | 2h   | Graphical presentation for time and space complexity analysis  |
 2023-05-14 | 2h   | Final touches on documentation |
 2024-03-14 | 2h   | Research on Ukkonen's algorithm |
+2024-03-20 | 2.5h | Continued research on Ukkonen's algorithm |
 
 
 
