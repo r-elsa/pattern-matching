@@ -1,20 +1,4 @@
+### Progress report week 1
 
-## Progress report week 1
+I am continuing the project from period IV in 2023 by adding the implemention of a suffix tree with Ukkonen's algorithm. Ukkonen's algorithm builds the tree in linear time and the tree grows in linear space (as oppose to the trie, which grows in quadratic space). This week I have researched the datastructure of a suffix tree and the Ukkonen's algorithm in more depth: implicit suffix trees, suffix links and the 4 variables that I need to store (node, edge, length and remainder) as well as understanding the working of the algorithm. 
 
-**This week I have** familiarized with the course page and chosen a topic. 
-
-**The project has progressed** a little bit. The requirement specification helps in finding out the details of the project.
-
-**This week I learned** general information about tree-like datastructures.
-
-**Something that is unclear:** please see questions below 
-
-**Next up, I will** implement all datastructures and if time allows, methods for solving problem 1. 
-
-**Questions:**
-I would very happily receive feedback /suggestions on 
-  - tree-like data structures well suited for string manipulation
-  - suitable problems that most (if not all) of the chosen datastuctures can solve.
-  - algorithms for solving the problems
-  - project scope as it is at the moment
-  

@@ -1,12 +1,14 @@
  # Testing document
- 
+<br />
+
 The project has all in all 26 tests in 4 test suites.
- 
+
+<br />
+
  ## Test coverage 
 
 ![Code coverage](./images/code_coverage.jpg)
 
-<br />
 <br />
 <br />
 
@@ -17,9 +19,10 @@ The tests can be divided into two categories:
 - regular tests
 
 <br />
-<br />
 
 ### 1. Complexity tests
+
+<br />
 
 #### A) TIME
 
@@ -33,7 +36,6 @@ The tests can be divided into two categories:
 - Using library *chrono* in order to measure time of search. 
 - 5 attempts and illustrating the results per attempt.
 
-<br />
 <br />
 
 #### B) SPACE
@@ -52,14 +54,13 @@ Inserting *a* x n where n is 5, 50 and 500. The aim of the test is  to see that 
 
 <br />
 <br />
-<br />
 
 ### 2. Regular tests
 
 - 6 tests for search feature (RSearchTest), 3 which should succeed and 3 which shuld fail.
 - 4 tests for autocomplete feature (RAutoCompleteTest), 2 which should succees, 2 which should fail.
 
-<br />
+
 <br />
 <br />
 
@@ -78,13 +79,12 @@ make
 ```bash
 ./executeTests
 ```
-<br />
+
 <br />
 <br />
 
 ## Results of empirical testing presented in graphical form
 
-<br />
 <br />
 <br />
 

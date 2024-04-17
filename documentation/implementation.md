@@ -40,38 +40,55 @@ Excluding all files that are added in .gitignore
     ├── main_test.cpp <br />
     └── regular_test.h <br />
 
-<br />
-<br />
-<br />
-
-## Implemented time and space complexities (big-O complexity analysis of (pseudo)code)
-
-Suffix Trie:
-- Preprocessing text  using all suffixes of text = 0(n^2)
-- Pattern matching: 0(m)
-- Total time complexity: 0(n^2 +m)
 
 <br />
 <br />
-<br />
 
-## Comparative performance and complexity analysis if applicable
+## Implemented time and space complexities 
 
-<br />
+### Insertion of a string to a trie by inserting one key at at time:
+
+Starting from the root, each following node corresponds to the first key character. 
+
+There are two cases :
+
+1) A node exists. Then we move down the tree following the node to the next child level. The algorithm continues with searching for the next key character.
+2) A node does not exist. Then we create a new node. We repeat this step until we encounter the last character of the key, then we mark the current node as an end node and the algorithm finishes.
+
+**Time complexity: O(m)**
+ - In each iteration of the algorithm, we either examine or create a node in the trie till we reach the end of the key. This takes m operations.
+
+**Space complexity: O(m)**
+ -  worst case newly inserted key doesn't share a prefix with the the keys already inserted in the trie. We have to add m new nodes, O(m) space.)
+
+### Search for a key in a trie:
+
+Each key is represented in the trie as a path from the root to the internal node or leaf. We start from the root with the first key character. We examine the current node for a link corresponding to the key character. 
+
+There are two cases:
+
+1) A node exist. We move to the next node in the path following this link, and proceed searching for the next key character.
+2) A node does not exist. If there are no available key characters and we return false:
+
+
+**Time complexity: O(m)**
+ In each step of the algorithm we search for the next key character. In the worst case the algorithm performs m  operations.
+
+**Space complexity: O(1)**
+
 <br />
 <br />
 
 
 ## Possible flaws and improvements
 
-<br />
-<br />
+ - Currently header files (.h) and files for complilation (.cpp) are not ideal, yet they do work.
 <br />
 
 
 ## Sources
 
-<br />
-<br />
+- Introduction to Algorithms(CLRS)
+- internet
 <br />
 

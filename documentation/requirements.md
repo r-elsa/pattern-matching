@@ -6,6 +6,7 @@
 ## Aim of project:
 
 The topic of the project is indexing with suffixes. Suffix tries (and regular tries) provide an efficent way to search any pattern from text in O(m) time where m is the length of the pattern. 
+In order to traverse the trie, depth first search DFS (in-order traversal) is implemented. 
 
 <br />
 
@@ -17,18 +18,19 @@ The topic of the project is indexing with suffixes. Suffix tries (and regular tr
 
 ## Scope of the project:
 
-1. HTTP request to REST Server of New York Times for text (data). (https://developer.nytimes.com/docs/articlesearch-product/1/overview)
+1. **HTTP request**
+    - To REST Server of New York Times for text (data). (https://developer.nytimes.com/docs/articlesearch-product/1/overview)
 
-2. Preprocessing: extract all the words from json to a string.
+2. **Preprocessing**
+   -  Extract all the words from json to a string.
 
-3. Creation of datastructures 
-    1. Trie (Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth)
-    2. Suffix trie (Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth.)
+3. **Creation of datastructures**
+     1. Trie (Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth)
+     2. Suffix trie (Time complexity: 0(n2), Space complexity: : 0(n2), meaning superlinear growth.)
 
-4. Testing of algorithm:
-    - Find a certain search word (string) from text based on user input. (O(m) time where m is length of the word)
-    - Autocomplete based on user input.
-    - Comparison of time and efficiency in implementation of trie and suffix trie. 
+4. **Features:**
+    - Find a certain search word (string) from text based on user input. (O(m) time where m is length of the string).
+    - Autocomplete based on user input. (DFS, time complexity: O(Vertices + Edges), Space complexity : O(Vertices).
   
 <br />
 
