@@ -12,3 +12,8 @@ cmake/coverage.cmake
 cmake_install.cmake
 Makefile
 CMakeFiles/*
+suffixtree/src/algorithm/__pycache__/
+suffixtree/src/tests/__pycache__/
+suffixtree/.coverage
+suffixtree/.coveragerc
+suffixtree/.env
