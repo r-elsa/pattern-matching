@@ -116,4 +116,10 @@ make
 - There are 26 unique characters in the english alphabet and adding the terminator character ($) it adds up to 27.
 - A trie with N nodes will need O(N*k) space due to the pointers in each node, where k is the total number of unique characters in the alphabet.
 
+## Testing of the Ukkonen's algorithm
 
+<br />
+
+## Implementation of suffix tree using Ukkonen's algorithm
+
+![Case 1](./images/ukkonen_time_complexity.png)
