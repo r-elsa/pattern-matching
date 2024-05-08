@@ -72,12 +72,30 @@ There are two cases:
 
 
 **Time complexity: O(m)**
- In each step of the algorithm we search for the next key character. In the worst case the algorithm performs m  operations.
+ In each step of the algorithm we search for the next key character. In the worst case the algorithm performs m operations.
 
 **Space complexity: O(1)**
 
 <br />
-<br />
+
+### Implementation of a suffix tree using Ukkonen's algorithm
+
+
+**Time complexity: O(n)**
+
+- Ukkonen's algorithm is well-known for constructing suffix trees in linear time complexity O(n), where n is the length of the input string.
+
+- Ukkonen's algorithm constructs the suffix tree incrementally in a series of linear-time steps.
+
+**Space complexity: <O(n)- O(n^2)**
+
+- Depends on the type of the constructed suffix tree.
+  - Highly repetitive strings: worst case is O(n^2), where n is the length of the input string.
+  - Relatively random or diverse input strings: O(n) or less
+
+### Searching if a substring is found in the suffix tree
+
+
 
 
 ## Possible flaws and improvements
