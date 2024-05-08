@@ -210,6 +210,27 @@ genhtml -o results/ coverage.info
 <br />
 
 
+
+### Test coverage of python project
+
+1. Navigate to /patternmatching/suffixtree
+
+```bash
+coverage run --branch -m pytest src
+```
+
+```bash
+coverage report -m
+```
+
+```bash
+coverage html
+```
+
+<br />
+
+
+
  ### Static analysis (style)
  
 - Static style analysis is performed using *Cppcheck*. 
