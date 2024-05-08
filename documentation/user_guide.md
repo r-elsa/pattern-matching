@@ -161,4 +161,26 @@ query prefix not present
 
 
 
+## What to expect after compiling & running python
+
+The program runs constructs the suffix tree using Ukkonen's algorithm
+
+The the user can search for a substring after the prompt 
+
+```bash
+Enter substring here:
+```
+An empty input will stop the program.
+
+The program will print the answer whether the input is a substring or not.
+
+<br />
+#### Illustration of a suffix tree from example string *statistics* constructed using Ukkonen's algorithm.
+<br />
+
+
+![Illustration](./images/suffixtree.png)
+
+
+
  
