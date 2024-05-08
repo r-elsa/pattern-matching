@@ -85,6 +85,23 @@ g++ main.cpp -o main -lcurl -Iinclude -ljsoncpp -std=c++17
 
 <br />
 
+## Installation, compilation and excecution of python project (Ukkonen's algorithm)
+
+<br />
+
+1. Navigate to /patternmatching/suffixtree
+
+
+```bash
+poetry shell
+```
+
+```bash
+$python src/algorithm/ukkonen.py
+```
+
+
+
 ## Testing 
 <br />
 
@@ -138,6 +155,25 @@ make
 ```
 
 <br />
+
+### Unit testing using pytest 
+
+1. Navigate to /patternmatching/suffixtree
+
+```bash
+pytest
+```
+
+<br />
+
+2. For time complexity prints run
+
+```bash
+pytest -s
+```
+
+<br />
+
 
 ### Test coverage using gcov and lcov
 
