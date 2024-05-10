@@ -128,5 +128,7 @@ make
   
 - The y-axis illustrats the amount of characters and the x-axis illustrates time in seconds. The amounts of characters that were tested were 20, 100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000.
 
+![Space complexity of construction](./images/ukkonen_space_complexity.png)
+
 
 
