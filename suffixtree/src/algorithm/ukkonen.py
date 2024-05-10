@@ -163,6 +163,11 @@ def ukkonen(chars, regularize=False):
     """
     Constructs the suffix tree using Ukkonen's algorithm.
 
+    Handles the three cases where current suffix already exists: 
+    1) If the active edge doesn't exist, create a new leaf node and add it to the tree.
+    2) If the active edge exists, but the next character of the current suffix is already on the edge, move to the next node.
+    3) If the active edge exists, but the next character of the current suffix is not on the edge, split the edge and add a new leaf node.
+
     Args:
         chars (str): The input string.
         regularize (bool): Whether to regularize the input string.
@@ -233,7 +238,9 @@ def ukkonen(chars, regularize=False):
 
 def unfold(root, chars, index, remainder, current_node, current_key, current_length):
     """
-    Unfolds the suffix tree.
+    During unfolding, edge labels are compared with the remaining string to identify the first differing characters, 
+    initiating the edge splitting operation. The remaining string is iterated through until it is exhausted or unable 
+    to proceed further. The <index_remainder> serves as a reference point for the current progress towards the actual unfolding point.
 
     Args:
         root: The root node of the suffix tree.
@@ -266,7 +273,6 @@ def unfold(root, chars, index, remainder, current_node, current_key, current_len
         else:  
             anode, start, end, bnode = current_node.get_edge(current_key)
             if remains[current_length_remaining + current_length] != chars[start + current_length]:
-                # 
                 anode, start, end, bnode = current_node.get_edge(current_key)
                 new_node = Node(None, None, None)
                 half_edge1 = (current_node, start, start + current_length - 1, new_node)
@@ -296,7 +302,7 @@ def unfold(root, chars, index, remainder, current_node, current_key, current_len
 
 def step(chars, index, current_node, current_key, current_length, remains, index_remainder):
     """
-    Performs a step in the suffix tree construction.
+    Moving character-by character on the active node in orde to reach the right position where to do the next operation. 
 
     Args:
         chars (str): The input string.
@@ -333,6 +339,21 @@ def step(chars, index, current_node, current_key, current_length, remains, index
     return False, current_node, current_key, current_length, index_remainder
 
 def hop(index, current_node, current_key, current_length, remains, index_remainder):
+    """
+    Moving node-by-node until the actual node where to do th next operation is reached.
+    
+
+    Args:
+        index (int): The current index.
+        current_node: The current node.
+        current_key (str): The current key.
+        current_length (int): The current length.
+        remains (str): The remaining characters.
+        index_remainder (int): The remainder index.
+
+    Returns:
+        tuple: A tuple containing updated values.
+    """
     if current_length == 0 or current_key == '':
         return current_node, current_key, current_length, index_remainder
     anode, start, end, bnode = current_node.get_edge(current_key)
@@ -356,6 +377,17 @@ def hop(index, current_node, current_key, current_length, remains, index_remaind
     return current_node, current_key, current_length, index_remainder
 
 def is_substring(root, chars, substring):
+    """
+    Checks if a substring exists in the suffix tree.
+
+    Args:
+        root: The root node of the suffix tree.
+        chars (str): The input string.
+        substring (str): The substring to check.
+
+    Returns:
+        bool: True if the substring exists, False otherwise.
+    """
     current_node = root
     index = 0
     while index < len(substring):
@@ -382,7 +414,9 @@ def is_substring(root, chars, substring):
 
 
 if __name__ == "__main__":
-    
+    """
+    Entry point of the script. Fetches articles from the New York Times API, processes them, constructs a suffix tree, and checks for substrings.
+    """
     load_dotenv()
     api_key = os.getenv("API_KEY")
     articles = fetch_articles(api_key)
