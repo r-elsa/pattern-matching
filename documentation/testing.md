@@ -122,4 +122,11 @@ make
 
 ## Implementation of suffix tree using Ukkonen's algorithm
 
-![Case 1](./images/ukkonen_time_complexity.png)
+![Time complexity of construction](./images/ukkonen_time_complexity.png)
+
+- From the graph above, which illustrates **time complexity of constructing the suffix tree using Ukkonen's algorithm** we can see that the time complexity is linear, which is in accordance with the knowledge of the time complxity of Ukkonen's algorithm.
+  
+- The y-axis illustrats the amount of characters and the x-axis illustrates time in seconds. The amounts of characters that were tested were 20, 100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000.
+
+
+
