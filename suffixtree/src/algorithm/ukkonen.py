@@ -376,6 +376,26 @@ def hop(index, current_node, current_key, current_length, remains, index_remaind
         index_remainder += edge_length
     return current_node, current_key, current_length, index_remainder
 
+
+def count_nodes_dfs(node):
+    """
+    Function for measuring space complexity - counting the number of nodes in the suffix tree using depth first search (DFS).
+
+    Args:
+        node: The current node being visited.
+
+    Returns:
+        int: The number of nodes in the subtree rooted at the current node.
+    """
+    count = 1  
+
+    edges = node.get_edges()
+    if edges:
+        for edge in edges.values():
+            count += count_nodes_dfs(edge[3])  
+
+    return count
+
 def is_substring(root, chars, substring):
     """
     Checks if a substring exists in the suffix tree.

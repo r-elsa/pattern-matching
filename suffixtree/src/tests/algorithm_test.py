@@ -1,5 +1,5 @@
 import unittest
-from algorithm.ukkonen import  is_substring, ukkonen, Node
+from algorithm.ukkonen import  is_substring, ukkonen, Node, count_nodes_dfs
 import timeit
 import time
 
@@ -101,7 +101,61 @@ class TestNode(unittest.TestCase):
     def test_construction_of_suffix_tree_4000_characters(self):
         self.measure_suffix_tree_construction(fourthousand)
     
-     ## Complexity tests:  2) search for a substring in the suffix tree
+    
+    ## Complexity tests:  2) space complexity of constructing a suffix tree
+
+    def test_space_construction_of_suffix_tree_20_characters(self):
+        tree, chars = ukkonen(twenty, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(twenty)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_100_characters(self):
+        tree, chars = ukkonen(onehundred, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(onehundred)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_500_characters(self):
+        tree, chars = ukkonen(fivehundred, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(fivehundred)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_1000_characters(self):
+        tree, chars = ukkonen(onethousand, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(onethousand)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_1500_characters(self):
+        tree, chars = ukkonen(onethousandfivehundred, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(onethousandfivehundred)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_2000_characters(self):
+        tree, chars = ukkonen(twothousand, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(twothousand)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_2500_characters(self):
+        tree, chars = ukkonen(twothousandfivehundred, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(twothousandfivehundred)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_3000_characters(self):
+        tree, chars = ukkonen(threethousand, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(threethousand)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_3500_characters(self):
+        tree, chars = ukkonen(threethousandfivehundred, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(threethousandfivehundred)} characters: ", node_count)
+
+    def test_space_construction_of_suffix_tree_4000_characters(self):
+        tree, chars = ukkonen(fourthousand, regularize=True)
+        node_count = count_nodes_dfs(tree)
+        print(f"Node count of {len(fourthousand)} characters: ", node_count)
+
+    
+    ## Complexity tests:  3) search for a substring in the suffix tree
 
 
     def test_search_for_substring1(self):
