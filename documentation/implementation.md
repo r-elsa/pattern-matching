@@ -36,9 +36,17 @@ Excluding all files that are added in .gitignore
 │   └── ui.h <br />
 ├── main.cpp <br />
 ├── tests <br />
-    ├── complexity_test.h <br />
-    ├── main_test.cpp <br />
-    └── regular_test.h <br />
+│    ├── complexity_test.h <br />
+│    ├── main_test.cpp <br />
+│    └── regular_test.h <br />
+└── suffixtree
+    ├──htmlcov
+    ├──src
+    ├──algorithm
+    │   └── ukkonen.py
+    └── tests
+        └── algorithm_tests.py
+  
 
 
 <br />
