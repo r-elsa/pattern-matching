@@ -1,7 +1,7 @@
  # Testing document
 <br />
 
-The project has all in all 26 tests in 4 test suites.
+The project has all in all 52 tests in 5 test suites.
 
 <br />
 
