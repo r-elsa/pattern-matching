@@ -101,9 +101,13 @@ There are two cases:
   - Highly repetitive strings: worst case is O(n^2), where n is the length of the input string.
   - Relatively random or diverse input strings: O(n) or less
 
-### Searching if a substring is found in the suffix tree
+### Searching whether a substring exists in a suffix tree
 
+**Time complexity: O(m)**
 
+- Typically O(m), where m is the length of the string.
+- In worst case one is searching for the whole string that was inserted to the suffix tree, where the entire suffix tree needs to be traversed. The time complexity would still be O(m).
+- Edge length comparison is O(1) as edges are represented as indices.
 
 
 ## Possible flaws and improvements
