@@ -2,7 +2,12 @@ import unittest
 from algorithm.ukkonen import  is_substring, ukkonen, Node, count_nodes_dfs
 import timeit
 import time
+import os
+import random
 
+TESTDATA_GUTENBERG_FILENAME = os.path.join(os.path.dirname(__file__), 'project_gutenberg.txt')
+
+TESTDATA_RANDOMORG_FILENAME = os.path.join(os.path.dirname(__file__), 'randomorg.txt')
 
 # 4000 characters
 fourthousand = "while enough for no the bigbudget original movie gave hollywood its moslowest start to its summer box office season since the fall guy seemed to have everything after letting exclusive talks with the movie studio skydance lapse paramounts directors met over the weekend and decided to negotiate with all the suitors paramount has decided to formally open negotiations with a bidding group led by sony pictures entertainment and the private equity giant apollo according to three people familiar with the matter the move comes after a period of exclusive talks with the hollywood studio skydance lapsed on friday night rivers in southeast texas could be swollen for days or weeks forecasters said as multiple rounds of heavy rainfall continued on sunday southeast texas faced more heavy rainfall on sunday with forecasters warning that flash flooding could happen in houston after several rounds of storms in the past few days prompted evacuations and rescues in the area the south dakota governor defending her tale of shooting and killing her familys dog suggested that president bidens german shepherd commander had merited a similar fate gov kristi noem of south dakota already under fire for killing her familys monthold dog and boasting about it on sunday took aim at another familys pet commander president bidens biteprone german shepherd he won tournaments before moving into tv he explained the game that was going out in front of him in a very relaxed manner a former cbs producer said peter oosterhuis a british golfer who won tournaments around the world played in the ryder cup six times and later distinguished himself as a commentator for cbs and golf channel died on thursday in charlotte n c he was a section of the highway a crucial link between connecticut and new york city had closed on thursday when fuel from a burning tanker ignited an overpass a section of interstate in connecticut reopened on sunday morning after a fiery accident last week damaged an overpass and shut down the highway a major artery along the east coast the pop superstar performed a final date on her global trek marking four decades of hits a set on copacabana beach before the largest live crowd of her career when madonna stepped out onto the mammoth stage constructed on rio de janeiros copacabana beach on saturday night in a gleaming halo headpiece and black kimono she was greeted by the largest live crowd of her fourdecade career readers discuss a guest essay that argued they are both also college roommates tech in school truths about russia water and politics to the with horseradishcheddar tuna melts and vegan tantanmen for the coming week good morning it was peak cherry blossoms last week where i stay the flowers almost ready to spring off their branches to blanket the curbs like drifts of snow there was a deep humidity in the air and it made me think of summer down south the way the atmosphere can seem almost liquid under the sun everything ripe everything slow i made sweet tea and drank it over an enormous amount of ice on the stoop marveling at how sometimes sweet tea is the best tea even if you usually drink tea straight no sugar with not even a lemon to counter the tannins the secret service said the incident posed no threat to the public and president biden was in delaware at the time of the crash a driver died after crashing into a security barrier near the white house on saturday night around prompting an investigation by the washington police department the secret service said in a statement and later distinguished himself as a commentator for cbs and golf channel died on thursday in charlotte nc he was a section of the highway a crucial link between connecticut and new york city had closed on thursday when fuel from a burning tanker ignited an overpass a section of interstate in connecticut reopened on su and later distinguished himself as a commentator for cbs and golf channel died on thursday in charlotte n c he was a section and  how sometimes sweet"
@@ -36,10 +41,16 @@ twenty = "the matter the move "
 
 
 class TestNode(unittest.TestCase):
+    
     def setUp(self):
         self.sample_string = "banana"
         self.root, _ = ukkonen(self.sample_string)
-    
+        self.testdata_gutenberg = open(TESTDATA_GUTENBERG_FILENAME).read()
+        self.testdata_randomorg =  open(TESTDATA_RANDOMORG_FILENAME).read()
+        self.suffixtree_gutenberg, _= ukkonen(self.testdata_gutenberg)
+        self.suffixtree_randomorg, _= ukkonen(self.testdata_randomorg)
+
+
 
     ## Regular tests
 
@@ -68,6 +79,35 @@ class TestNode(unittest.TestCase):
         # Measure the time it takes to build the suffix tree
         time_taken = timeit.timeit(lambda: ukkonen(sample_string), number=1)
         print(f"Construction time for {len(sample_string)} characters: {time_taken:.5f} seconds")
+
+
+    def generate_random_substrings_gutenberg(self):
+        start_index = random.randint(0, len(self.testdata_gutenberg) - 1)
+        end_index = random.randint(start_index, len(self.testdata_gutenberg) - 1)
+        return start_index, end_index
+
+
+    def generate_random_substrings_randomorg(self):
+        start_index = random.randint(0, len(self.testdata_randomorg) - 1)
+        end_index = random.randint(start_index, len(self.testdata_randomorg) - 1)
+        return start_index, end_index
+
+    # Testing the existence of 100 different substrings in the suffixtree with data from Project Gutenberg
+
+    def test_construct_suffixtree_gutenberg(self):
+        for _ in range(100):
+            start, stop = self.generate_random_substrings_gutenberg()
+            random_substring = self.testdata_gutenberg[start:stop]
+            self.assertTrue(is_substring(self.suffixtree_gutenberg, self.testdata_gutenberg, random_substring))
+    
+    # Testing the existence of 100 different substrings in the suffixtree with data from Random.org
+    
+    def test_construct_suffixtree_randomorg(self):
+        for _ in range(100):
+            start, stop = self.generate_random_substrings_randomorg()
+            random_substring = self.testdata_randomorg[start:stop]
+            self.assertTrue(is_substring(self.suffixtree_randomorg, self.testdata_randomorg, random_substring))
+
     
      ## Complexity tests:  1) implementation of suffixtree using Ukkonen's algorithm with strings of different length
 
@@ -175,10 +215,6 @@ class TestNode(unittest.TestCase):
         is_substring(self.root, self.sample_string, "a")
         end_time = time.time()  
         print("Execution time:","{:.5f}".format(end_time - start_time))
-
- 
-
-
 
    
 if __name__ == "__main__":

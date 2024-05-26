@@ -399,9 +399,11 @@ def count_nodes_dfs(node):
 def is_substring(root, chars, substring):
     """
     Checks if a substring exists in the suffix tree.
+    Performs a linear search through the suffix tree, following edges that correspond to characters in the substring.
 
     Args:
         root: The root node of the suffix tree.
+        
         chars (str): The input string.
         substring (str): The substring to check.
 
