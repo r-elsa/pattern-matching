@@ -17,6 +17,7 @@ The project has all in all 52 tests in 5 test suites.
 The tests can be divided into two categories: 
 - complexity tests
 - regular tests
+- validity tests with big testdata from Project Gutenberg (99 999 characters) and Random.org (320000 characters).
 
 <br />
 
@@ -60,6 +61,12 @@ Inserting *a* x n where n is 5, 50 and 500. The aim of the test is  to see that 
 - 6 tests for search feature (RSearchTest), 3 which should succeed and 3 which shuld fail.
 - 4 tests for autocomplete feature (RAutoCompleteTest), 2 which should succees, 2 which should fail.
 
+<br />
+<br />
+
+### 3. Validity tests with testdata from Project Gutenberg and Random.org
+- 1 test that tests the existence of 100 different substrings in the suffix tree. Data from [Project Gutenberg](https://www.gutenberg.org/ebooks/5186). Length of string: 99999. English text, special characters removed.
+- 1 test that tests the existence of 100 different substrings in the suffix tree. Data from [Random.org](https://www.random.org/strings/?num=10000&len=32&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new). Length of string: 320000. Data consisting of digits, upper alpha and lower alpha.
 
 <br />
 <br />
