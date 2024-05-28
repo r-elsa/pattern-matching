@@ -9,6 +9,8 @@ The project has all in all 52 tests in 5 test suites.
 
 ![Code coverage](./images/code_coverage.jpg)
 
+![coverage](./images/coverage_ukkonen.png)
+
 <br />
 <br />
 
